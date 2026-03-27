@@ -1,0 +1,275 @@
+export default function GrootMoneyBotSalesWebsite() {
+  const features = [
+    "Smart money concept entry logic",
+    "Mode control: Safe, Balanced, Aggressive, Ultra",
+    "Clean trading dashboard feel",
+    "Session-based workflow",
+    "Mobile-first buyer layout",
+    "Fast WhatsApp Group / contact call-to-action",
+  ];
+
+  const plans = [
+    {
+      name: "Signals",
+      price: "R1000",
+      desc: "For traders who want entries and updates.",
+      cta: "Get Signals"
+    },
+    {
+      name: "Bot Access",
+      price: "R1000",
+      desc: "Original price R2000. Limited pre-order price R1000 for serious traders who want the GrootMoney bot setup for PC vision only. This is not a mobile app.",
+      cta: "Pre-Order Bot"
+    }
+  ];
+
+  const testimonials = [
+    "Professional setup and powerful vision.",
+    "The layout and guidance gave me confidence.",
+    "Clean brand, serious energy, real trader feel."
+  ];
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      <div className="sticky top-0 z-50 border-b border-yellow-500/20 bg-gradient-to-r from-yellow-500/15 via-black to-yellow-500/15 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
+          <div>
+            <p className="text-yellow-400 font-black tracking-[0.18em] uppercase text-sm">50% Off Pre-Order</p>
+            <p className="text-white/85 text-sm">Original price R2000. Pre-order now for R1000, limited members only.</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="px-3 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-300 text-xs font-semibold">Limited Offer</span>
+            <a href="#pricing" className="px-4 py-2 rounded-xl bg-yellow-500 text-black font-bold">Claim Offer</a>
+          </div>
+        </div>
+      </div>
+      <section className="relative overflow-hidden border-b border-yellow-500/20">
+        <style>{`
+          @keyframes typing {
+            0% { width: 0 }
+            45% { width: 100% }
+            55% { width: 100% }
+            100% { width: 0 }
+          }
+          @keyframes blink {
+            50% { border-color: transparent }
+          }
+        `}</style>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(234,179,8,0.12),_transparent_35%),linear-gradient(to_bottom,_#0a0a0a,_#000,_#090909)]" />
+        <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-yellow-400 tracking-[0.35em] text-xs mb-4 uppercase">Forex Wealth Empire</p>
+              <h1 className="text-4xl md:text-6xl font-black leading-tight mb-5">
+                GrootMoney Bot <span className="text-yellow-400">Sales Template</span>
+              </h1>
+              <p className="text-white/70 text-lg leading-8 max-w-xl mb-8">
+                A premium public landing page for traders who want to buy your signals or PC vision bot access. Clean black and gold design, serious money feel, and strong conversion sections.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="#pricing" className="px-6 py-3 rounded-2xl bg-yellow-500 text-black font-bold shadow-lg shadow-yellow-500/20">
+                  View Packages
+                </a>
+                <a href="#contact" className="px-6 py-3 rounded-2xl border border-white/15 bg-white/5 font-semibold">
+                  Contact Now
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div className="rounded-[28px] border border-yellow-500/20 bg-gradient-to-br from-yellow-500/10 to-white/5 p-5 shadow-2xl shadow-yellow-500/10">
+                <div className="rounded-[24px] border border-white/10 bg-black/70 p-5">
+                  <div className="flex items-center justify-between mb-5">
+                    <div>
+                      <p className="text-white/50 text-xs">BOT STATUS</p>
+                      <p className="text-2xl font-black text-yellow-400">ACTIVE</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-white/50 text-xs">MODE</p>
+                      <p className="text-xl font-bold">BALANCED</p>
+                    </div>
+                  </div>
+                  <div className="h-44 rounded-3xl border border-white/10 bg-gradient-to-br from-black via-zinc-900 to-black flex items-center justify-center mb-5">
+                    <div className="text-center">
+                      <p className="text-white/40 text-sm mb-2">Premium Trading System</p>
+                      <p className="text-3xl font-black text-yellow-400">GROOTMONEY</p>
+                      <p className="text-white/70 mb-3">PC Vision Only for MetaTrader 5</p>
+                      <div className="inline-flex items-center gap-2 rounded-2xl border border-yellow-500/30 bg-yellow-500/10 px-4 py-2 text-yellow-300 font-semibold">
+                        <span className="text-lg">📊</span>
+                        <span>MetaTrader 5</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button className="rounded-2xl border border-yellow-500/30 bg-yellow-500/10 p-4 font-bold text-yellow-300">SAFE</button>
+                    <button className="rounded-2xl border border-yellow-500/30 bg-yellow-500/10 p-4 font-bold text-yellow-300">BALANCED</button>
+                    <button className="rounded-2xl border border-yellow-500/30 bg-yellow-500/10 p-4 font-bold text-yellow-300">AGGRESSIVE</button>
+                    <button className="rounded-2xl border border-yellow-500/30 bg-yellow-500/10 p-4 font-bold text-yellow-300">ULTRA</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-10 overflow-hidden">
+        <style>{`
+          @keyframes marquee { 0% { transform: translateX(0%);} 100% { transform: translateX(-50%);} }
+          @keyframes marqueeReverse { 0% { transform: translateX(-50%);} 100% { transform: translateX(0%);} }
+        `}</style>
+        <div className="relative mb-6">
+          <div className="flex gap-6 whitespace-nowrap w-max px-4" style={{animation: 'marquee 45s linear infinite'}}>
+            {features.concat(features).map((feature, idx) => (
+              <div key={idx} className="min-w-[260px] rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <div className="h-8 w-8 rounded-xl bg-yellow-500/10 border border-yellow-500/30 mb-3 flex items-center justify-center text-yellow-400 text-sm">★</div>
+                <p className="text-white/85 text-sm leading-6">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="flex gap-6 whitespace-nowrap w-max px-4" style={{animation: 'marqueeReverse 40s linear infinite'}}>
+            {["Binance — press live button to chat with us", "Skrill — press live button to chat with us", "Card Payment via Whop", "Binance — press live button to chat with us", "Skrill — press live button to chat with us", "Card Payment via Whop"].map((item, idx) => (
+              <div key={idx} className="min-w-[180px] rounded-2xl border border-yellow-500/20 bg-black/60 p-4 text-center">
+                <p className="text-yellow-400 font-semibold">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="rounded-[28px] border border-yellow-500/20 bg-black/60 p-6 text-center">
+          <p className="text-yellow-400 uppercase tracking-[0.3em] text-xs mb-3">Broker Info</p>
+          <h2 className="text-2xl md:text-3xl font-black mb-3">Flexible Broker Support</h2>
+          <p className="text-white/70 max-w-2xl mx-auto leading-7">
+            The GrootMoney PC Vision bot works with any broker of your choice. However, we highly recommend using RCG Markets for the best performance, execution speed, and compatibility.
+          </p>
+        </div>
+      </section>
+
+      <section id="pricing" className="max-w-6xl mx-auto px-6 py-10">
+        <div className="mb-8">
+          <p className="text-yellow-400 uppercase tracking-[0.3em] text-xs mb-3">Packages</p>
+          <h2 className="text-3xl md:text-4xl font-black">Choose Your Access</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
+          {plans.map((plan) => (
+            <div key={plan.name} className="rounded-[28px] border border-yellow-500/20 bg-gradient-to-b from-yellow-500/10 to-white/[0.02] p-6 shadow-xl shadow-black/30">
+              <p className="text-white/60 mb-2">{plan.name}</p>
+              {plan.name === "Bot Access" ? (
+                <>
+                  <p className="text-white/40 line-through text-lg mb-1">R2000</p>
+                  <h3 className="text-4xl font-black text-yellow-400 mb-3">{plan.price}</h3>
+                  <span className="inline-block mb-4 px-3 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-300 text-xs font-semibold">50% OFF PRE-ORDER</span>
+                </>
+              ) : (
+                <h3 className="text-4xl font-black text-yellow-400 mb-3">{plan.price}</h3>
+              )}
+              <p className="text-white/70 leading-7 mb-6">{plan.desc}</p>
+              <button
+                onClick={() => {
+                  if (plan.name === 'Bot Access') {
+                    window.open('https://whop.com/checkout/plan_0l3vOYe8ADKtt', '_blank');
+                  } else {
+                    document.getElementById('liveChatBtn').classList.remove('hidden');
+                  }
+                }}
+                className="w-full rounded-2xl bg-yellow-500 text-black font-bold py-3"
+              >
+                {plan.cta}
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-14">
+        <div className="rounded-[30px] border border-white/10 bg-white/[0.03] p-8">
+          <p className="text-yellow-400 uppercase tracking-[0.3em] text-xs mb-3">Why Traders Choose Us</p>
+          <h2 className="text-3xl md:text-4xl font-black mb-8">Built for confidence, speed, and premium brand trust.</h2>
+          <div className="grid md:grid-cols-3 gap-5">
+            {testimonials.map((item, i) => (
+              <div key={i} className="rounded-[24px] border border-white/10 bg-black/50 p-5">
+                <p className="text-white/80 leading-7">“{item}”</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="max-w-6xl mx-auto px-6 py-14">
+        <div className="rounded-[32px] border border-yellow-500/20 bg-gradient-to-r from-yellow-500/10 to-white/[0.02] p-8 md:p-10 flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
+          <div>
+            <p className="text-yellow-400 uppercase tracking-[0.3em] text-xs mb-3">Ready To Start</p>
+            <h2 className="text-3xl md:text-4xl font-black mb-2">Get access to the GrootMoney PC vision system.</h2>
+            <p className="text-white/70">Add your group link, payment details, Discord link, broker partner links, and MetaTrader 5 PC vision purchase details here. For Skrill and Binance payments, buyers should press the live button to chat with us. Card payments are processed securely via Whop using the direct checkout link. Make it clear to buyers that this bot is for PC vision only.</p>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <button className="px-6 py-3 rounded-2xl bg-yellow-500 text-black font-bold">Buy Now</button>
+            <a href="https://www.instagram.com/channel/AbY-e56uQ5awckEu/?igsh=M3IyODlveWY0NW8y" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-2xl border border-white/15 bg-black/40 font-semibold inline-flex items-center justify-center">Join Group</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-12">
+        <div className="mb-8">
+          <p className="text-yellow-400 uppercase tracking-[0.3em] text-xs mb-3">Recommended</p>
+          <h2 className="text-3xl md:text-4xl font-black">Broker & Prop Firm</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-[28px] border border-yellow-500/20 bg-black/60 p-6">
+            <p className="text-white/60 mb-2">Broker</p>
+            <h3 className="text-2xl font-black text-yellow-400 mb-3">RCG Markets</h3>
+            <p className="text-white/70 mb-4">Trusted broker for executing trades with the GrootMoney PC vision bot.</p>
+            <a href="https://my.rcgmarkets.com/auth/register?partner_code=9614225" target="_blank" rel="noreferrer" className="px-5 py-2 rounded-xl bg-yellow-500 text-black font-bold inline-block">Join Broker</a>
+          </div>
+
+          <div className="rounded-[28px] border border-yellow-500/20 bg-black/60 p-6">
+            <p className="text-white/60 mb-2">Prop Firm</p>
+            <h3 className="text-2xl font-black text-yellow-400 mb-3">Commit Capital</h3>
+            <p className="text-white/70 mb-4">Get funded and scale your trading with professional capital.</p>
+            <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" rel="noreferrer" className="px-5 py-2 rounded-xl bg-yellow-500 text-black font-bold inline-block">Join Prop Firm</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-10">
+        <div className="rounded-[24px] border border-yellow-500/20 bg-black/60 p-6">
+          <h3 className="text-lg font-bold text-yellow-400 mb-2">Disclaimer</h3>
+          <p className="text-white/60 text-sm leading-6">
+            Trading involves risk and is not suitable for every investor. Past performance does not guarantee future results. The GrootMoney PC Vision bot is a trading tool and does not provide financial advice. Users are responsible for their own trading decisions and risk management. This product is for MetaTrader 5 PC use only and is not a mobile application.
+          </p>
+        </div>
+      </section>
+
+      <footer className="max-w-6xl mx-auto px-6 py-10">
+        <div className="rounded-[24px] border border-yellow-500/20 bg-gradient-to-r from-yellow-500/10 to-white/[0.02] p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img src="/mnt/data/1773569177707.png" alt="GrootMoney Logo" className="h-12 w-12 object-contain rounded-xl border border-yellow-500/30 bg-black/60 p-1" />
+            <div>
+              <p className="text-white/80 font-semibold">GrootMoney Bot</p>
+              <p className="text-white/50 text-sm">PC Vision Trading System</p>
+            </div>
+          </div>
+
+          <div className="text-center md:text-right">
+            <p className="text-yellow-400 font-semibold">Powered by ForexWealthEmpire (Pty) Ltd</p>
+            <p className="text-white/50 text-sm">Professional trading solutions & automation</p>
+          </div>
+        </div>
+      </footer>
+          {/* Live Chat Button (appears when needed) */}
+      <button
+        onClick={() => window.open('https://wa.me/27636136117?text=Hi%20I%20want%20to%20buy%20the%20GrootMoney%20PC%20Vision%20bot', '_blank')}
+        className="hidden fixed bottom-6 right-6 z-50 items-center gap-2 px-3 py-2 rounded-full bg-red-500 text-white text-sm font-semibold shadow-lg animate-pulse"
+        id="liveChatBtn"
+      >
+        <span className="text-base">💬</span>
+        <span>Chat to Buy</span>
+      </button>
+    </div>
+  );
+}
