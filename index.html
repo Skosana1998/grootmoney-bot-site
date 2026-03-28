@@ -1,94 +1,127 @@
-export default function GrootMoneyBotSalesWebsite() {
-  const features = [
-    "Smart money concept entry logic",
-    "Mode control: Safe, Balanced, Aggressive, Ultra",
-    "Clean trading dashboard feel",
-    "Session-based workflow",
-    "Mobile-first buyer layout",
-    "Fast WhatsApp Group / contact call-to-action",
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrootMoney Bot</title>
 
-  const plans = [
-    {
-      name: "Signals",
-      price: "R1000",
-      desc: "For traders who want entries and updates.",
-      cta: "Get Signals"
-    },
-    {
-      name: "Bot Access",
-      price: "R1000",
-      desc: "Original price R2000. Limited pre-order price R1000 for serious traders who want the GrootMoney bot setup for PC vision only. This is not a mobile app.",
-      cta: "Pre-Order Bot"
-    }
-  ];
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:black;
+  color:white;
+  text-align:center;
+}
 
-  const testimonials = [
-    "Professional setup and powerful vision.",
-    "The layout and guidance gave me confidence.",
-    "Clean brand, serious energy, real trader feel."
-  ];
+.section {
+  padding:30px 20px;
+}
 
-  return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="sticky top-0 z-50 border-b border-yellow-500/20 bg-gradient-to-r from-yellow-500/15 via-black to-yellow-500/15 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
-          <div>
-            <p className="text-yellow-400 font-black tracking-[0.18em] uppercase text-sm">50% Off Pre-Order</p>
-            <p className="text-white/85 text-sm">Original price R2000. Pre-order now for R1000, limited members only.</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-300 text-xs font-semibold">Limited Offer</span>
-            <a href="#pricing" className="px-4 py-2 rounded-xl bg-yellow-500 text-black font-bold">Claim Offer</a>
-          </div>
-        </div>
-      </div>
-      <section className="relative overflow-hidden border-b border-yellow-500/20">
-        <style>{`
-          @keyframes typing {
-            0% { width: 0 }
-            45% { width: 100% }
-            55% { width: 100% }
-            100% { width: 0 }
-          }
-          @keyframes blink {
-            50% { border-color: transparent }
-          }
-        `}</style>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(234,179,8,0.12),_transparent_35%),linear-gradient(to_bottom,_#0a0a0a,_#000,_#090909)]" />
-        <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="text-yellow-400 tracking-[0.35em] text-xs mb-4 uppercase">Forex Wealth Empire</p>
-              <h1 className="text-4xl md:text-6xl font-black leading-tight mb-5">
-                GrootMoney Bot <span className="text-yellow-400">Sales Template</span>
-              </h1>
-              <p className="text-white/70 text-lg leading-8 max-w-xl mb-8">
-                A premium public landing page for traders who want to buy your signals or PC vision bot access. Clean black and gold design, serious money feel, and strong conversion sections.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="#pricing" className="px-6 py-3 rounded-2xl bg-yellow-500 text-black font-bold shadow-lg shadow-yellow-500/20">
-                  View Packages
-                </a>
-                <a href="#contact" className="px-6 py-3 rounded-2xl border border-white/15 bg-white/5 font-semibold">
-                  Contact Now
-                </a>
-              </div>
-            </div>
+.card {
+  border:1px solid gold;
+  margin:10px;
+  padding:20px;
+  border-radius:15px;
+}
 
-            <div>
-              <div className="rounded-[28px] border border-yellow-500/20 bg-gradient-to-br from-yellow-500/10 to-white/5 p-5 shadow-2xl shadow-yellow-500/10">
-                <div className="rounded-[24px] border border-white/10 bg-black/70 p-5">
-                  <div className="flex items-center justify-between mb-5">
-                    <div>
-                      <p className="text-white/50 text-xs">BOT STATUS</p>
-                      <p className="text-2xl font-black text-yellow-400">ACTIVE</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-white/50 text-xs">MODE</p>
-                      <p className="text-xl font-bold">BALANCED</p>
-                    </div>
-                  </div>
+.btn {
+  background:gold;
+  color:black;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.banner {
+  background:gold;
+  color:black;
+  padding:10px;
+  font-weight:bold;
+}
+
+.chat {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:red;
+  padding:10px 15px;
+  border-radius:30px;
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%{opacity:1;}
+  50%{opacity:0.5;}
+  100%{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="banner">
+🔥 50% OFF — R2000 → R1000 (LIMITED)
+</div>
+
+<div class="section">
+<h1>GrootMoney PC Vision Bot</h1>
+<p>Professional trading system for MetaTrader 5 (PC only)</p>
+</div>
+
+<div class="section card">
+<h2>Broker</h2>
+<p>Works with any broker</p>
+<p><b>Recommended: RCG Markets</b></p>
+<a href="https://my.rcgmarkets.com/auth/register?partner_code=9614225">
+<button class="btn">Join Broker</button>
+</a>
+</div>
+
+<div class="section card">
+<h2>Prop Firm</h2>
+<p>Commit Capital</p>
+<a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543">
+<button class="btn">Join Prop Firm</button>
+</a>
+</div>
+
+<div class="section card">
+<h2>Buy Bot</h2>
+<p>Original: R2000</p>
+<h1>R1000</h1>
+
+<a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt">
+<button class="btn">Pay with Card</button>
+</a>
+
+<br><br>
+
+<button onclick="showChat()" class="btn">
+Binance / Skrill
+</button>
+</div>
+
+<div class="section">
+<h3>Disclaimer</h3>
+<p>Trading involves risk. PC Vision only. Not mobile.</p>
+</div>
+
+<div id="chatBtn" class="chat" style="display:none;">
+<a href="https://wa.me/27636136117?text=Hi%20I%20want%20to%20buy%20the%20GrootMoney%20bot">
+💬 Chat to Buy
+</a>
+</div>
+
+<script>
+function showChat(){
+  document.getElementById("chatBtn").style.display="block";
+}
+</script>
+
+</body>
+</html>                  </div>
                   <div className="h-44 rounded-3xl border border-white/10 bg-gradient-to-br from-black via-zinc-900 to-black flex items-center justify-center mb-5">
                     <div className="text-center">
                       <p className="text-white/40 text-sm mb-2">Premium Trading System</p>
