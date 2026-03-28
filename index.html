@@ -3,1440 +3,1188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrootMoney Broker Killer 5.1</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+  <title>GrootMoney Broker Killer | Forex Wealth Empire</title>
+  <meta name="description" content="Premium PC Vision MT5 trading bot by Forex Wealth Empire. Limited pre-order, premium design, live feedback, and direct WhatsApp support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #040404;
-      --bg-2: #090909;
-      --bg-3: #101010;
-      --panel: rgba(255,255,255,0.04);
-      --panel-2: rgba(255,255,255,0.02);
-      --text: #f7f7f7;
-      --muted: #b7b7b7;
-      --gold: #d4af37;
-      --gold-2: #f0cf67;
-      --red: #ef4444;
-      --red-2: #c81e1e;
-      --line: rgba(212,175,55,0.18);
-      --line-soft: rgba(255,255,255,0.08);
-      --shadow: 0 24px 70px rgba(0,0,0,0.55);
-      --radius: 28px;
-      --success: #22c55e;
+      --bg: #050505;
+      --bg-soft: #0c0c0c;
+      --card: rgba(255,255,255,0.05);
+      --card-2: rgba(255,255,255,0.03);
+      --stroke: rgba(255,255,255,0.08);
+      --text: #f6f3ea;
+      --muted: #b8ae9b;
+      --gold: #f0c97a;
+      --gold-2: #9d6f18;
+      --red: #ff2323;
+      --red-soft: rgba(255,35,35,0.22);
+      --green: #67ff9f;
+      --shadow-gold: 0 0 30px rgba(240,201,122,0.18);
+      --shadow-red: 0 0 35px rgba(255,35,35,0.15);
+      --radius: 24px;
+      --max: 1220px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at top, rgba(212,175,55,0.08), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(239,68,68,0.08), transparent 20%),
-        linear-gradient(180deg, #0b0b0b 0%, #040404 100%);
+        radial-gradient(circle at 20% 10%, rgba(255,35,35,0.12), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(240,201,122,0.12), transparent 25%),
+        linear-gradient(180deg, #020202 0%, #080808 35%, #030303 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
       overflow-x: hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .bg-grid {
+    .bg-lines,
+    .bg-lines::before,
+    .bg-lines::after {
       position: fixed;
       inset: 0;
+      pointer-events: none;
+      content: "";
+      z-index: -2;
+    }
+
+    .bg-lines {
       background-image:
         linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
-      -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
-      pointer-events: none;
-      z-index: 0;
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent 90%);
     }
 
-    .gold-orb,
-    .red-orb {
-      position: fixed;
-      border-radius: 999px;
-      filter: blur(90px);
-      opacity: 0.22;
-      pointer-events: none;
-      z-index: 0;
-      animation: floatOrb 7s ease-in-out infinite alternate;
+    .bg-lines::before {
+      background: radial-gradient(circle at center, rgba(255,35,35,0.15), transparent 35%);
+      filter: blur(40px);
+      animation: pulseGlow 6s ease-in-out infinite;
     }
 
-    .gold-orb {
-      width: 360px;
-      height: 360px;
-      background: rgba(212,175,55,0.55);
-      top: 60px;
-      left: -80px;
+    .bg-lines::after {
+      background: radial-gradient(circle at 60% 40%, rgba(240,201,122,0.14), transparent 28%);
+      filter: blur(55px);
+      animation: floatGlow 9s ease-in-out infinite;
     }
 
-    .red-orb {
-      width: 300px;
-      height: 300px;
-      background: rgba(239,68,68,0.4);
-      right: -80px;
-      top: 240px;
-      animation-delay: 1.4s;
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.55; }
+      50% { transform: scale(1.12); opacity: 0.9; }
     }
 
-    @keyframes floatOrb {
-      from { transform: translateY(0) translateX(0) scale(1); }
-      to   { transform: translateY(30px) translateX(10px) scale(1.08); }
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(25px) translateX(-18px); }
     }
 
-    .top-banner {
-      position: fixed;
-      left: 0;
-      right: 0;
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 50;
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(90deg, rgba(212,175,55,0.22), rgba(0,0,0,0.96), rgba(212,175,55,0.22));
-      transition: transform 0.28s ease;
-      will-change: transform;
+      background: rgba(5, 5, 5, 0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .top-banner.hide {
-      transform: translateY(-100%);
-    }
-
-    .top-banner-inner {
+    .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 12px 0;
-      flex-wrap: wrap;
+      gap: 20px;
+      padding: 14px 0;
     }
 
-    .banner-left {
+    .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      flex-wrap: wrap;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    .flash-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #f0cf67, #d4af37);
-      color: #111;
-      font-size: 13px;
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      box-shadow: 0 12px 28px rgba(212,175,55,0.28);
-      white-space: nowrap;
-      min-height: 46px;
+      font-size: 15px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.95), rgba(240,201,122,0.9));
+      box-shadow: var(--shadow-red), var(--shadow-gold);
     }
 
-    .banner-text {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .eyebrow {
-      margin: 0;
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-    }
-
-    .banner-title {
-      margin: 0;
+    .brand-text strong {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.08em;
       font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.5;
     }
 
-    .banner-actions {
+    .brand-text span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    nav {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
-    .pill {
-      border: 1px solid var(--line);
-      background: rgba(212,175,55,0.08);
-      color: #f4d978;
-      padding: 9px 13px;
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    .nav-cta {
+      padding: 12px 18px;
       border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
+      color: #050505;
+      background: linear-gradient(135deg, var(--gold), #fff1cc);
+      font-weight: 800;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .announcement {
+      background: linear-gradient(90deg, rgba(255,35,35,0.12), rgba(240,201,122,0.12), rgba(255,35,35,0.12));
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
       white-space: nowrap;
     }
 
-    .btn {
-      border: 0;
-      outline: 0;
-      cursor: pointer;
+    .announcement-track {
       display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      gap: 48px;
+      padding: 14px 0;
+      min-width: 200%;
+      animation: marquee 24s linear infinite;
+      font-weight: 700;
+      color: #f9e4b6;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .announcement-track span { letter-spacing: 0.06em; }
 
-    .btn-gold {
-      background: linear-gradient(135deg, var(--gold-2), var(--gold));
-      color: #111;
-      box-shadow: 0 16px 40px rgba(212,175,55,0.25);
-    }
-
-    .btn-dark {
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .btn-red {
-      background: linear-gradient(180deg, #ef4444, #c81e1e);
-      color: #fff;
-      box-shadow: 0 18px 35px rgba(239,68,68,0.25);
-    }
-
-    .ticker-shell {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      position: relative;
-      z-index: 3;
-      margin-top: 74px;
-    }
-
-    .tradingview-widget-container {
-      min-height: 46px;
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .hero {
       position: relative;
-      padding: 72px 0 44px;
+      padding: 92px 0 70px;
       overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 72% 30%, rgba(212,175,55,0.13), transparent 28%),
-        radial-gradient(circle at 82% 18%, rgba(239,68,68,0.11), transparent 18%);
-      pointer-events: none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 28px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
       align-items: center;
     }
 
-    .hero h1 {
-      margin: 0 0 18px;
-      font-size: clamp(42px, 6vw, 80px);
-      line-height: 0.95;
-      letter-spacing: -0.045em;
-      font-weight: 900;
-      position: relative;
-      z-index: 2;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f8d9a0;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
     }
 
-    .hero h1 .accent {
-      color: var(--gold);
-      text-shadow: 0 0 20px rgba(212,175,55,0.2);
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--red);
+      box-shadow: 0 0 15px var(--red);
+      animation: blink 1.2s infinite;
     }
 
-    .hero-copy {
-      margin: 0 0 26px;
-      color: var(--muted);
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .gradient-text {
+      background: linear-gradient(180deg, #fff8ea, #e8b961 75%, #a86909);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 35px rgba(240,201,122,0.18);
+    }
+
+    .hero p.lead {
       font-size: 18px;
-      line-height: 1.85;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 22px 0 30px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      will-change: transform;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-gold {
+      color: #050505;
+      background: linear-gradient(135deg, var(--gold), #fff0c5);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-dark {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .btn-live {
+      color: #fff;
+      background: linear-gradient(135deg, #ff1b1b, #8f0000);
+      box-shadow: var(--shadow-red);
+      animation: liveFlash 1.4s ease-in-out infinite;
+    }
+
+    @keyframes liveFlash {
+      0%,100% { box-shadow: 0 0 0 rgba(255,35,35,0.25), 0 0 30px rgba(255,35,35,0.12); }
+      50% { box-shadow: 0 0 24px rgba(255,35,35,0.5), 0 0 45px rgba(255,35,35,0.22); }
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
       max-width: 720px;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .hero-note {
-      margin: 0;
-      color: #dadada;
-      font-size: 14px;
-      line-height: 1.8;
-      max-width: 760px;
+    .hero-points .point {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: #ede5d8;
+      font-weight: 600;
     }
 
     .hero-card {
       position: relative;
+      min-height: 600px;
       border-radius: 32px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(212,175,55,0.08), rgba(255,255,255,0.02));
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top, rgba(255,35,35,0.2), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(240,201,122,0.18), transparent 30%),
+        #090909;
       overflow: hidden;
-      min-height: 560px;
+      box-shadow: var(--shadow-gold), var(--shadow-red);
     }
 
     .hero-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(212,175,55,0.16), transparent 25%),
-        radial-gradient(circle at bottom left, rgba(239,68,68,0.12), transparent 24%);
-      pointer-events: none;
+      inset: -40% auto auto -20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255,35,35,0.25), transparent 60%);
+      filter: blur(10px);
+      animation: floatGlow 7s ease-in-out infinite;
     }
 
-    .terminal {
-      position: relative;
-      border-radius: 28px;
-      min-height: 524px;
-      padding: 20px;
-      background: linear-gradient(180deg, #0f0f0f, #070707);
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-    }
-
-    .terminal-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .terminal-title {
-      margin: 0;
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 800;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-    }
-
-    .status-pill {
-      border: 1px solid rgba(34,197,94,0.35);
-      background: rgba(34,197,94,0.12);
-      color: #73e29a;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .robot-bg {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .robot-ring {
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border-radius: 999px;
-      border: 1px solid rgba(212,175,55,0.16);
-      box-shadow:
-        0 0 40px rgba(212,175,55,0.12),
-        inset 0 0 40px rgba(212,175,55,0.08);
-      animation: pulseRing 4s ease-in-out infinite;
-    }
-
-    .robot-ring::before,
-    .robot-ring::after {
+    .hero-card::after {
       content: "";
       position: absolute;
-      inset: 18px;
-      border-radius: 999px;
-      border: 1px dashed rgba(212,175,55,0.12);
-    }
-
-    .robot-ring::after {
-      inset: 42px;
-      border-style: solid;
-      border-color: rgba(239,68,68,0.10);
-      animation: spinRing 18s linear infinite;
-    }
-
-    @keyframes pulseRing {
-      0%, 100% { transform: scale(1); opacity: 0.75; }
-      50% { transform: scale(1.04); opacity: 1; }
-    }
-
-    @keyframes spinRing {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      right: -10%;
+      bottom: -10%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(240,201,122,0.2), transparent 60%);
+      filter: blur(8px);
+      animation: pulseGlow 8s ease-in-out infinite;
     }
 
     .robot-core {
-      position: relative;
-      width: 230px;
-      height: 230px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.10), transparent 32%),
-        radial-gradient(circle at 50% 50%, rgba(212,175,55,0.16), rgba(0,0,0,0.1) 60%, transparent 100%);
-      border: 1px solid rgba(212,175,55,0.16);
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
-        0 0 50px rgba(212,175,55,0.14),
-        inset 0 0 30px rgba(212,175,55,0.08);
-      animation: floatRobot 5s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatRobot {
-      from { transform: translateY(-6px); }
-      to { transform: translateY(10px); }
-    }
-
-    .bot-killer-tag {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(239,68,68,0.18);
-      background: rgba(239,68,68,0.09);
-      color: #ffb2b2;
-      font-weight: 800;
-      letter-spacing: 0.10em;
-      font-size: 11px;
-      text-transform: uppercase;
-      z-index: 2;
-      box-shadow: 0 0 24px rgba(239,68,68,0.12);
-    }
-
-    .terminal-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .terminal-stat {
-      border-radius: 18px;
-      padding: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(6px);
-    }
-
-    .terminal-stat span {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 11px;
-      color: #9f9f9f;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .terminal-stat strong {
-      display: block;
-      font-size: 24px;
-      color: var(--gold);
-      font-weight: 800;
-    }
-
-    .modes {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 14px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .mode {
-      border-radius: 18px;
-      padding: 14px;
+      flex-direction: column;
       text-align: center;
-      font-size: 13px;
-      font-weight: 800;
-      border: 1px solid var(--line);
-      background: rgba(212,175,55,0.08);
-      color: #f1da8f;
-      backdrop-filter: blur(4px);
+      padding: 30px;
+      z-index: 2;
     }
 
-    .terminal-bottom {
-      border-radius: 18px;
-      padding: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
+    .robot-head {
       position: relative;
-      z-index: 3;
-      backdrop-filter: blur(6px);
+      width: 240px;
+      height: 240px;
+      border-radius: 46% 46% 42% 42%;
+      background:
+        linear-gradient(180deg, rgba(36,36,36,1), rgba(11,11,11,1));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.05), 0 0 40px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      animation: robotFloat 4.5s ease-in-out infinite;
     }
 
-    .terminal-bottom p {
+    @keyframes robotFloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .robot-head::before,
+    .robot-head::after {
+      content: "";
+      position: absolute;
+      top: 94px;
+      width: 44px;
+      height: 16px;
+      border-radius: 999px;
+      background: #ff2a2a;
+      box-shadow: 0 0 18px rgba(255,42,42,0.7), 0 0 35px rgba(255,42,42,0.38);
+      animation: eyeBlink 2.6s ease-in-out infinite;
+    }
+
+    .robot-head::before { left: 58px; }
+    .robot-head::after { right: 58px; }
+
+    @keyframes eyeBlink {
+      0%, 45%, 100% { transform: scaleY(1); opacity: 1; }
+      48%, 52% { transform: scaleY(0.15); opacity: 0.75; }
+    }
+
+    .robot-neck {
+      width: 110px;
+      height: 88px;
+      margin-top: -8px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(28,28,28,1), rgba(10,10,10,1));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 18px rgba(255,255,255,0.03);
+    }
+
+    .robot-text {
+      margin-top: 26px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .robot-text h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.4rem, 3vw, 2.3rem);
+      letter-spacing: 0.14em;
+      color: #fff1cc;
+    }
+
+    .robot-text p {
+      margin: 0;
+      color: #baaf9c;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+
+    .scan-lines {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%);
+      background-size: 100% 8px;
+      opacity: 0.28;
+      mix-blend-mode: screen;
+      animation: scan 8s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes scan {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(20px); }
+    }
+
+    .side-panel {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      padding: 14px;
+      width: 210px;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      z-index: 3;
+    }
+
+    .side-panel .small-title {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f2cf8a;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 12px;
+    }
+
+    .metric:last-child { border-bottom: 0; }
+    .metric span:first-child { color: #9d9587; }
+    .metric span:last-child { color: #fff; font-weight: 700; }
+
+    .section {
+      padding: 36px 0 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .section-head p {
+      max-width: 700px;
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
-      font-size: 14px;
+      font-size: 16px;
     }
 
-    .section {
-      padding: 38px 0;
-      position: relative;
-      z-index: 2;
-    }
-
-    .section-title {
-      margin: 0 0 10px;
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-    }
-
-    .section-sub {
-      margin: 0 0 24px;
-      color: var(--muted);
-      max-width: 760px;
-      line-height: 1.85;
-    }
-
-    .marquee-wrap {
-      overflow: hidden;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    }
-
-    .marquee-track,
-    .marquee-track.reverse {
-      display: flex;
-      width: max-content;
-      gap: 16px;
-      padding: 6px 0;
-    }
-
-    .marquee-track {
-      animation: marqueeLeft 36s linear infinite;
-    }
-
-    .marquee-track.reverse {
-      animation: marqueeRight 32s linear infinite;
-      margin-top: 18px;
-    }
-
-    @keyframes marqueeLeft {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    @keyframes marqueeRight {
-      from { transform: translateX(-50%); }
-      to { transform: translateX(0); }
-    }
-
-    .feature-card,
-    .pay-card,
-    .box,
-    .price-card,
-    .recommend-card,
-    .test-card,
-    .faq-item,
-    .disclaimer,
-    .footer-card,
-    .visual-card {
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .feature-card,
-    .pay-card {
-      min-width: 255px;
-      padding: 18px;
-    }
-
-    .feature-card .icon,
-    .pay-card .icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-      background: rgba(212,175,55,0.1);
-      border: 1px solid var(--line);
-      color: var(--gold);
-      font-weight: 900;
-    }
-
-    .feature-card p,
-    .pay-card p {
-      margin: 0;
-      line-height: 1.7;
-      color: #e8e8e8;
-      font-size: 14px;
-    }
-
-    .box {
-      padding: 26px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(212,175,55,0.09), rgba(255,255,255,0.02));
-    }
-
-    .visual-grid,
-    .pricing-grid,
-    .recommend-grid,
-    .test-grid,
-    .faq-grid {
+    .grid-3, .grid-4, .grid-2 {
       display: grid;
       gap: 18px;
     }
 
-    .visual-grid {
-      grid-template-columns: 1.1fr 0.9fr;
-    }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-    .pricing-grid,
-    .recommend-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .test-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .faq-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .visual-card,
-    .price-card,
-    .recommend-card,
-    .test-card,
-    .faq-item,
-    .disclaimer {
-      padding: 26px;
-    }
-
-    .visual-panel {
-      height: 100%;
-      min-height: 380px;
+    .card {
       position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(212,175,55,0.13), transparent 25%),
-        radial-gradient(circle at 80% 70%, rgba(239,68,68,0.10), transparent 22%),
-        linear-gradient(180deg, #0f0f0f, #080808);
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
       border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .visual-lines {
-      position: absolute;
-      inset: 0;
       overflow: hidden;
+      backdrop-filter: blur(14px);
     }
 
-    .line {
+    .card::before {
+      content: "";
       position: absolute;
-      left: -10%;
-      width: 120%;
+      inset: 0 auto auto 0;
+      width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.7), transparent);
-      opacity: 0.55;
-      animation: slideLine 7s linear infinite;
+      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.75), transparent);
+      opacity: 0.7;
     }
 
-    .line:nth-child(1) { top: 20%; animation-delay: 0s; }
-    .line:nth-child(2) { top: 36%; animation-delay: 1.2s; }
-    .line:nth-child(3) { top: 52%; animation-delay: 2.4s; }
-    .line:nth-child(4) { top: 68%; animation-delay: 3.6s; }
-
-    @keyframes slideLine {
-      from { transform: translateX(-8%); opacity: 0; }
-      20% { opacity: 0.65; }
-      80% { opacity: 0.65; }
-      to { transform: translateX(8%); opacity: 0; }
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #fff4db;
     }
 
-    .chart-bars {
-      position: absolute;
-      left: 40px;
-      right: 40px;
-      bottom: 38px;
-      display: flex;
-      align-items: end;
-      gap: 10px;
-      height: 170px;
-    }
-
-    .bar {
-      flex: 1;
-      border-radius: 999px 999px 6px 6px;
-      background: linear-gradient(180deg, rgba(212,175,55,0.95), rgba(212,175,55,0.18));
-      box-shadow: 0 0 16px rgba(212,175,55,0.12);
-      animation: barDance 3.2s ease-in-out infinite;
-    }
-
-    .bar.red {
-      background: linear-gradient(180deg, rgba(239,68,68,0.95), rgba(239,68,68,0.18));
-      box-shadow: 0 0 16px rgba(239,68,68,0.12);
-      animation-delay: 0.5s;
-    }
-
-    .bar:nth-child(1){ height: 28%; }
-    .bar:nth-child(2){ height: 52%; }
-    .bar:nth-child(3){ height: 34%; }
-    .bar:nth-child(4){ height: 68%; }
-    .bar:nth-child(5){ height: 44%; }
-    .bar:nth-child(6){ height: 80%; }
-    .bar:nth-child(7){ height: 58%; }
-    .bar:nth-child(8){ height: 92%; }
-
-    @keyframes barDance {
-      0%,100% { transform: scaleY(1); }
-      50% { transform: scaleY(1.08); }
-    }
-
-    .visual-overlay {
-      position: absolute;
-      top: 28px;
-      left: 28px;
-      right: 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      z-index: 2;
-    }
-
-    .visual-badge {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(239,68,68,0.18);
-      background: rgba(239,68,68,0.10);
-      color: #ffb9b9;
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .visual-stack {
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-card {
-      padding: 12px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(8px);
-      min-width: 170px;
-    }
-
-    .mini-card span {
-      display: block;
-      color: #9f9f9f;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .mini-card strong {
-      color: var(--gold);
-      font-size: 16px;
-      font-weight: 800;
-    }
-
-    .visual-copy h3,
-    .price-card h3,
-    .recommend-card h3,
-    .faq-item h3 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-    }
-
-    .visual-copy p,
-    .price-desc,
-    .recommend-card p,
-    .test-card p,
-    .faq-item p,
-    .disclaimer p,
-    .footer-meta p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.8;
+    .card p, .card li {
+      color: #c8bca8;
+      line-height: 1.7;
       font-size: 15px;
     }
 
-    .visual-copy p:last-child,
-    .price-desc:last-child,
-    .recommend-card p:last-child,
-    .test-card p:last-child,
-    .faq-item p:last-child,
-    .disclaimer p:last-child,
-    .footer-meta p:last-child {
-      margin-bottom: 0;
+    .secret-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
     }
 
-    .feature-list {
-      display: grid;
+    .secret-list li {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 16px;
+      border-radius: 16px;
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      margin-top: 8px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 18px;
+      white-space: nowrap;
+      min-width: 200%;
+      padding: 18px;
+      animation: reviewMove 32s linear infinite;
+    }
+
+    @keyframes reviewMove {
+      from { transform: translateX(-2%); }
+      to { transform: translateX(-52%); }
+    }
+
+    .review-box {
+      min-width: 320px;
+      max-width: 320px;
+      min-height: 250px;
+      padding: 22px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       gap: 10px;
+      overflow: hidden;
+    }
+
+    .review-box strong {
+      display: block;
+      margin: 0;
+      color: #ffe6b0;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+
+    .review-box p {
+      margin: 0;
+      color: #ddd2c0;
+      line-height: 1.75;
+      font-size: 14px;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .price-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .pricing-main {
+      padding: 28px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
+        rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .pricing-main .mini {
+      color: #f3c56d;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .pricing-main h3 {
+      margin: 12px 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .pricing-main .old {
+      color: #8f8574;
+      text-decoration: line-through;
+      font-size: 18px;
+      margin-right: 12px;
+    }
+
+    .pricing-main .new {
+      color: #fff0c3;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .pricing-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pricing-chip {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .pay-logos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
       margin-top: 18px;
     }
 
-    .feature-list span,
-    .price-points span {
-      display: block;
-      padding: 12px 14px;
-      border-radius: 16px;
+    .pay-logo {
+      display: grid;
+      place-items: center;
+      min-height: 72px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #f3e6c9;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .faq {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border-radius: 20px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
-      color: #ededed;
-      font-size: 14px;
-      font-weight: 600;
+      overflow: hidden;
     }
 
-    .price-card.featured {
-      position: relative;
-      background: linear-gradient(180deg, rgba(212,175,55,0.13), rgba(255,255,255,0.02));
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 22px;
+      font-weight: 700;
+      color: #fff0ce;
     }
 
-    .price-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .small-label {
-      display: inline-block;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .offer-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #f0cf67, #d4af37);
-      color: #111;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .price-old {
-      display: block;
-      margin: 10px 0 4px;
-      color: rgba(255,255,255,0.45);
-      text-decoration: line-through;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .price-big {
-      margin: 0 0 14px;
-      font-size: 52px;
-      line-height: 1;
-      color: var(--gold);
-      font-weight: 900;
-    }
-
-    .price-points {
-      display: grid;
-      gap: 10px;
-      margin: 18px 0 22px;
-    }
-
-    .footer-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 24px;
-      background: linear-gradient(90deg, rgba(212,175,55,0.10), rgba(255,255,255,0.02));
-    }
-
-    .footer-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .footer-title {
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p {
       margin: 0;
-      font-size: 19px;
-      font-weight: 800;
+      padding: 0 22px 20px;
+      color: #c7bda9;
+      line-height: 1.75;
     }
 
-    .footer-powered {
-      text-align: right;
-    }
-
-    .footer-powered strong {
-      display: block;
-      color: var(--gold);
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .live-chat {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 1200;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 17px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #ef4444, #c81e1e);
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 18px 36px rgba(239,68,68,0.28);
-      animation: pulseBtn 1.3s infinite;
+    .footer {
+      padding: 34px 0 60px;
+      color: #938874;
       font-size: 14px;
     }
 
-    @keyframes pulseBtn {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.03); opacity: 0.92; }
-      100% { transform: scale(1); opacity: 1; }
+    .final-cta {
+      margin-top: 26px;
+      padding: 30px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.1), rgba(240,201,122,0.08)),
+        rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      box-shadow: var(--shadow-red), var(--shadow-gold);
     }
 
-    @media (max-width: 980px) {
+    .final-cta h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .disclaimer {
+      margin-top: 16px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #91836e;
+    }
+
+    @media (max-width: 1080px) {
       .hero-grid,
-      .visual-grid,
-      .pricing-grid,
-      .recommend-grid,
-      .test-grid,
-      .faq-grid,
-      .footer-card {
+      .price-card,
+      .grid-3,
+      .grid-4,
+      .grid-2 {
         grid-template-columns: 1fr;
-        display: grid;
       }
 
-      .footer-powered {
-        text-align: left;
-      }
+      .hero-card { min-height: 520px; }
+      nav { display: none; }
     }
 
     @media (max-width: 720px) {
-      .ticker-shell {
-        margin-top: 96px;
-      }
-
-      .hero {
-        padding-top: 46px;
-      }
-
-      .top-banner-inner,
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .terminal-grid,
-      .modes {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .price-big {
-        font-size: 42px;
-      }
-
-      .visual-copy h3,
-      .price-card h3,
-      .recommend-card h3,
-      .faq-item h3 {
-        font-size: 24px;
-      }
-
-      .live-chat {
+      .hero { padding-top: 64px; }
+      .hero-points { grid-template-columns: 1fr; }
+      .side-panel {
+        position: absolute;
+        top: 12px;
+        left: 12px;
         right: 12px;
-        bottom: 12px;
+        width: auto;
+        margin: 0;
+        padding: 12px;
+      }
+      .robot-core {
+        padding: 200px 18px 24px;
+        justify-content: flex-start;
+      }
+      .robot-head {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 18px;
+      }
+      .robot-head::before, .robot-head::after {
+        top: 60px;
+        width: 28px;
+        height: 12px;
+      }
+      .robot-head::before { left: 36px; }
+      .robot-head::after { right: 36px; }
+      .robot-neck {
+        width: 86px;
+        height: 66px;
+      }
+      .robot-text h3 {
+        font-size: 1.35rem;
+        letter-spacing: 0.09em;
+      }
+      .robot-text p {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+      .hero-card {
+        min-height: 620px;
+      }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
+      .pay-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .review-box {
+        min-width: 280px;
+        max-width: 280px;
+        min-height: 270px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="bg-lines"></div>
 
-  <div class="bg-grid"></div>
-  <div class="gold-orb"></div>
-  <div class="red-orb"></div>
-
-  <div class="top-banner" id="topBanner">
-    <div class="container top-banner-inner">
-      <div class="banner-left">
-        <span class="flash-badge">50% OFF PRE-ORDER</span>
-        <div class="banner-text">
-          <p class="eyebrow">Limited Access</p>
-          <p class="banner-title">Original price R2000. Secure your GrootMoney Broker Killer 5.1 pre-order today for only R1000.</p>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#home" class="brand">
+        <div class="brand-mark">GM</div>
+        <div class="brand-text">
+          <strong>GROOTMONEY BOT</strong>
+          <span>Powered by ForexWealthEmpire(Pty)Ltd</span>
         </div>
-      </div>
+      </a>
 
-      <div class="banner-actions">
-        <span class="pill">PC Vision Only</span>
-        <span class="pill">MT5 Only</span>
-        <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Claim Discount</a>
-      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#offer">Offer</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="announcement">
+    <div class="announcement-track">
+      <span>50% OFF PRE-ORDER</span>
+      <span>LIMITED FOR 3 DAYS</span>
+      <span>PC VISION ONLY</span>
+      <span>MT5 ONLY</span>
+      <span>DIRECT WHATSAPP SUPPORT</span>
+      <span>FOREX WEALTH EMPIRE</span>
+      <span>50% OFF PRE-ORDER</span>
+      <span>LIMITED FOR 3 DAYS</span>
+      <span>PC VISION ONLY</span>
+      <span>MT5 ONLY</span>
+      <span>DIRECT WHATSAPP SUPPORT</span>
+      <span>FOREX WEALTH EMPIRE</span>
     </div>
   </div>
 
-  <div class="ticker-shell">
-    <div class="container">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-      </div>
-    </div>
-  </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Premium Launch Active</div>
+          <h1>
+            <span class="gradient-text">Broker Killer</span><br />
+            PC Vision MT5 Bot
+          </h1>
+          <p class="lead">
+            Built for serious traders who want premium presentation, aggressive identity, and a MetaTrader 5 product that looks like powerful trading software from the first second they open the page.
+          </p>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Forex Wealth Empire</p>
-        <h1>
-          GrootMoney <span class="accent">Broker Killer</span><br>
-          PC Vision System
-        </h1>
+          <div class="cta-row">
+            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Get 50% Off Now</a>
+            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20the%20GrootMoney%20Bot" target="_blank">Live WhatsApp</a>
+            <a class="btn btn-dark" href="https://discord.gg/tDQ6jACp" target="_blank">Access Our Discord</a>
+          </div>
 
-        <p class="hero-copy">
-          Built for serious traders who want premium presentation, aggressive identity, and a MetaTrader 5 product that looks like powerful trading software from the first second they open the page.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Get Access Now</a>
-          <a class="btn btn-dark" href="https://www.instagram.com/channel/AbY-e56uQ5awckEu/?igsh=M3IyODlveWY0NW8y" target="_blank" rel="noreferrer">Join Group</a>
-          <a class="btn btn-red" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Pre-Order Bot</a>
+          <div class="hero-points">
+            <div class="point">PC Vision only for a focused, premium MT5 experience.</div>
+            <div class="point">Built to look and feel like elite trading software.</div>
+            <div class="point">Fast setup support and direct purchase access.</div>
+            <div class="point">Perfect for traders who want presence, power, and clean execution.</div>
+          </div>
         </div>
 
-        <p class="hero-note">
-          This is a PC Vision MetaTrader 5 system only. Not a mobile app. Designed for traders who want serious money energy, strong brand presence, and a clean buyer experience.
-        </p>
-      </div>
+        <div class="hero-card">
+          <div class="scan-lines"></div>
 
-      <div class="hero-card">
-        <div class="terminal">
-          <div class="robot-bg">
-            <div class="robot-ring"></div>
-            <div class="robot-core"></div>
-            <div class="bot-killer-tag">Broker Killer Visual Engine</div>
+          <div class="side-panel">
+            <div class="small-title">System Status</div>
+            <div class="metric"><span>Bot Status</span><span>SCANNING</span></div>
+            <div class="metric"><span>Mode</span><span>AGGRESSIVE</span></div>
+            <div class="metric"><span>Session</span><span>NEW YORK</span></div>
+            <div class="metric"><span>Platform</span><span>MT5</span></div>
+            <div class="metric"><span>Access</span><span>PC VISION</span></div>
           </div>
 
-          <div class="terminal-top">
-            <p class="terminal-title">Private Trading Access</p>
-            <span class="status-pill">System Ready</span>
-          </div>
-
-          <div class="terminal-grid">
-            <div class="terminal-stat">
-              <span>Bot Status</span>
-              <strong>Ready</strong>
+          <div class="robot-core">
+            <div class="robot-head"></div>
+            <div class="robot-neck"></div>
+            <div class="robot-text">
+              <h3>Broker Killer</h3>
+              <p>Powered by ForexWealthEmpire(Pty)Ltd</p>
             </div>
-            <div class="terminal-stat">
-              <span>Mode</span>
-              <strong>Balanced</strong>
-            </div>
-            <div class="terminal-stat">
-              <span>Platform</span>
-              <strong>MT5</strong>
-            </div>
-            <div class="terminal-stat">
-              <span>Version</span>
-              <strong>5.1</strong>
-            </div>
-          </div>
-
-          <div class="modes">
-            <div class="mode">SAFE</div>
-            <div class="mode">BALANCED</div>
-            <div class="mode">AGGRESSIVE</div>
-            <div class="mode">ULTRA</div>
-          </div>
-
-          <div class="terminal-bottom">
-            <p>
-              GrootMoney Broker Killer 5.1 combines premium black and gold styling, a stronger buyer flow, and a more aggressive product identity built to feel powerful, exclusive, and serious.
-            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container marquee-wrap">
-      <div class="marquee-track">
-        <div class="feature-card"><div class="icon">★</div><p>Smart money concept structure-based entry logic</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Safe, Balanced, Aggressive, and Ultra mode control</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Animated broker killer interface direction</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Premium dashboard feel for a serious buyer experience</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Session-based workflow and disciplined setup flow</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Clean MT5 PC product positioning only</p></div>
-
-        <div class="feature-card"><div class="icon">★</div><p>Smart money concept structure-based entry logic</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Safe, Balanced, Aggressive, and Ultra mode control</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Animated broker killer interface direction</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Premium dashboard feel for a serious buyer experience</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Session-based workflow and disciplined setup flow</p></div>
-        <div class="feature-card"><div class="icon">★</div><p>Clean MT5 PC product positioning only</p></div>
-      </div>
-
-      <div class="marquee-track reverse">
-        <div class="pay-card"><div class="icon">₿</div><p>Binance payments available through direct chat support</p></div>
-        <div class="pay-card"><div class="icon">S</div><p>Skrill payments available through direct chat support</p></div>
-        <div class="pay-card"><div class="icon">💳</div><p>Secure card payment available through Whop checkout</p></div>
-        <div class="pay-card"><div class="icon">⚡</div><p>Fast pre-order checkout for serious traders only</p></div>
-        <div class="pay-card"><div class="icon">₿</div><p>Binance payments available through direct chat support</p></div>
-        <div class="pay-card"><div class="icon">💳</div><p>Secure card payment available through Whop checkout</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container visual-grid">
-      <div class="visual-card">
-        <p class="eyebrow">Broker Killer Visuals</p>
-        <h2 class="section-title">Animated system visuals that feel alive.</h2>
-        <div class="visual-copy">
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why Traders Want It</h2>
           <p>
-            This section adds the aggressive energy your website was missing. It feels more like elite trading software, not a basic landing page.
+            This is not presented like a basic landing page product. It is positioned like premium trading software for serious people who want clean branding, strong identity, and direct support.
           </p>
+        </div>
 
-          <div class="feature-list">
-            <span>Glowing market lines and motion visuals</span>
-            <span>Broker killer styled chart bars and energy flow</span>
-            <span>Luxury black, gold, and red visual hierarchy</span>
-            <span>More premium depth and stronger first impression</span>
-          </div>
+        <div class="grid-4">
+          <article class="card">
+            <h3>Premium Software Feel</h3>
+            <p>Strong black, gold, and red visual identity with motion, energy, depth, and a more elite first impression.</p>
+          </article>
+          <article class="card">
+            <h3>Direct Access</h3>
+            <p>Simple checkout flow, direct WhatsApp button, and community access so buyers can move fast without confusion.</p>
+          </article>
+          <article class="card">
+            <h3>Built for MT5</h3>
+            <p>Clear product direction: this is for MetaTrader 5 and sold as a PC Vision setup, not a mobile trading app.</p>
+          </article>
+          <article class="card">
+            <h3>Powerful Presentation</h3>
+            <p>The website sells confidence before the buyer even reaches checkout, which increases trust and premium perception.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <div class="visual-card">
-        <div class="visual-panel">
-          <div class="visual-lines">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <h2>How It Works</h2>
+          <p>
+            We keep the exact strategy private, but clients still need a strong explanation of what they are getting. This section gives confidence without exposing the secret sauce.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Secret Edge Presentation</h3>
+            <ul class="secret-list">
+              <li>Designed around structured market behavior and disciplined signal logic.</li>
+              <li>Built to deliver a clean software experience instead of a random retail feel.</li>
+              <li>Focused on powerful presentation, serious branding, and clear buyer confidence.</li>
+              <li>Created for traders who want premium identity around their trading tools.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>What Clients Receive</h3>
+            <ul class="secret-list">
+              <li>Premium GrootMoney Bot access for MT5 PC setup.</li>
+              <li>Guided support through direct WhatsApp communication.</li>
+              <li>Community connection through Discord.</li>
+              <li>Fast pre-order access while the offer is still active.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2>Recent Feedback</h2>
+          <p>
+            Client reactions displayed in a slow premium moving row so the page keeps feeling alive instead of static.
+          </p>
+        </div>
+
+        <div class="ticker-wrap">
+          <div class="ticker-track">
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Loyiso Bandla</strong>
+              <p>The whole setup feels premium from the first second. Clean presentation, strong identity, and it does not look like a basic bot page.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Bheki</strong>
+              <p>Very clean and professional. The design feels powerful and serious, and the page gives real software energy.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Wesley Matea</strong>
+              <p>I like how the information is structured. It builds confidence without exposing too much, and the premium look stands out.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>John</strong>
+              <p>Direct support, strong branding, and a proper premium feel. This looks far better than normal trading bot pages.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Maureen Shongwe</strong>
+              <p>The website looks polished, exclusive, and high level. It feels like a serious launch and not a cheap sales page.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Loyiso Bandla</strong>
+              <p>The whole setup feels premium from the first second. Clean presentation, strong identity, and it does not look like a basic bot page.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Bheki</strong>
+              <p>Very clean and professional. The design feels powerful and serious, and the page gives real software energy.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Wesley Matea</strong>
+              <p>I like how the information is structured. It builds confidence without exposing too much, and the premium look stands out.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>John</strong>
+              <p>Direct support, strong branding, and a proper premium feel. This looks far better than normal trading bot pages.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Maureen Shongwe</strong>
+              <p>The website looks polished, exclusive, and high level. It feels like a serious launch and not a cheap sales page.</p>
+            </div>
           </div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="visual-overlay">
-            <span class="visual-badge">Broker Killer Mode</span>
-            <div class="visual-stack">
-              <div class="mini-card">
-                <span>Signal Bias</span>
-                <strong>Structure Locked</strong>
-              </div>
-              <div class="mini-card">
-                <span>Execution</span>
-                <strong>Precision Entry</strong>
-              </div>
+    <section class="section" id="offer">
+      <div class="container">
+        <div class="section-head">
+          <h2>Limited Offer</h2>
+          <p>
+            A clean premium offer section that pushes urgency without making the page look cheap.
+          </p>
+        </div>
+
+        <div class="price-card">
+          <div class="pricing-main">
+            <div class="mini">Pre-order now</div>
+            <h3>50% Off GrootMoney Bot</h3>
+            <p>
+              <span class="old">R2000</span>
+              <span class="new">R1000</span>
+            </p>
+            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+              Limited pre-order pricing for serious buyers who want early access to the premium GrootMoney PC Vision MT5 experience.
+            </p>
+            <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
+              <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Through Whop</a>
+              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20claim%20the%2050%25%20off%20GrootMoney%20offer" target="_blank">Claim on WhatsApp</a>
             </div>
           </div>
 
-          <div class="chart-bars">
-            <div class="bar"></div>
-            <div class="bar red"></div>
-            <div class="bar"></div>
-            <div class="bar red"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar red"></div>
-            <div class="bar"></div>
+          <div class="pricing-side">
+            <div class="pricing-chip">
+              <h3 style="margin:0 0 10px;">Included</h3>
+              <p style="margin:0;">PC Vision access, MT5 product direction, premium branding, buyer support, and community access.</p>
+            </div>
+            <div class="pricing-chip">
+              <h3 style="margin:0 0 10px;">Important</h3>
+              <p style="margin:0;">This product is presented as PC Vision only and works around MetaTrader 5 positioning.</p>
+            </div>
           </div>
         </div>
+
+        <div class="pay-logos">
+          <div class="pay-logo">Visa</div>
+          <div class="pay-logo">Mastercard</div>
+          <div class="pay-logo">Binance</div>
+          <div class="pay-logo">Skrill</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="box">
-        <p class="eyebrow">Broker Info</p>
-        <h2 class="section-title">Flexible Broker Support</h2>
-        <p class="section-sub" style="margin:0 auto;">
-          GrootMoney Broker Killer 5.1 works with any broker of your choice. However, RCG Markets is the recommended broker for stronger compatibility, smoother setup, and a cleaner execution experience.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="pricing">
-    <div class="container">
-      <p class="eyebrow">Packages</p>
-      <h2 class="section-title">Choose Your Access</h2>
-      <p class="section-sub">
-        Stronger presentation, cleaner offer positioning, and a visible 50% pre-order discount that feels exclusive and serious.
-      </p>
-
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="price-top">
-            <span class="small-label">Signals Package</span>
-          </div>
-
-          <h3>Get Signals</h3>
-          <div class="price-big">R1000</div>
-
-          <p class="price-desc">
-            For traders who want entries, updates, and a clean premium buying experience without purchasing the full bot package.
+    <section class="section" id="partners">
+      <div class="container">
+        <div class="section-head">
+          <h2>Recommended Access</h2>
+          <p>
+            Serious buyers need clear direction, trusted support, and fast access to the right next step.
           </p>
-
-          <div class="price-points">
-            <span>Structured signal delivery</span>
-            <span>Premium access flow</span>
-            <span>Fast support through direct chat</span>
-          </div>
-
-          <button class="btn btn-gold" onclick="showChat()">Buy Signals</button>
         </div>
 
-        <div class="price-card featured">
-          <div class="price-top">
-            <span class="small-label">Bot Access</span>
-            <span class="offer-tag">50% OFF</span>
-          </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Preferred Broker</h3>
+            <p>Any broker of your choice can be used, but your recommended direction can be placed here for cleaner client guidance.</p>
+          </article>
+          <article class="card">
+            <h3>Community Access</h3>
+            <p>Direct your audience into Discord so the website also becomes a community growth machine instead of only a sales page.</p>
+          </article>
+          <article class="card">
+            <h3>Fast Support</h3>
+            <p>The flashing WhatsApp button gives buyers instant confidence because they know they can reach you directly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <h3>Broker Killer 5.1</h3>
-          <span class="price-old">R2000</span>
-          <div class="price-big">R1000</div>
-
-          <p class="price-desc">
-            Original price R2000. Limited pre-order price R1000 for traders who want the full GrootMoney Broker Killer 5.1 PC Vision MetaTrader 5 setup.
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Important Info</h2>
+          <p>
+            This section answers the questions serious buyers will ask before they pay.
           </p>
+        </div>
 
-          <div class="price-points">
-            <span>PC Vision MetaTrader 5 system</span>
-            <span>Animated broker killer visuals</span>
-            <span>Premium black and gold product identity</span>
-            <span>Built for structured execution flow</span>
+        <div class="faq">
+          <details class="faq-item" open>
+            <summary>Is this a mobile app?</summary>
+            <p>No. This version is positioned as a PC Vision MT5 product, not a mobile trading app.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What platform is this for?</summary>
+            <p>This offer is presented for MetaTrader 5 use and should be marketed that way clearly across the website.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I get support after buying?</summary>
+            <p>Buyers can reach you directly through the live WhatsApp button and also enter your Discord community for additional support.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How long is the offer valid?</summary>
+            <p>The website is currently set to show a limited 3-day 50% off pre-order offer.</p>
+          </details>
+        </div>
+
+        <div class="final-cta">
+          <h3>Ready To Move Like Premium?</h3>
+          <p style="max-width:780px; margin:0 auto 18px; color:#d3c8b7; line-height:1.8;">
+            Get the GrootMoney Broker Killer page live with a premium sales flow, strong presentation, and direct conversion path.
+          </p>
+          <div class="cta-row" style="justify-content:center; margin-bottom:0;">
+            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Now</a>
+            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20am%20ready%20to%20buy%20GrootMoney" target="_blank">Talk on WhatsApp</a>
+            <a class="btn btn-dark" href="https://discord.gg/tDQ6jACp" target="_blank">Join Discord</a>
           </div>
-
-          <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Pre-Order Now</a>
+          <div class="disclaimer">
+            Trading involves risk. Presentation and support do not guarantee profits. Always trade responsibly and understand your own risk tolerance.
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="section">
-    <div class="container">
-      <div class="price-card">
-        <p class="eyebrow">Why Traders Choose Us</p>
-        <h2 class="section-title">Built for confidence, serious money energy, and stronger brand trust.</h2>
-
-        <div class="test-grid">
-          <div class="test-card"><p>“The visuals finally feel powerful and expensive.”</p></div>
-          <div class="test-card"><p>“This now looks like a real premium trading product.”</p></div>
-          <div class="test-card"><p>“The glowing system visuals make it feel elite.”</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">FAQ</p>
-      <h2 class="section-title">Questions Buyers Will Ask</h2>
-
-      <div class="faq-grid">
-        <div class="faq-item">
-          <h3>Is this a mobile app?</h3>
-          <p>No. GrootMoney Broker Killer 5.1 is a PC Vision MetaTrader 5 system and should be presented as PC only.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>What is the current price?</h3>
-          <p>The current pre-order offer is shown as 50% off, reduced from R2000 to R1000.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How do I pay with Binance or Skrill?</h3>
-          <p>Use the live chat button so buyers can message you directly for Binance and Skrill payment support.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>How do I pay by card?</h3>
-          <p>Card payments are handled securely through the Whop checkout link in the pricing section.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="price-card">
-        <p class="eyebrow">Ready To Start</p>
-        <h2 class="section-title">Get access to GrootMoney Broker Killer 5.1 today.</h2>
-        <p class="section-sub" style="max-width:100%;">
-          For Skrill and Binance payments, buyers should use the live chat button. Card payments are processed securely through Whop. Keep the product positioned clearly as a premium PC Vision MT5 system.
-        </p>
-
-        <div class="hero-actions" style="margin-bottom:0;">
-          <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Buy Now</a>
-          <a class="btn btn-dark" href="https://www.instagram.com/channel/AbY-e56uQ5awckEu/?igsh=M3IyODlveWY0NW8y" target="_blank" rel="noreferrer">Join Group</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Recommended</p>
-      <h2 class="section-title">Broker & Prop Firm</h2>
-
-      <div class="recommend-grid">
-        <div class="recommend-card">
-          <span class="small-label">Broker</span>
-          <h3>RCG Markets</h3>
-          <p>Recommended broker for traders using the GrootMoney PC Vision system and wanting stronger overall compatibility.</p>
-          <a class="btn btn-gold" href="https://my.rcgmarkets.com/auth/register?partner_code=9614225" target="_blank" rel="noreferrer">Join Broker</a>
-        </div>
-
-        <div class="recommend-card">
-          <span class="small-label">Prop Firm</span>
-          <h3>Commit Capital</h3>
-          <p>Get funded and scale your trading with a prop option that matches the premium direction of this site.</p>
-          <a class="btn btn-gold" href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" rel="noreferrer">Join Prop Firm</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="disclaimer">
-        <p class="eyebrow">Disclaimer</p>
-        <p>
-          Trading involves risk and is not suitable for every investor. Past performance does not guarantee future results. GrootMoney Broker Killer 5.1 is a trading tool and does not provide financial advice. Users are responsible for their own trading decisions and risk management. This product is for MetaTrader 5 PC use only and is not a mobile application.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="footer-card">
-        <div class="footer-meta">
-          <p class="footer-title">GrootMoney Broker Killer 5.1</p>
-          <p>PC Vision Trading System</p>
-        </div>
-
-        <div class="footer-powered">
-          <strong>Powered by ForexWealthEmpire (Pty) Ltd</strong>
-          <p>Professional trading solutions & automation</p>
-        </div>
-      </div>
+  <footer class="footer">
+    <div class="container" style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;">
+      <div>© 2026 ForexWealthEmpire(Pty)Ltd. All rights reserved.</div>
+      <div>GrootMoney Broker Killer • Premium PC Vision • MT5 Direction</div>
     </div>
   </footer>
-
-  <a id="liveChatBtn" class="live-chat" href="https://wa.me/27636136117?text=Hi%20I%20want%20to%20buy%20the%20GrootMoney%20Broker%20Killer%205.1" target="_blank" rel="noreferrer">
-    <span>💬</span>
-    <span>Chat to Buy</span>
-  </a>
-
-  <script>
-    function showChat() {
-      document.getElementById('liveChatBtn').style.display = 'inline-flex';
-    }
-
-    const topBanner = document.getElementById('topBanner');
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', function () {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        topBanner.classList.remove('hide');
-      } else {
-        topBanner.classList.add('hide');
-      }
-
-      lastScrollY = currentScrollY;
-    });
-  </script>
-
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-    "symbols": [
-      { "proName": "FOREXCOM:SPXUSD", "title": "SPX" },
-      { "proName": "FOREXCOM:NSXUSD", "title": "NAS100" },
-      { "proName": "TVC:DJI", "title": "US30" },
-      { "proName": "OANDA:XAUUSD", "title": "XAUUSD" },
-      { "proName": "FX:GBPJPY", "title": "GBPJPY" },
-      { "proName": "BINANCE:BTCUSDT", "title": "BTC" }
-    ],
-    "showSymbolLogo": true,
-    "isTransparent": true,
-    "displayMode": "adaptive",
-    "colorTheme": "dark",
-    "locale": "en"
-  }
-  </script>
-
 </body>
 </html>
