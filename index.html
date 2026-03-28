@@ -109,20 +109,28 @@
     }
 
     .top-banner {
-      position: sticky;
+      position: fixed;
+      left: 0;
+      right: 0;
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
-      background: linear-gradient(90deg, rgba(212,175,55,0.18), rgba(0,0,0,0.95), rgba(212,175,55,0.18));
+      background: linear-gradient(90deg, rgba(212,175,55,0.22), rgba(0,0,0,0.96), rgba(212,175,55,0.22));
+      transition: transform 0.28s ease;
+      will-change: transform;
+    }
+
+    .top-banner.hide {
+      transform: translateY(-100%);
     }
 
     .top-banner-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 14px 0;
+      gap: 16px;
+      padding: 12px 0;
       flex-wrap: wrap;
     }
 
@@ -137,15 +145,23 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 14px;
+      padding: 12px 20px;
       border-radius: 999px;
       background: linear-gradient(180deg, #f0cf67, #d4af37);
       color: #111;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      box-shadow: 0 10px 28px rgba(212,175,55,0.28);
+      box-shadow: 0 12px 28px rgba(212,175,55,0.28);
+      white-space: nowrap;
+      min-height: 46px;
+    }
+
+    .banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .eyebrow {
@@ -162,6 +178,7 @@
       font-size: 14px;
       font-weight: 700;
       color: var(--text);
+      line-height: 1.5;
     }
 
     .banner-actions {
@@ -179,6 +196,7 @@
       border-radius: 999px;
       font-size: 12px;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     .btn {
@@ -222,6 +240,7 @@
       background: rgba(255,255,255,0.02);
       position: relative;
       z-index: 3;
+      margin-top: 74px;
     }
 
     .tradingview-widget-container {
@@ -249,18 +268,6 @@
       grid-template-columns: 1.05fr 0.95fr;
       gap: 28px;
       align-items: center;
-    }
-
-    .hero-logo {
-      width: 112px;
-      height: 112px;
-      object-fit: contain;
-      margin-bottom: 20px;
-      border-radius: 24px;
-      padding: 10px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
     }
 
     .hero h1 {
@@ -430,55 +437,6 @@
     @keyframes floatRobot {
       from { transform: translateY(-6px); }
       to { transform: translateY(10px); }
-    }
-
-    .robot-face {
-      position: relative;
-      width: 138px;
-      height: 138px;
-      border-radius: 34px;
-      border: 1px solid rgba(212,175,55,0.18);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.25));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 16px;
-      box-shadow: inset 0 0 30px rgba(212,175,55,0.05);
-    }
-
-    .eyes {
-      display: flex;
-      gap: 22px;
-    }
-
-    .eye {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #ffead0 0%, #f0cf67 35%, #d4af37 70%, rgba(212,175,55,0.12) 100%);
-      box-shadow: 0 0 18px rgba(212,175,55,0.45);
-      animation: blinkGlow 2.8s infinite;
-    }
-
-    .eye.red {
-      background: radial-gradient(circle, #ffc4c4 0%, #ef4444 40%, #c81e1e 75%, rgba(239,68,68,0.12) 100%);
-      box-shadow: 0 0 18px rgba(239,68,68,0.35);
-      animation-delay: 0.5s;
-    }
-
-    @keyframes blinkGlow {
-      0%, 42%, 100% { transform: scaleY(1); opacity: 1; }
-      45% { transform: scaleY(0.15); opacity: 0.7; }
-      50% { transform: scaleY(1); opacity: 1; }
-    }
-
-    .mouth {
-      width: 68px;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(212,175,55,0.15), rgba(212,175,55,0.8), rgba(212,175,55,0.15));
-      box-shadow: 0 0 18px rgba(212,175,55,0.16);
     }
 
     .bot-killer-tag {
@@ -928,6 +886,7 @@
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .price-old {
@@ -962,24 +921,14 @@
       background: linear-gradient(90deg, rgba(212,175,55,0.10), rgba(255,255,255,0.02));
     }
 
-    .footer-brand {
+    .footer-meta {
       display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .footer-brand img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      border-radius: 18px;
-      padding: 6px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid var(--line);
+      flex-direction: column;
+      gap: 6px;
     }
 
     .footer-title {
-      margin: 0 0 6px;
+      margin: 0;
       font-size: 19px;
       font-weight: 800;
     }
@@ -1037,6 +986,10 @@
     }
 
     @media (max-width: 720px) {
+      .ticker-shell {
+        margin-top: 96px;
+      }
+
       .hero {
         padding-top: 46px;
       }
@@ -1076,7 +1029,7 @@
   <div class="gold-orb"></div>
   <div class="red-orb"></div>
 
-  <div class="top-banner">
+  <div class="top-banner" id="topBanner">
     <div class="container top-banner-inner">
       <div class="banner-left">
         <span class="flash-badge">50% OFF PRE-ORDER</span>
@@ -1089,7 +1042,7 @@
       <div class="banner-actions">
         <span class="pill">PC Vision Only</span>
         <span class="pill">MT5 Only</span>
-        <a class="btn btn-gold" href="#pricing">Claim Discount</a>
+        <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Claim Discount</a>
       </div>
     </div>
   </div>
@@ -1105,8 +1058,6 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <img class="hero-logo" src="YOUR_LOGO_URL" alt="GrootMoney Logo" />
-
         <p class="eyebrow">Forex Wealth Empire</p>
         <h1>
           GrootMoney <span class="accent">Broker Killer</span><br>
@@ -1118,7 +1069,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#pricing">Get Access Now</a>
+          <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Get Access Now</a>
           <a class="btn btn-dark" href="https://www.instagram.com/channel/AbY-e56uQ5awckEu/?igsh=M3IyODlveWY0NW8y" target="_blank" rel="noreferrer">Join Group</a>
           <a class="btn btn-red" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" rel="noreferrer">Pre-Order Bot</a>
         </div>
@@ -1132,15 +1083,7 @@
         <div class="terminal">
           <div class="robot-bg">
             <div class="robot-ring"></div>
-            <div class="robot-core">
-              <div class="robot-face">
-                <div class="eyes">
-                  <span class="eye"></span>
-                  <span class="eye red"></span>
-                </div>
-                <div class="mouth"></div>
-              </div>
-            </div>
+            <div class="robot-core"></div>
             <div class="bot-killer-tag">Broker Killer Visual Engine</div>
           </div>
 
@@ -1349,7 +1292,7 @@
         <div class="test-grid">
           <div class="test-card"><p>“The visuals finally feel powerful and expensive.”</p></div>
           <div class="test-card"><p>“This now looks like a real premium trading product.”</p></div>
-          <div class="test-card"><p>“The glowing robot and moving visuals make it feel elite.”</p></div>
+          <div class="test-card"><p>“The glowing system visuals make it feel elite.”</p></div>
         </div>
       </div>
     </div>
@@ -1438,12 +1381,9 @@
   <footer class="section" style="padding-top:0;">
     <div class="container">
       <div class="footer-card">
-        <div class="footer-brand">
-          <img src="YOUR_LOGO_URL" alt="GrootMoney Logo" />
-          <div class="footer-meta">
-            <p class="footer-title">GrootMoney Broker Killer 5.1</p>
-            <p>PC Vision Trading System</p>
-          </div>
+        <div class="footer-meta">
+          <p class="footer-title">GrootMoney Broker Killer 5.1</p>
+          <p>PC Vision Trading System</p>
         </div>
 
         <div class="footer-powered">
@@ -1463,6 +1403,21 @@
     function showChat() {
       document.getElementById('liveChatBtn').style.display = 'inline-flex';
     }
+
+    const topBanner = document.getElementById('topBanner');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', function () {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        topBanner.classList.remove('hide');
+      } else {
+        topBanner.classList.add('hide');
+      }
+
+      lastScrollY = currentScrollY;
+    });
   </script>
 
   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
