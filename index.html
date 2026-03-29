@@ -771,12 +771,159 @@
       color: #91836e;
     }
 
+    .broker-ticker-wrap {
+      overflow: hidden;
+      margin: 10px 0 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(90deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08), rgba(255,35,35,0.08));
+      box-shadow: 0 0 30px rgba(255,35,35,0.08), 0 0 30px rgba(240,201,122,0.08);
+    }
+
+    .broker-ticker-track {
+      display: inline-flex;
+      gap: 34px;
+      min-width: 200%;
+      white-space: nowrap;
+      padding: 16px 0;
+      animation: brokerMarquee 22s linear infinite;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f7d999;
+      font-size: 13px;
+    }
+
+    @keyframes brokerMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .broker-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr;
+      gap: 18px;
+    }
+
+    .broker-card {
+      position: relative;
+      padding: 26px;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .broker-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.8), transparent);
+      opacity: 0.8;
+    }
+
+    .broker-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240,201,122,0.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22), 0 0 26px rgba(240,201,122,0.08);
+    }
+
+    .broker-card h3 {
+      margin: 0 0 12px;
+      color: #fff0ce;
+      font-size: 21px;
+    }
+
+    .broker-card p {
+      margin: 0 0 20px;
+      color: #cdbfa9;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .broker-card.featured {
+      background:
+        radial-gradient(circle at top left, rgba(255,35,35,0.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(240,201,122,0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      box-shadow: 0 0 35px rgba(255,35,35,0.08), 0 0 35px rgba(240,201,122,0.08);
+    }
+
+    .broker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f4cf89;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .broker-badge::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff2323;
+      box-shadow: 0 0 14px #ff2323;
+      animation: blink 1.2s infinite;
+    }
+
+    .broker-icon {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-size: 26px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(255,35,35,0.12), rgba(240,201,122,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 18px rgba(240,201,122,0.06);
+    }
+
+    .broker-features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .broker-feature {
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #f2e7d0;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .broker-btn {
+      display: inline-flex;
+      width: 100%;
+      justify-content: center;
+    }
+
     @media (max-width: 1080px) {
       .hero-grid,
       .price-card,
       .grid-3,
       .grid-4,
-      .grid-2 {
+      .grid-2,
+      .broker-grid {
         grid-template-columns: 1fr;
       }
 
@@ -835,6 +982,13 @@
         max-width: 280px;
         min-height: 270px;
       }
+      .broker-features {
+        grid-template-columns: 1fr;
+      }
+      .broker-ticker-track {
+        gap: 22px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -856,6 +1010,7 @@
         <a href="#how">How It Works</a>
         <a href="#reviews">Reviews</a>
         <a href="#offer">Offer</a>
+        <a href="#partners">Broker</a>
         <a href="#faq">FAQ</a>
         <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy Now</a>
       </nav>
@@ -961,13 +1116,10 @@
         </div>
 
         <div class="grid-4">
-          
-          
           <article class="card">
             <h3>Built for MT5</h3>
             <p>Clear product direction: this is for MetaTrader 5 and sold as a PC Vision setup, not a mobile trading app.</p>
           </article>
-          
         </div>
       </div>
     </section>
@@ -1068,9 +1220,6 @@
             </div>
           </div>
         </div>
-        </div>
-        </div>
-        </div>
       </div>
     </section>
 
@@ -1121,31 +1270,70 @@
       </div>
     </section>
 
-    
-
     <section class="section" id="partners">
       <div class="container">
         <div class="section-head">
-          <h2>Recommended Access</h2>
+          <h2>Recommended Broker</h2>
           <p>
-            Serious buyers need clear direction, trusted support, and fast access to the right next step.
+            Trade with the recommended broker and get smooth setup access, direct support, and community connection in one place.
           </p>
         </div>
 
-        <div class="grid-3">
-          <article class="card">
-            <h3>Preferred Broker</h3>
-            <p>We recommend RCG Markets broker for the best performance and smooth experience with the bot.</p>
-            <a href="https://my.rcgmarkets.com/auth/register?partner_code=9614225" target="_blank" class="btn btn-gold" style="margin-top:14px; display:inline-block;">Open RCG Account</a>
+        <div class="broker-ticker-wrap">
+          <div class="broker-ticker-track">
+            <span>RCG MARKETS</span>
+            <span>MT5 READY</span>
+            <span>FAST SUPPORT</span>
+            <span>PREMIUM ACCESS</span>
+            <span>FOREX WEALTH EMPIRE</span>
+            <span>RCG MARKETS</span>
+            <span>MT5 READY</span>
+            <span>FAST SUPPORT</span>
+            <span>PREMIUM ACCESS</span>
+            <span>FOREX WEALTH EMPIRE</span>
+          </div>
+        </div>
+
+        <div class="broker-grid">
+          <article class="broker-card featured">
+            <div class="broker-badge">Recommended</div>
+            <h3>RCG Markets Broker</h3>
+            <p>
+              We recommend RCG Markets for a smooth experience with the GrootMoney Bot and a clean MetaTrader 5 setup.
+            </p>
+
+            <div class="broker-features">
+              <div class="broker-feature">MT5 Compatible</div>
+              <div class="broker-feature">Fast Account Setup</div>
+              <div class="broker-feature">Bot Ready Direction</div>
+              <div class="broker-feature">Trusted Access</div>
+            </div>
+
+            <a href="https://my.rcgmarkets.com/auth/register?partner_code=9614225" target="_blank" class="btn btn-gold broker-btn">
+              Open RCG Account
+            </a>
           </article>
-          <article class="card">
+
+          <article class="broker-card">
+            <div class="broker-icon">💬</div>
             <h3>Community Access</h3>
-            <p>Join our trading community to get support, updates, and live discussions.</p>
-            <a href="https://discord.gg/gKrKw4qxkE" target="_blank" class="btn btn-dark" style="margin-top:14px; display:inline-block;">Join Discord</a>
+            <p>
+              Join our Discord community for updates, support, and live discussions with the Forex Wealth Empire network.
+            </p>
+            <a href="https://discord.gg/gKrKw4qxkE" target="_blank" class="btn btn-dark broker-btn">
+              Join Discord
+            </a>
           </article>
-          <article class="card">
+
+          <article class="broker-card">
+            <div class="broker-icon">⚡</div>
             <h3>Fast Support</h3>
-            <p></p>
+            <p>
+              Get direct help quickly on WhatsApp for setup questions, buying help, and support after access.
+            </p>
+            <a href="https://wa.me/27636136117?text=Hey%20I%20want%20help%20with%20the%20GrootMoney%20Bot" target="_blank" class="btn btn-live broker-btn">
+              Chat on WhatsApp
+            </a>
           </article>
         </div>
       </div>
@@ -1267,6 +1455,7 @@
       <div>GrootMoney Broker Killer • Premium PC Vision • MT5 Direction</div>
     </div>
   </footer>
+
   <div id="scrollOfferPopup" style="position:fixed; right:20px; bottom:20px; width:min(360px, calc(100% - 24px)); z-index:999; opacity:0; transform:translateY(24px) scale(0.96); pointer-events:none; transition:all 0.35s ease;">
     <div style="position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:linear-gradient(135deg, rgba(255,35,35,0.96), rgba(120,0,0,0.96) 55%, rgba(240,201,122,0.94)); box-shadow:0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(255,35,35,0.25); color:#fff; padding:22px; backdrop-filter:blur(12px);">
       <button id="closeOfferPopup" style="position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.14); color:#fff; font-size:18px; font-weight:800;">×</button>
@@ -1395,11 +1584,9 @@
       const outcomes = [
         {label:'50% Off', code:'GM50', message:'You unlocked 50% off. Use this reward now before it expires.', weight:10},
         {label:'15% Off', code:'GM15', message:'You unlocked 15% off access. Solid saving for today.', weight:18},
-        
         {label:'30% Off', code:'GM30', message:'You unlocked 30% off. Good reward — claim it now.', weight:16},
         {label:'Try Again', code:'TRY24', message:'No reward this time. Come back after 24 hours for your next spin.', weight:20},
         {label:'15% Off', code:'GM15', message:'You unlocked 15% off access. Solid saving for today.', weight:18},
-        
         {label:'30% Off', code:'GM30', message:'You unlocked 30% off. Good reward — claim it now.', weight:16}
       ];
 
@@ -1488,4 +1675,4 @@
     })();
   </script>
 </body>
-</html>
+  </html>
