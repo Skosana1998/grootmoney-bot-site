@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrootMoney Broker Killer | Forex Wealth Empire</title>
-  <meta name="description" content="Premium PC Vision MT5 trading bot by Forex Wealth Empire. Limited pre-order, premium design, live feedback, and direct WhatsApp support." />
+  <title>GrootMoney Bot | Forex Wealth Empire</title>
+  <meta name="description" content="GrootMoney Broker Killer 5.1 available now for R2000. GrootMoney Broker Destroyer 6.1 coming soon. Premium MT5 bot by Forex Wealth Empire." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
@@ -176,16 +176,17 @@
       gap: 48px;
       padding: 14px 0;
       min-width: 200%;
-      animation: marquee 24s linear infinite;
-      font-weight: 700;
+      animation: marqueeReverse 26s linear infinite;
+      font-weight: 800;
       color: #f9e4b6;
+      text-transform: uppercase;
     }
 
     .announcement-track span { letter-spacing: 0.06em; }
 
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    @keyframes marqueeReverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
     }
 
     .hero {
@@ -255,7 +256,53 @@
       line-height: 1.75;
       color: var(--muted);
       max-width: 760px;
-      margin: 22px 0 30px;
+      margin: 22px 0 18px;
+    }
+
+    .hero-highlight {
+      position: relative;
+      margin: 0 0 28px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.10)),
+        rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16), 0 0 18px rgba(240,201,122,0.08);
+      overflow: hidden;
+    }
+
+    .hero-highlight::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.85), transparent);
+      opacity: 0.9;
+    }
+
+    .hero-highlight-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #f4cf89;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight-text {
+      color: #ece2d0;
+      line-height: 1.9;
+      font-size: 15px;
+      margin: 0;
     }
 
     .cta-row {
@@ -465,7 +512,7 @@
       top: 24px;
       left: 24px;
       padding: 14px;
-      width: 210px;
+      width: 225px;
       border-radius: 18px;
       background: rgba(0,0,0,0.45);
       border: 1px solid rgba(255,255,255,0.08);
@@ -524,12 +571,11 @@
       font-size: 16px;
     }
 
-    .grid-3, .grid-4, .grid-2 {
+    .grid-4, .grid-2 {
       display: grid;
       gap: 18px;
     }
 
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
@@ -636,13 +682,6 @@
       word-break: break-word;
     }
 
-    .price-card {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
     .pricing-main {
       padding: 28px;
       border-radius: 28px;
@@ -650,6 +689,8 @@
         linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
         rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.09);
+      position: relative;
+      overflow: hidden;
     }
 
     .pricing-main .mini {
@@ -666,29 +707,10 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    .pricing-main .old {
-      color: #8f8574;
-      text-decoration: line-through;
-      font-size: 18px;
-      margin-right: 12px;
-    }
-
     .pricing-main .new {
       color: #fff0c3;
       font-size: 32px;
       font-weight: 900;
-    }
-
-    .pricing-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .pricing-chip {
-      padding: 20px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
     }
 
     .pay-logos {
@@ -919,8 +941,6 @@
 
     @media (max-width: 1080px) {
       .hero-grid,
-      .price-card,
-      .grid-3,
       .grid-4,
       .grid-2,
       .broker-grid {
@@ -1012,25 +1032,23 @@
         <a href="#offer">Offer</a>
         <a href="#partners">Broker</a>
         <a href="#faq">FAQ</a>
-        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy Now</a>
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy 5.1 Now</a>
       </nav>
     </div>
   </header>
 
   <div class="announcement">
     <div class="announcement-track">
-      <span>50% OFF PRE-ORDER</span>
-      <span>LIMITED FOR 3 DAYS</span>
-      <span>PC VISION ONLY</span>
-      <span>MT5 ONLY</span>
-      <span>DIRECT WHATSAPP SUPPORT</span>
-      <span>FOREX WEALTH EMPIRE</span>
-      <span>50% OFF PRE-ORDER</span>
-      <span>LIMITED FOR 3 DAYS</span>
-      <span>PC VISION ONLY</span>
-      <span>MT5 ONLY</span>
-      <span>DIRECT WHATSAPP SUPPORT</span>
-      <span>FOREX WEALTH EMPIRE</span>
+      <span>GrootMoney Broker Destroyer 6.1 Coming Soon</span>
+      <span>30 Day Release Countdown</span>
+      <span>Designed For Day Traders And Swing Traders</span>
+      <span>Customizable For Time Frame Alignment</span>
+      <span>Forex Wealth Empire</span>
+      <span>GrootMoney Broker Destroyer 6.1 Coming Soon</span>
+      <span>30 Day Release Countdown</span>
+      <span>Designed For Day Traders And Swing Traders</span>
+      <span>Customizable For Time Frame Alignment</span>
+      <span>Forex Wealth Empire</span>
     </div>
   </div>
 
@@ -1038,25 +1056,33 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Premium Launch Active</div>
+          <div class="eyebrow">Premium Bot Collection</div>
           <h1>
-            <span class="gradient-text">Broker Killer</span><br />
-            PC Vision MT5 Bot
+            <span class="gradient-text">Broker Killer 5.1</span><br />
+            & Destroyer 6.1
           </h1>
+
           <p class="lead">
-            Built for serious traders who want premium presentation, aggressive identity, and a MetaTrader 5 product that looks like powerful trading software from the first second they open the page.
+            Premium MT5 bot collection built for serious traders who want strong presentation, direct support, and a clean software identity.
           </p>
 
+          <div class="hero-highlight">
+            <div class="hero-highlight-title">Product Update</div>
+            <p class="hero-highlight-text">
+              <strong style="color:#fff2cd;">GrootMoney Broker Killer 5.1</strong> is available now for <strong style="color:#f0c97a;">R2000</strong>, while <strong style="color:#fff2cd;">GrootMoney Broker Destroyer 6.1</strong> is coming soon for day traders and swing traders with customizable time frame alignment.
+            </p>
+          </div>
+
           <div class="cta-row">
-            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Get 50% Off Now</a>
-            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20the%20GrootMoney%20Bot" target="_blank">Live WhatsApp</a>
+            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Broker Killer 5.1</a>
+            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20buy%20GrootMoney%20Broker%20Killer%205.1%20for%20R2000" target="_blank">Live WhatsApp</a>
             <a class="btn btn-dark" href="https://discord.gg/gKrKw4qxkE" target="_blank">Access Our Discord</a>
           </div>
 
           <div style="display:flex; flex-wrap:wrap; gap:14px; margin:24px 0 10px;">
             <div id="countdownBox" style="display:flex; gap:10px; flex-wrap:wrap;">
               <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
-                <div id="days" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">03</div>
+                <div id="days" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">30</div>
                 <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Days</div>
               </div>
               <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
@@ -1075,10 +1101,10 @@
           </div>
 
           <div class="hero-points">
-            <div class="point">PC Vision only for a focused, premium MT5 experience.</div>
-            <div class="point">Built to look and feel like elite trading software.</div>
-            <div class="point">Fast setup support and direct purchase access.</div>
-            <div class="point">Perfect for traders who want presence, power, and clean execution.</div>
+            <div class="point">Broker Killer 5.1 available now for R2000.</div>
+            <div class="point">Broker Destroyer 6.1 release in 30 days.</div>
+            <div class="point">Designed for day traders and swing traders.</div>
+            <div class="point">Customizable for time frame alignment.</div>
           </div>
         </div>
 
@@ -1086,20 +1112,20 @@
           <div class="scan-lines"></div>
 
           <div class="side-panel">
-            <div class="small-title">System Status</div>
-            <div class="metric"><span>Bot Status</span><span>SCANNING</span></div>
-            <div class="metric"><span>Mode</span><span>AGGRESSIVE</span></div>
-            <div class="metric"><span>Session</span><span>NEW YORK</span></div>
+            <div class="small-title">GrootMoney Status</div>
+            <div class="metric"><span>5.1</span><span>AVAILABLE</span></div>
+            <div class="metric"><span>Price</span><span>R2000</span></div>
+            <div class="metric"><span>6.1</span><span>COMING SOON</span></div>
+            <div class="metric"><span>Release</span><span>30 DAYS</span></div>
             <div class="metric"><span>Platform</span><span>MT5</span></div>
-            <div class="metric"><span>Access</span><span>PC VISION</span></div>
           </div>
 
           <div class="robot-core">
             <div class="robot-head"></div>
             <div class="robot-neck"></div>
             <div class="robot-text">
-              <h3>Broker Killer</h3>
-              <p>Powered by ForexWealthEmpire(Pty)Ltd</p>
+              <h3>Broker Killer 5.1</h3>
+              <p>Destroyer 6.1 In 30 Days</p>
             </div>
           </div>
         </div>
@@ -1118,7 +1144,19 @@
         <div class="grid-4">
           <article class="card">
             <h3>Built for MT5</h3>
-            <p>Clear product direction: this is for MetaTrader 5 and sold as a PC Vision setup, not a mobile trading app.</p>
+            <p>Clear product direction: these GrootMoney bots are for MetaTrader 5 and sold as a PC Vision setup, not a mobile trading app.</p>
+          </article>
+          <article class="card">
+            <h3>Live Bot Available</h3>
+            <p>Broker Killer 5.1 is available now for serious traders who want immediate access.</p>
+          </article>
+          <article class="card">
+            <h3>Next Release Loading</h3>
+            <p>Broker Destroyer 6.1 is positioned as the upcoming premium option for the next phase.</p>
+          </article>
+          <article class="card">
+            <h3>Trading Style Flexibility</h3>
+            <p>Destroyer 6.1 is promoted for day traders and swing traders with customizable time frame alignment.</p>
           </article>
         </div>
       </div>
@@ -1135,22 +1173,22 @@
 
         <div class="grid-2">
           <article class="card">
-            <h3>Secret Edge Presentation</h3>
+            <h3>Current Live Option</h3>
             <ul class="secret-list">
-              <li>Designed around structured market behavior and disciplined signal logic.</li>
-              <li>Built to deliver a clean software experience instead of a random retail feel.</li>
-              <li>Focused on powerful presentation, serious branding, and clear buyer confidence.</li>
-              <li>Created for traders who want premium identity around their trading tools.</li>
+              <li>GrootMoney Broker Killer 5.1 is currently available for purchase.</li>
+              <li>Positioned for MT5 and premium PC Vision presentation.</li>
+              <li>Direct purchase support through WhatsApp and Whop.</li>
+              <li>Built for traders who want immediate access.</li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>What Clients Receive</h3>
+            <h3>Upcoming Release</h3>
             <ul class="secret-list">
-              <li>Premium GrootMoney Bot access for MT5 PC setup.</li>
-              <li>Guided support through direct WhatsApp communication.</li>
-              <li>Community connection through Discord.</li>
-              <li>Fast pre-order access while the offer is still active.</li>
+              <li>GrootMoney Broker Destroyer 6.1 is coming soon.</li>
+              <li>New release countdown is set to 30 days.</li>
+              <li>Designed for day traders and swing traders.</li>
+              <li>Customizable for time frame alignment.</li>
             </ul>
           </article>
         </div>
@@ -1226,37 +1264,43 @@
     <section class="section" id="offer">
       <div class="container">
         <div class="section-head">
-          <h2>Limited Offer</h2>
+          <h2>Bot Options</h2>
           <p>
-            A clean premium offer section that pushes urgency without making the page look cheap.
+            Choose the currently available GrootMoney bot or join the waiting list for the next premium release.
           </p>
         </div>
 
-        <div class="price-card">
+        <div class="grid-2">
           <div class="pricing-main">
-            <div class="mini">Pre-order now</div>
-            <h3>50% Off GrootMoney Bot</h3>
+            <div class="mini">Available now</div>
+            <h3>GrootMoney Broker Killer 5.1</h3>
             <p>
-              <span class="old">R2000</span>
-              <span class="new">R1000</span>
+              <span class="new">R2000</span>
             </p>
             <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
-              Limited pre-order pricing for serious buyers who want early access to the premium GrootMoney PC Vision MT5 experience.
+              The current live GrootMoney bot available for purchase right now. Built for traders who want immediate access to the GrootMoney MT5 experience.
             </p>
             <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
-              <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Through Whop</a>
-              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20claim%20the%2050%25%20off%20GrootMoney%20offer" target="_blank">Claim on WhatsApp</a>
+              <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy 5.1 Now</a>
+              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20buy%20GrootMoney%20Broker%20Killer%205.1%20for%20R2000" target="_blank">Buy on WhatsApp</a>
             </div>
           </div>
 
-          <div class="pricing-side">
-            <div class="pricing-chip">
-              <h3 style="margin:0 0 10px;">Included</h3>
-              <p style="margin:0;">PC Vision access, MT5 product direction, premium branding, buyer support, and community access.</p>
+          <div class="pricing-main">
+            <div style="position:absolute; top:18px; right:18px; padding:8px 12px; border-radius:999px; background:rgba(255,35,35,0.14); border:1px solid rgba(255,255,255,0.08); color:#ffd6d6; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800;">
+              Coming Soon
             </div>
-            <div class="pricing-chip">
-              <h3 style="margin:0 0 10px;">Important</h3>
-              <p style="margin:0;">This product is presented as PC Vision only and works around MetaTrader 5 positioning.</p>
+            <div class="mini">Option 2</div>
+            <h3>GrootMoney Broker Destroyer 6.1</h3>
+            <p>
+              <span class="new" style="font-size:24px;">Release In 30 Days</span>
+            </p>
+            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+              Releasing soon. Designed for day traders and swing traders, with customizable time frame alignment and a stronger premium software identity.
+            </p>
+            <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
+              <a class="btn btn-dark" href="https://wa.me/27636136117?text=Hey%20please%20notify%20me%20when%20GrootMoney%20Broker%20Destroyer%206.1%20is%20available" target="_blank">Notify Me</a>
+              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20information%20about%20GrootMoney%20Broker%20Destroyer%206.1" target="_blank">Ask on WhatsApp</a>
             </div>
           </div>
         </div>
@@ -1339,70 +1383,6 @@
       </div>
     </section>
 
-    <section class="section" id="spinwin">
-      <div class="container">
-        <div class="section-head">
-          <h2>Spin & Win</h2>
-          <p>
-            Give visitors one premium spin every 24 hours to unlock a live offer and keep them engaged on the page.
-          </p>
-        </div>
-
-        <div class="grid-2">
-          <article class="card" style="display:flex; justify-content:center; align-items:center; min-height:520px; overflow:visible;">
-            <div style="position:relative; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;">
-              <div style="position:relative; width:min(360px, 100%); aspect-ratio:1/1; display:grid; place-items:center;">
-                <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:18px solid transparent; border-right:18px solid transparent; border-top:0; border-bottom:34px solid #f0c97a; filter:drop-shadow(0 0 12px rgba(240,201,122,0.35)); z-index:3;"></div>
-                <div id="spinWheel" style="width:100%; height:100%; border-radius:50%; border:10px solid rgba(255,255,255,0.09); box-shadow:0 20px 60px rgba(0,0,0,0.35), 0 0 35px rgba(255,35,35,0.12); position:relative; overflow:hidden; background:conic-gradient(
-                  from -22.5deg,
-                  #8f0000 0deg 45deg,
-                  #c08b2a 45deg 90deg,
-                  #2d2d2d 90deg 135deg,
-                  #d51d1d 135deg 180deg,
-                  #ad7b1d 180deg 225deg,
-                  #1d1d1d 225deg 270deg,
-                  #b31313 270deg 315deg,
-                  #e4b860 315deg 360deg
-                ); transition: transform 5.5s cubic-bezier(.18,.9,.12,1);">
-                  <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at center, transparent 0 54%, rgba(0,0,0,0.14) 55% 100%);"></div>
-                  <div style="position:absolute; inset:0; font-family:'Orbitron',sans-serif; font-weight:800; text-transform:uppercase; color:#fff7e7; font-size:12px; letter-spacing:.06em;">
-                    <div style="position:absolute; left:50%; top:18px; transform:translateX(-50%);">50% Off</div>
-                    <div style="position:absolute; right:48px; top:54px; transform:rotate(45deg);">15% Off</div>
-                    <div style="position:absolute; right:16px; top:50%; transform:translateY(-50%) rotate(90deg);">Signals</div>
-                    <div style="position:absolute; right:50px; bottom:54px; transform:rotate(135deg);">30% Off</div>
-                    <div style="position:absolute; left:50%; bottom:18px; transform:translateX(-50%) rotate(180deg);">Try Again</div>
-                    <div style="position:absolute; left:48px; bottom:54px; transform:rotate(225deg);">15% Off</div>
-                    <div style="position:absolute; left:16px; top:50%; transform:translateY(-50%) rotate(270deg);">Signals</div>
-                    <div style="position:absolute; left:50px; top:54px; transform:rotate(315deg);">30% Off</div>
-                  </div>
-                  <div style="position:absolute; inset:50%; width:96px; height:96px; margin-left:-48px; margin-top:-48px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg, #101010, #252525); border:1px solid rgba(255,255,255,0.1); box-shadow:0 0 24px rgba(0,0,0,0.3); z-index:2; text-align:center; font-family:'Orbitron',sans-serif; color:#f0c97a; font-weight:800;">SPIN</div>
-                </div>
-              </div>
-              <button id="spinButton" class="btn btn-gold" type="button">Spin Now</button>
-              <div id="spinMeta" style="text-align:center; color:#b8ae9b; font-size:13px; line-height:1.7;">1 spin every 24 hours.</div>
-            </div>
-          </article>
-
-          <article class="card">
-            <h3>Available Rewards</h3>
-            <ul class="secret-list">
-              <li>50% Off GrootMoney offer</li>
-              <li>30% Off access discount</li>
-              <li>15% Off extra offer</li>
-              <li>Free signals access reward</li>
-              <li>Try again after 24 hours</li>
-            </ul>
-            <div id="spinResult" style="margin-top:18px; padding:18px; border-radius:18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); color:#f1e6d0; min-height:120px; display:flex; align-items:center; line-height:1.8;">
-              Spin the wheel to unlock your offer.
-            </div>
-            <div class="cta-row" style="margin-top:18px;">
-              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20claim%20my%20spin%20reward" target="_blank">Claim Reward</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="faq">
       <div class="container">
         <div class="section-head">
@@ -1415,30 +1395,30 @@
         <div class="faq">
           <details class="faq-item" open>
             <summary>Is this a mobile app?</summary>
-            <p>No. This version is positioned as a PC Vision MT5 product, not a mobile trading app.</p>
+            <p>No. These versions are positioned as PC Vision MT5 products, not mobile trading apps.</p>
           </details>
           <details class="faq-item">
             <summary>What platform is this for?</summary>
             <p>This offer is presented for MetaTrader 5 use and should be marketed that way clearly across the website.</p>
           </details>
           <details class="faq-item">
-            <summary>How do I get support after buying?</summary>
-            <p>Buyers can reach you directly through the live WhatsApp button and also enter your Discord community for additional support.</p>
+            <summary>Which bot can I buy now?</summary>
+            <p>You can buy GrootMoney Broker Killer 5.1 right now for R2000. GrootMoney Broker Destroyer 6.1 is set for release in 30 days.</p>
           </details>
           <details class="faq-item">
-            <summary>How long is the offer valid?</summary>
-            <p>The website is currently set to show a limited 3-day 50% off pre-order offer.</p>
+            <summary>How do I get support after buying?</summary>
+            <p>Buyers can reach you directly through the live WhatsApp button and also enter your Discord community for additional support.</p>
           </details>
         </div>
 
         <div class="final-cta">
           <h3>Ready To Move Like Premium?</h3>
           <p style="max-width:780px; margin:0 auto 18px; color:#d3c8b7; line-height:1.8;">
-            Get the GrootMoney Broker Killer page live with a premium sales flow, strong presentation, and direct conversion path.
+            Get GrootMoney Broker Killer 5.1 now or join the upcoming flow for Destroyer 6.1 with strong presentation and direct support.
           </p>
           <div class="cta-row" style="justify-content:center; margin-bottom:0;">
-            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Now</a>
-            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20am%20ready%20to%20buy%20GrootMoney" target="_blank">Talk on WhatsApp</a>
+            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy 5.1 Now</a>
+            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20am%20ready%20to%20buy%20GrootMoney%20Broker%20Killer%205.1" target="_blank">Talk on WhatsApp</a>
             <a class="btn btn-dark" href="https://discord.gg/gKrKw4qxkE" target="_blank">Join Discord</a>
           </div>
           <div class="disclaimer">
@@ -1452,19 +1432,19 @@
   <footer class="footer">
     <div class="container" style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;">
       <div>© 2026 ForexWealthEmpire(Pty)Ltd. All rights reserved.</div>
-      <div>GrootMoney Broker Killer • Premium PC Vision • MT5 Direction</div>
+      <div>Broker Killer 5.1 Available • Destroyer 6.1 Release In 30 Days • MT5 Direction</div>
     </div>
   </footer>
 
   <div id="scrollOfferPopup" style="position:fixed; right:20px; bottom:20px; width:min(360px, calc(100% - 24px)); z-index:999; opacity:0; transform:translateY(24px) scale(0.96); pointer-events:none; transition:all 0.35s ease;">
     <div style="position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:linear-gradient(135deg, rgba(255,35,35,0.96), rgba(120,0,0,0.96) 55%, rgba(240,201,122,0.94)); box-shadow:0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(255,35,35,0.25); color:#fff; padding:22px; backdrop-filter:blur(12px);">
       <button id="closeOfferPopup" style="position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.14); color:#fff; font-size:18px; font-weight:800;">×</button>
-      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:14px;">Limited Offer Live</div>
-      <h3 style="margin:0 0 10px; font-family:'Orbitron', sans-serif; text-transform:uppercase; line-height:1.05; font-size:1.6rem;">Get 50% Off GrootMoney</h3>
-      <p style="margin:0 0 16px; color:rgba(255,255,255,0.9); line-height:1.7; font-size:14px;">Secure the premium bot now for <strong style="color:#fff4c9;">R1000</strong> instead of <span style="text-decoration:line-through; opacity:0.8;">R2000</span>. Buy while the offer is still active.</p>
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:14px;">Live Product</div>
+      <h3 style="margin:0 0 10px; font-family:'Orbitron', sans-serif; text-transform:uppercase; line-height:1.05; font-size:1.5rem;">Broker Killer 5.1 Available Now</h3>
+      <p style="margin:0 0 16px; color:rgba(255,255,255,0.9); line-height:1.7; font-size:14px;">Buy GrootMoney Broker Killer 5.1 now for <strong style="color:#fff4c9;">R2000</strong>. Destroyer 6.1 is coming in <strong style="color:#fff4c9;">30 days</strong>.</p>
       <div style="display:flex; flex-wrap:wrap; gap:10px;">
-        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:linear-gradient(135deg, #f0c97a, #fff0c5); color:#0a0a0a; font-weight:900;">Claim 50% Off</a>
-        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20the%2050%25%20off%20GrootMoney%20offer" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:800;">WhatsApp</a>
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:linear-gradient(135deg, #f0c97a, #fff0c5); color:#0a0a0a; font-weight:900;">Buy 5.1</a>
+        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20details%20about%20GrootMoney%20bots" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:800;">WhatsApp</a>
       </div>
     </div>
   </div>
@@ -1499,31 +1479,37 @@
     })();
 
     (function(){
-      const endKey = 'grootmoney_offer_end';
+      const endKey = 'grootmoney_release_30days';
       let savedEnd = localStorage.getItem(endKey);
       let endDate = savedEnd ? new Date(savedEnd) : null;
       if(!endDate || isNaN(endDate.getTime()) || endDate < new Date()){
-        endDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+        endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
         localStorage.setItem(endKey, endDate.toISOString());
       }
+
       const d = document.getElementById('days');
       const h = document.getElementById('hours');
       const m = document.getElementById('minutes');
       const s = document.getElementById('seconds');
+
       function pad(n){ return String(n).padStart(2,'0'); }
+
       function tick(){
         const now = new Date();
         let diff = endDate - now;
         if(diff < 0) diff = 0;
+
         const days = Math.floor(diff / (1000*60*60*24));
         const hours = Math.floor((diff / (1000*60*60)) % 24);
         const minutes = Math.floor((diff / (1000*60)) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
+
         if(d) d.textContent = pad(days);
         if(h) h.textContent = pad(hours);
         if(m) m.textContent = pad(minutes);
         if(s) s.textContent = pad(seconds);
       }
+
       tick();
       setInterval(tick, 1000);
     })();
@@ -1532,9 +1518,9 @@
       const names = ['Loyiso Bandla', 'John', 'Bheki', 'Maureen', 'Wesley', 'Sipho', 'Thando'];
       const cities = ['Eastern Cape', 'Johannesburg', 'Pretoria', 'Durban', 'Cape Town'];
       const actions = [
-        'just purchased GrootMoney',
+        'just purchased Broker Killer 5.1',
         'joined the Discord community',
-        'activated the bot'
+        'requested info about Destroyer 6.1'
       ];
 
       const holder = document.createElement('div');
@@ -1573,106 +1559,6 @@
       setTimeout(showOne, 3000);
       setInterval(showOne, 30000);
     })();
-
-    (function(){
-      const wheel = document.getElementById('spinWheel');
-      const btn = document.getElementById('spinButton');
-      const result = document.getElementById('spinResult');
-      const meta = document.getElementById('spinMeta');
-      if(!wheel || !btn || !result || !meta) return;
-
-      const outcomes = [
-        {label:'50% Off', code:'GM50', message:'You unlocked 50% off. Use this reward now before it expires.', weight:10},
-        {label:'15% Off', code:'GM15', message:'You unlocked 15% off access. Solid saving for today.', weight:18},
-        {label:'30% Off', code:'GM30', message:'You unlocked 30% off. Good reward — claim it now.', weight:16},
-        {label:'Try Again', code:'TRY24', message:'No reward this time. Come back after 24 hours for your next spin.', weight:20},
-        {label:'15% Off', code:'GM15', message:'You unlocked 15% off access. Solid saving for today.', weight:18},
-        {label:'30% Off', code:'GM30', message:'You unlocked 30% off. Good reward — claim it now.', weight:16}
-      ];
-
-      const storageKey = 'grootmoney_spin_state_v1';
-      let currentRotation = 0;
-      let spinning = false;
-
-      function readState(){
-        try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); }
-        catch(e){ return {}; }
-      }
-
-      function writeState(state){
-        localStorage.setItem(storageKey, JSON.stringify(state));
-      }
-
-      function nextAvailableText(nextAt){
-        const diff = nextAt - Date.now();
-        if(diff <= 0) return 'You can spin now.';
-        const hrs = Math.floor(diff / (1000 * 60 * 60));
-        const mins = Math.floor((diff / (1000 * 60)) % 60);
-        return `Next spin in ${hrs}h ${mins}m.`;
-      }
-
-      function refreshAvailability(){
-        const state = readState();
-        if(state.nextAt && Date.now() < state.nextAt){
-          btn.disabled = true;
-          btn.style.opacity = '0.6';
-          btn.style.cursor = 'not-allowed';
-          meta.textContent = nextAvailableText(state.nextAt);
-          if(state.lastMessage){
-            result.innerHTML = `<div><strong style="color:#f0c97a;">Last reward:</strong><br>${state.lastMessage}${state.lastCode ? `<br><span style="color:#fff4c9;">Code: ${state.lastCode}</span>` : ''}</div>`;
-          }
-        } else {
-          btn.disabled = false;
-          btn.style.opacity = '1';
-          btn.style.cursor = 'pointer';
-          meta.textContent = '1 spin every 24 hours.';
-        }
-      }
-
-      function chooseIndex(){
-        const total = outcomes.reduce((sum, item) => sum + item.weight, 0);
-        let roll = Math.random() * total;
-        for(let i=0; i<outcomes.length; i++){
-          roll -= outcomes[i].weight;
-          if(roll <= 0) return i;
-        }
-        return 0;
-      }
-
-      btn.addEventListener('click', function(){
-        if(spinning || btn.disabled) return;
-        spinning = true;
-        const index = chooseIndex();
-        const selected = outcomes[index];
-        const segmentAngle = 45;
-        const segmentCenter = index * segmentAngle + segmentAngle / 2;
-        const targetRotation = 360 - segmentCenter;
-        currentRotation += 360 * 6 + targetRotation;
-        wheel.style.transform = `rotate(${currentRotation}deg)`;
-
-        result.textContent = 'Spinning for your reward...';
-
-        setTimeout(() => {
-          const nextAt = Date.now() + 24 * 60 * 60 * 1000;
-          const state = {
-            nextAt,
-            lastLabel: selected.label,
-            lastCode: selected.code,
-            lastMessage: selected.message
-          };
-          writeState(state);
-          result.innerHTML = `<div><strong style="color:#f0c97a; font-size:16px;">${selected.label}</strong><br>${selected.message}<br><span style="color:#fff4c9;">Code: ${selected.code}</span></div>`;
-          meta.textContent = nextAvailableText(nextAt);
-          btn.disabled = true;
-          btn.style.opacity = '0.6';
-          btn.style.cursor = 'not-allowed';
-          spinning = false;
-        }, 5600);
-      });
-
-      refreshAvailability();
-      setInterval(refreshAvailability, 60000);
-    })();
   </script>
 </body>
-  </html>
+                </html>
