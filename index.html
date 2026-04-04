@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GrootMoney Bot | Forex Wealth Empire</title>
-  <meta name="description" content="GrootMoney Broker Killer 5.1 available now for R2000. GrootMoney Broker Destroyer 6.1 coming soon. Premium MT5 bot by Forex Wealth Empire." />
+  <meta name="description" content="GrootMoney Broker Killer 5.1 available now for R2000. GrootMoney Broker Destroyer 6.1 coming soon. GrootMoney Mission Gun 5.5 for limited members. Premium MT5 bot by Forex Wealth Empire." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
@@ -939,6 +939,85 @@
       justify-content: center;
     }
 
+    .offer-slider-wrap {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .offer-slider {
+      display: flex;
+      gap: 18px;
+      transition: transform 0.45s ease;
+      will-change: transform;
+      touch-action: pan-y;
+    }
+
+    .offer-slide {
+      min-width: 100%;
+    }
+
+    .offer-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .offer-nav-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .offer-nav-btn:hover {
+      border-color: rgba(240,201,122,0.28);
+      box-shadow: 0 0 18px rgba(240,201,122,0.12);
+    }
+
+    .offer-dots {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .offer-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .offer-dot.active {
+      width: 32px;
+      background: linear-gradient(135deg, var(--gold), #fff0c5);
+    }
+
+    .mission-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,35,35,0.14);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ffd6d6;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+    }
+
     @media (max-width: 1080px) {
       .hero-grid,
       .grid-4,
@@ -1009,6 +1088,9 @@
         gap: 22px;
         font-size: 12px;
       }
+      .offer-slide .pricing-main {
+        padding: 24px;
+      }
     }
   </style>
 </head>
@@ -1044,10 +1126,18 @@
       <span>Designed For Day Traders And Swing Traders</span>
       <span>Customizable For Time Frame Alignment</span>
       <span>Forex Wealth Empire</span>
+      <span>GrootMoney Mission Gun 5.5 Limited Members</span>
+      <span>Scalping Bot</span>
+      <span>Custom Holding Seconds Trading Mode</span>
+      <span>Forex Wealth Empire</span>
       <span>GrootMoney Broker Destroyer 6.1 Coming Soon</span>
       <span>30 Day Release Countdown</span>
       <span>Designed For Day Traders And Swing Traders</span>
       <span>Customizable For Time Frame Alignment</span>
+      <span>Forex Wealth Empire</span>
+      <span>GrootMoney Mission Gun 5.5 Limited Members</span>
+      <span>Scalping Bot</span>
+      <span>Custom Holding Seconds Trading Mode</span>
       <span>Forex Wealth Empire</span>
     </div>
   </div>
@@ -1059,7 +1149,7 @@
           <div class="eyebrow">Premium Bot Collection</div>
           <h1>
             <span class="gradient-text">Broker Killer 5.1</span><br />
-            & Destroyer 6.1
+            Destroyer 6.1 & Mission Gun 5.5
           </h1>
 
           <p class="lead">
@@ -1069,7 +1159,7 @@
           <div class="hero-highlight">
             <div class="hero-highlight-title">Product Update</div>
             <p class="hero-highlight-text">
-              <strong style="color:#fff2cd;">GrootMoney Broker Killer 5.1</strong> is available now for <strong style="color:#f0c97a;">R2000</strong>, while <strong style="color:#fff2cd;">GrootMoney Broker Destroyer 6.1</strong> is coming soon for day traders and swing traders with customizable time frame alignment.
+              <strong style="color:#fff2cd;">GrootMoney Broker Killer 5.1</strong> is available now for <strong style="color:#f0c97a;">R2000</strong>, <strong style="color:#fff2cd;">GrootMoney Broker Destroyer 6.1</strong> is coming soon for day traders and swing traders, and <strong style="color:#fff2cd;">GrootMoney Mission Gun 5.5</strong> is the real Mission Gun scalping bot for limited members.
             </p>
           </div>
 
@@ -1103,8 +1193,8 @@
           <div class="hero-points">
             <div class="point">Broker Killer 5.1 available now for R2000.</div>
             <div class="point">Broker Destroyer 6.1 release in 30 days.</div>
-            <div class="point">Designed for day traders and swing traders.</div>
-            <div class="point">Customizable for time frame alignment.</div>
+            <div class="point">Mission Gun 5.5 for limited members.</div>
+            <div class="point">Custom holding seconds trading mode.</div>
           </div>
         </div>
 
@@ -1116,7 +1206,7 @@
             <div class="metric"><span>5.1</span><span>AVAILABLE</span></div>
             <div class="metric"><span>Price</span><span>R2000</span></div>
             <div class="metric"><span>6.1</span><span>COMING SOON</span></div>
-            <div class="metric"><span>Release</span><span>30 DAYS</span></div>
+            <div class="metric"><span>Mission Gun</span><span>LIMITED</span></div>
             <div class="metric"><span>Platform</span><span>MT5</span></div>
           </div>
 
@@ -1125,7 +1215,7 @@
             <div class="robot-neck"></div>
             <div class="robot-text">
               <h3>Broker Killer 5.1</h3>
-              <p>Destroyer 6.1 In 30 Days</p>
+              <p>Destroyer 6.1 & Mission Gun 5.5</p>
             </div>
           </div>
         </div>
@@ -1155,8 +1245,8 @@
             <p>Broker Destroyer 6.1 is positioned as the upcoming premium option for the next phase.</p>
           </article>
           <article class="card">
-            <h3>Trading Style Flexibility</h3>
-            <p>Destroyer 6.1 is promoted for day traders and swing traders with customizable time frame alignment.</p>
+            <h3>Mission Gun 5.5</h3>
+            <p>The real Mission Gun scalping bot with custom holding seconds trading mode for limited members.</p>
           </article>
         </div>
       </div>
@@ -1183,12 +1273,12 @@
           </article>
 
           <article class="card">
-            <h3>Upcoming Release</h3>
+            <h3>Upcoming & Limited Options</h3>
             <ul class="secret-list">
               <li>GrootMoney Broker Destroyer 6.1 is coming soon.</li>
               <li>New release countdown is set to 30 days.</li>
-              <li>Designed for day traders and swing traders.</li>
-              <li>Customizable for time frame alignment.</li>
+              <li>GrootMoney Mission Gun 5.5 is for limited members.</li>
+              <li>Mission Gun is a scalping bot with custom holding seconds trading mode.</li>
             </ul>
           </article>
         </div>
@@ -1266,43 +1356,85 @@
         <div class="section-head">
           <h2>Bot Options</h2>
           <p>
-            Choose the currently available GrootMoney bot or join the waiting list for the next premium release.
+            Swipe left or right to choose your GrootMoney bot option.
           </p>
         </div>
 
-        <div class="grid-2">
-          <div class="pricing-main">
-            <div class="mini">Available now</div>
-            <h3>GrootMoney Broker Killer 5.1</h3>
-            <p>
-              <span class="new">R2000</span>
-            </p>
-            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
-              The current live GrootMoney bot available for purchase right now. Built for traders who want immediate access to the GrootMoney MT5 experience.
-            </p>
-            <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
-              <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy 5.1 Now</a>
-              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20buy%20GrootMoney%20Broker%20Killer%205.1%20for%20R2000" target="_blank">Buy on WhatsApp</a>
-            </div>
-          </div>
+        <div class="offer-slider-wrap">
+          <div class="offer-slider" id="offerSlider">
 
-          <div class="pricing-main">
-            <div style="position:absolute; top:18px; right:18px; padding:8px 12px; border-radius:999px; background:rgba(255,35,35,0.14); border:1px solid rgba(255,255,255,0.08); color:#ffd6d6; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800;">
-              Coming Soon
+            <div class="offer-slide">
+              <div class="pricing-main">
+                <div class="mini">Available now</div>
+                <h3>GrootMoney Broker Killer 5.1</h3>
+                <p>
+                  <span class="new">R2000</span>
+                </p>
+                <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+                  The current live GrootMoney bot available for purchase right now. Built for traders who want immediate access to the GrootMoney MT5 experience.
+                </p>
+                <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
+                  <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy 5.1 Now</a>
+                  <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20buy%20GrootMoney%20Broker%20Killer%205.1%20for%20R2000" target="_blank">Buy on WhatsApp</a>
+                </div>
+              </div>
             </div>
-            <div class="mini">Option 2</div>
-            <h3>GrootMoney Broker Destroyer 6.1</h3>
-            <p>
-              <span class="new" style="font-size:24px;">Release In 30 Days</span>
-            </p>
-            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
-              Releasing soon. Designed for day traders and swing traders, with customizable time frame alignment and a stronger premium software identity.
-            </p>
-            <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
-              <a class="btn btn-dark" href="https://wa.me/27636136117?text=Hey%20please%20notify%20me%20when%20GrootMoney%20Broker%20Destroyer%206.1%20is%20available" target="_blank">Notify Me</a>
-              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20information%20about%20GrootMoney%20Broker%20Destroyer%206.1" target="_blank">Ask on WhatsApp</a>
+
+            <div class="offer-slide">
+              <div class="pricing-main">
+                <div style="position:absolute; top:18px; right:18px; padding:8px 12px; border-radius:999px; background:rgba(255,35,35,0.14); border:1px solid rgba(255,255,255,0.08); color:#ffd6d6; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800;">
+                  Coming Soon
+                </div>
+                <div class="mini">Option 2</div>
+                <h3>GrootMoney Broker Destroyer 6.1</h3>
+                <p>
+                  <span class="new" style="font-size:24px;">Release In 30 Days</span>
+                </p>
+                <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+                  Releasing soon. Designed for day traders and swing traders, with customizable time frame alignment and a stronger premium software identity.
+                </p>
+                <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
+                  <a class="btn btn-dark" href="https://wa.me/27636136117?text=Hey%20please%20notify%20me%20when%20GrootMoney%20Broker%20Destroyer%206.1%20is%20available" target="_blank">Notify Me</a>
+                  <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20information%20about%20GrootMoney%20Broker%20Destroyer%206.1" target="_blank">Ask on WhatsApp</a>
+                </div>
+              </div>
             </div>
+
+            <div class="offer-slide">
+              <div class="pricing-main">
+                <div class="mission-badge">Limited Members</div>
+                <div class="mini">Option 3</div>
+                <h3>GrootMoney Mission Gun 5.5</h3>
+                <p>
+                  <span class="new" style="font-size:24px;">Scalping Bot</span>
+                </p>
+                <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+                  This is the real Mission Gun. A scalping bot with custom holding seconds trading mode, built for aggressive execution and fast market interaction.
+                </p>
+                <div class="hero-points" style="max-width:none; margin-top:0;">
+                  <div class="point">Custom holding seconds</div>
+                  <div class="point">Trading mode control</div>
+                  <div class="point">Scalping execution</div>
+                  <div class="point">Limited members access</div>
+                </div>
+                <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
+                  <a class="btn btn-dark" href="https://wa.me/27636136117?text=Hey%20I%20want%20Mission%20Gun%205.5%20limited%20member%20access" target="_blank">Get Access</a>
+                  <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20details%20about%20GrootMoney%20Mission%20Gun%205.5" target="_blank">Ask on WhatsApp</a>
+                </div>
+              </div>
+            </div>
+
           </div>
+        </div>
+
+        <div class="offer-nav">
+          <button class="offer-nav-btn" id="offerPrev" type="button">‹</button>
+          <div class="offer-dots" id="offerDots">
+            <button class="offer-dot active" type="button" data-index="0"></button>
+            <button class="offer-dot" type="button" data-index="1"></button>
+            <button class="offer-dot" type="button" data-index="2"></button>
+          </div>
+          <button class="offer-nav-btn" id="offerNext" type="button">›</button>
         </div>
 
         <div class="pay-logos">
@@ -1403,7 +1535,7 @@
           </details>
           <details class="faq-item">
             <summary>Which bot can I buy now?</summary>
-            <p>You can buy GrootMoney Broker Killer 5.1 right now for R2000. GrootMoney Broker Destroyer 6.1 is set for release in 30 days.</p>
+            <p>You can buy GrootMoney Broker Killer 5.1 right now for R2000. GrootMoney Broker Destroyer 6.1 is set for release in 30 days, and Mission Gun 5.5 is for limited members.</p>
           </details>
           <details class="faq-item">
             <summary>How do I get support after buying?</summary>
@@ -1414,7 +1546,7 @@
         <div class="final-cta">
           <h3>Ready To Move Like Premium?</h3>
           <p style="max-width:780px; margin:0 auto 18px; color:#d3c8b7; line-height:1.8;">
-            Get GrootMoney Broker Killer 5.1 now or join the upcoming flow for Destroyer 6.1 with strong presentation and direct support.
+            Get GrootMoney Broker Killer 5.1 now, join the upcoming flow for Destroyer 6.1, or get limited member access for Mission Gun 5.5.
           </p>
           <div class="cta-row" style="justify-content:center; margin-bottom:0;">
             <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy 5.1 Now</a>
@@ -1432,7 +1564,7 @@
   <footer class="footer">
     <div class="container" style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;">
       <div>© 2026 ForexWealthEmpire(Pty)Ltd. All rights reserved.</div>
-      <div>Broker Killer 5.1 Available • Destroyer 6.1 Release In 30 Days • MT5 Direction</div>
+      <div>Broker Killer 5.1 Available • Destroyer 6.1 Release In 30 Days • Mission Gun 5.5 Limited Members • MT5 Direction</div>
     </div>
   </footer>
 
@@ -1449,32 +1581,57 @@
     </div>
   </div>
 
+  <div id="missionGunPopup" style="position:fixed; left:20px; bottom:20px; width:min(360px, calc(100% - 24px)); z-index:999; opacity:0; transform:translateY(24px) scale(0.96); pointer-events:none; transition:all 0.35s ease;">
+    <div style="position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:linear-gradient(135deg, rgba(15,15,15,0.98), rgba(70,20,20,0.96) 60%, rgba(240,201,122,0.90)); box-shadow:0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(240,201,122,0.18); color:#fff; padding:22px; backdrop-filter:blur(12px);">
+      <button id="closeMissionGunPopup" style="position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.14); color:#fff; font-size:18px; font-weight:800;">×</button>
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:14px;">Limited Members</div>
+      <h3 style="margin:0 0 10px; font-family:'Orbitron', sans-serif; text-transform:uppercase; line-height:1.05; font-size:1.4rem;">Mission Gun 5.5</h3>
+      <p style="margin:0 0 16px; color:rgba(255,255,255,0.9); line-height:1.7; font-size:14px;">
+        The real Mission Gun. Scalping bot with custom holding seconds trading mode, built for fast market interaction and limited members access.
+      </p>
+      <div style="display:grid; gap:10px; margin-bottom:16px;">
+        <div style="padding:10px 12px; border-radius:14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px;">Custom holding seconds</div>
+        <div style="padding:10px 12px; border-radius:14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px;">Trading mode control</div>
+        <div style="padding:10px 12px; border-radius:14px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); font-size:13px;">Scalping bot</div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20Mission%20Gun%205.5%20limited%20member%20access" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:linear-gradient(135deg, #f0c97a, #fff0c5); color:#0a0a0a; font-weight:900;">Get Access</a>
+        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20details%20about%20Mission%20Gun%205.5" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:800;">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
   <script>
     (function(){
       const popup = document.getElementById('scrollOfferPopup');
       const closeBtn = document.getElementById('closeOfferPopup');
       if(!popup) return;
       let dismissed = false;
+
       function showPopup(){
         if(dismissed) return;
         popup.style.opacity = '1';
         popup.style.transform = 'translateY(0) scale(1)';
         popup.style.pointerEvents = 'auto';
       }
+
       function hidePopup(){
         popup.style.opacity = '0';
         popup.style.transform = 'translateY(24px) scale(0.96)';
         popup.style.pointerEvents = 'none';
       }
+
       window.addEventListener('scroll', function(){
         const trigger = window.innerHeight * 0.35;
         if(window.scrollY > trigger) showPopup();
         else if(!dismissed) hidePopup();
       });
+
       closeBtn && closeBtn.addEventListener('click', function(){
         dismissed = true;
         hidePopup();
       });
+
       if(window.scrollY > window.innerHeight * 0.35) showPopup();
     })();
 
@@ -1558,6 +1715,97 @@
 
       setTimeout(showOne, 3000);
       setInterval(showOne, 30000);
+    })();
+
+    (function(){
+      const slider = document.getElementById('offerSlider');
+      const prev = document.getElementById('offerPrev');
+      const next = document.getElementById('offerNext');
+      const dots = Array.from(document.querySelectorAll('.offer-dot'));
+      if(!slider) return;
+
+      const slides = Array.from(slider.children);
+      let index = 0;
+      let startX = 0;
+      let endX = 0;
+      let dragging = false;
+
+      function updateSlider(){
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      }
+
+      function goTo(i){
+        if(i < 0) i = 0;
+        if(i > slides.length - 1) i = slides.length - 1;
+        index = i;
+        updateSlider();
+      }
+
+      prev && prev.addEventListener('click', () => goTo(index - 1));
+      next && next.addEventListener('click', () => goTo(index + 1));
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          goTo(Number(dot.dataset.index));
+        });
+      });
+
+      slider.addEventListener('touchstart', (e) => {
+        dragging = true;
+        startX = e.touches[0].clientX;
+        endX = startX;
+      }, { passive: true });
+
+      slider.addEventListener('touchmove', (e) => {
+        if(!dragging) return;
+        endX = e.touches[0].clientX;
+      }, { passive: true });
+
+      slider.addEventListener('touchend', () => {
+        if(!dragging) return;
+        const diff = startX - endX;
+        if(diff > 50) goTo(index + 1);
+        if(diff < -50) goTo(index - 1);
+        dragging = false;
+      });
+
+      updateSlider();
+    })();
+
+    (function(){
+      const offerPopup = document.getElementById('scrollOfferPopup');
+      const missionPopup = document.getElementById('missionGunPopup');
+      const closeOffer = document.getElementById('closeOfferPopup');
+      const closeMission = document.getElementById('closeMissionGunPopup');
+
+      if(!offerPopup || !missionPopup) return;
+
+      function showMissionPopup(){
+        missionPopup.style.opacity = '1';
+        missionPopup.style.transform = 'translateY(0) scale(1)';
+        missionPopup.style.pointerEvents = 'auto';
+      }
+
+      function hideMissionPopup(){
+        missionPopup.style.opacity = '0';
+        missionPopup.style.transform = 'translateY(24px) scale(0.96)';
+        missionPopup.style.pointerEvents = 'none';
+      }
+
+      closeOffer && closeOffer.addEventListener('click', function(){
+        offerPopup.style.opacity = '0';
+        offerPopup.style.transform = 'translateY(24px) scale(0.96)';
+        offerPopup.style.pointerEvents = 'none';
+
+        setTimeout(() => {
+          showMissionPopup();
+        }, 10000);
+      });
+
+      closeMission && closeMission.addEventListener('click', function(){
+        hideMissionPopup();
+      });
     })();
   </script>
 </body>
