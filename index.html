@@ -3,121 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrootMoney Bot | Forex Wealth Empire</title>
+<title>GrootMoney System Boot</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
 
 <style>
-
 body{
   margin:0;
-  font-family:'Inter',sans-serif;
-  background:#050505;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* CHART BACKGROUND */
-#chartBg{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  opacity:0.15;
-}
-
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  padding:20px;
-  position:relative;
-  z-index:2;
-}
-
-.logo{
-  font-family:'Orbitron';
-  font-weight:900;
-}
-
-/* HERO */
-.hero{
-  text-align:center;
-  padding:80px 20px;
-  position:relative;
-  z-index:2;
-}
-
-/* ROBOT EYE */
-.robot-eye{
-  margin:40px auto;
-  width:140px;
-  height:140px;
-  border-radius:50%;
   background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:2px solid #ff1f1f;
-}
-
-.eye{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  background:#ff1f1f;
-  box-shadow:0 0 20px red;
-  animation:move 3s infinite;
-}
-
-@keyframes move{
-  0%{transform:translate(0,0)}
-  50%{transform:translate(20px,-10px)}
-  100%{transform:translate(0,0)}
-}
-
-/* BOT CARDS */
-.bot-container{
-  display:flex;
+  font-family:'Orbitron',sans-serif;
+  color:#fff;
   overflow:hidden;
 }
 
-.bot{
-  min-width:100%;
-  padding:40px;
-  text-align:center;
-}
-
-/* BUTTON */
-.btn{
-  background:red;
-  padding:12px 20px;
-  border:none;
-  color:#fff;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* POPUPS */
-.popup{
-  position:fixed;
-  top:0;
-  left:0;
+/* GRID */
+.grid{
+  position:absolute;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.8);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:999;
+  background:
+    linear-gradient(rgba(255,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,0,0,0.05) 1px, transparent 1px);
+  background-size:40px 40px;
 }
 
-.popup-box{
+/* ROBOT CORE */
+.core{
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ff0000,transparent);
+  box-shadow:0 0 80px red;
+  animation:pulse 2s infinite;
+}
+
+.eye{
+  width:40px;
+  height:40px;
+  background:red;
+  border-radius:50%;
+  margin:auto;
+  margin-top:70px;
+  box-shadow:0 0 30px red;
+  animation:scan 3s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-50%) scale(1.2)}
+  100%{transform:translate(-50%,-50%) scale(1)}
+}
+
+@keyframes scan{
+  0%{transform:translateX(0)}
+  50%{transform:translateX(20px)}
+  100%{transform:translateX(0)}
+}
+
+/* TERMINAL */
+.terminal{
+  position:absolute;
+  bottom:20%;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  max-width:600px;
+  background:#050505;
+  border:1px solid red;
+  padding:20px;
+  font-size:12px;
+  color:#ff2b2b;
+  box-shadow:0 0 20px red;
+}
+
+/* LOADER */
+.loader{
+  margin-top:10px;
+  height:4px;
   background:#111;
-  padding:30px;
+  overflow:hidden;
+}
+
+.loader span{
+  display:block;
+  height:100%;
+  width:40%;
+  background:red;
+  animation:load 1s infinite;
+}
+
+@keyframes load{
+  0%{margin-left:-40%}
+  100%{margin-left:100%}
+}
+
+/* WARNING */
+.warning{
+  position:absolute;
+  top:10px;
+  width:100%;
   text-align:center;
+  color:red;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:1}
+  50%{opacity:0}
+  100%{opacity:1}
+}
+
+/* COUNTDOWN */
+.count{
+  font-size:28px;
+  margin-top:10px;
+}
+
+canvas{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0.2;
 }
 
 </style>
@@ -125,61 +135,63 @@ header{
 
 <body>
 
-<canvas id="chartBg"></canvas>
+<div class="grid"></div>
 
-<header>
-  <div class="logo">GROOTMONEY</div>
-</header>
+<canvas id="chart"></canvas>
 
-<section class="hero">
-  <h1>Choose Your Trading Weapon</h1>
-
-  <div class="robot-eye">
-    <div class="eye"></div>
-  </div>
-
-</section>
-
-<section class="bot-container" id="slider">
-
-  <div class="bot">
-    <h2>Broker Killer 5.1</h2>
-    <p>Available Now</p>
-    <button class="btn">Buy Now</button>
-  </div>
-
-  <div class="bot">
-    <h2>Broker Destroyer 6.1</h2>
-    <p>Coming in 30 Days</p>
-  </div>
-
-  <div class="bot">
-    <h2>Mission Gun 5.5</h2>
-    <p>Fast Sculpting Bot</p>
-  </div>
-
-</section>
-
-<!-- POPUP 1 -->
-<div class="popup" id="popup1">
-  <div class="popup-box">
-    <h2>Bot Collection Updated</h2>
-    <button onclick="closePopup()">Enter</button>
-  </div>
+<div class="warning">
+⚠️ HIGH FREQUENCY SYSTEM DETECTED • BROKER RISK ACTIVE ⚠️
 </div>
 
-<!-- POPUP 2 -->
-<div class="popup" id="popup2" style="display:none;">
-  <div class="popup-box">
-    <h2>Mission Gun 5.5 Loading</h2>
-    <button onclick="closePopup2()">Close</button>
-  </div>
+<div class="core">
+  <div class="eye"></div>
 </div>
+
+<div class="terminal" id="terminal">
+> Initializing GrootMoney Engine...<br>
+</div>
+
+<div class="count" id="count"></div>
 
 <script>
 
-/* CHART BACKGROUND */
-const canvas = document.getElementById("chartBg");
+/* TERMINAL TEXT */
+const lines = [
+"> Connecting to market...",
+"> Loading candle pressure engine...",
+"> Activating Mission Gun system...",
+"> Checking broker stability...",
+"> WARNING: High win-rate detected...",
+"> Final calibration..."
+];
+
+let i = 0;
+
+function typeLine(){
+  if(i < lines.length){
+    document.getElementById("terminal").innerHTML += lines[i] + "<br>";
+    i++;
+    setTimeout(typeLine, 1000);
+  }
+}
+typeLine();
+
+/* COUNTDOWN */
+let time = 5;
+function countdown(){
+  document.getElementById("count").innerText = "ENTERING SYSTEM IN " + time;
+  time--;
+
+  if(time < 0){
+    window.location.href = "https://skosana1998.github.io/grootmoney-bot-site/";
+  } else {
+    setTimeout(countdown,1000);
+  }
+}
+setTimeout(countdown,4000);
+
+/* CANDLE ANIMATION */
+const canvas = document.getElementById("chart");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
@@ -187,29 +199,19 @@ canvas.height = window.innerHeight;
 
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.beginPath();
-  ctx.moveTo(0,canvas.height/2);
 
-  for(let i=0;i<canvas.width;i+=20){
-    let y = canvas.height/2 + Math.random()*100-50;
-    ctx.lineTo(i,y);
+  for(let x=0;x<canvas.width;x+=20){
+    let open = Math.random()*canvas.height;
+    let close = open + (Math.random()*100 - 50);
+
+    ctx.strokeStyle="red";
+    ctx.beginPath();
+    ctx.moveTo(x, open);
+    ctx.lineTo(x, close);
+    ctx.stroke();
   }
-
-  ctx.strokeStyle="red";
-  ctx.stroke();
 }
-
-setInterval(draw,1500);
-
-/* POPUPS */
-function closePopup(){
-  document.getElementById("popup1").style.display="none";
-  document.getElementById("popup2").style.display="flex";
-}
-
-function closePopup2(){
-  document.getElementById("popup2").style.display="none";
-}
+setInterval(draw,800);
 
 </script>
 
