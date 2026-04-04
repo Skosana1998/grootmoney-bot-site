@@ -1,158 +1,1678 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrootMoney | Trading Bots</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GrootMoney Broker Killer | Forex Wealth Empire</title>
+  <meta name="description" content="Premium PC Vision MT5 trading bot by Forex Wealth Empire. Limited pre-order, premium design, live feedback, and direct WhatsApp support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0c0c0c;
+      --card: rgba(255,255,255,0.05);
+      --card-2: rgba(255,255,255,0.03);
+      --stroke: rgba(255,255,255,0.08);
+      --text: #f6f3ea;
+      --muted: #b8ae9b;
+      --gold: #f0c97a;
+      --gold-2: #9d6f18;
+      --red: #ff2323;
+      --red-soft: rgba(255,35,35,0.22);
+      --green: #67ff9f;
+      --shadow-gold: 0 0 30px rgba(240,201,122,0.18);
+      --shadow-red: 0 0 35px rgba(255,35,35,0.15);
+      --radius: 24px;
+      --max: 1220px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,35,35,0.12), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(240,201,122,0.12), transparent 25%),
+        linear-gradient(180deg, #020202 0%, #080808 35%, #030303 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-<style>
+    .bg-lines,
+    .bg-lines::before,
+    .bg-lines::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      z-index: -2;
+    }
 
-/* ===== ROOT ===== */
-:root{
-  --bg:#050505;
-  --gold:#d4af37;
-  --text:#fff;
-  --soft:#aaa;
-}
+    .bg-lines {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent 90%);
+    }
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-}
+    .bg-lines::before {
+      background: radial-gradient(circle at center, rgba(255,35,35,0.15), transparent 35%);
+      filter: blur(40px);
+      animation: pulseGlow 6s ease-in-out infinite;
+    }
 
-/* ===== HEADER ===== */
-header{
-  padding:20px 30px;
-  display:flex;
-  justify-content:space-between;
-}
+    .bg-lines::after {
+      background: radial-gradient(circle at 60% 40%, rgba(240,201,122,0.14), transparent 28%);
+      filter: blur(55px);
+      animation: floatGlow 9s ease-in-out infinite;
+    }
 
-.logo{
-  font-family:'Orbitron';
-  color:var(--gold);
-  font-weight:900;
-}
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.55; }
+      50% { transform: scale(1.12); opacity: 0.9; }
+    }
 
-/* ===== HERO ===== */
-.hero{
-  text-align:center;
-  padding:80px 20px;
-}
+    @keyframes floatGlow {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(25px) translateX(-18px); }
+    }
 
-.hero h1{
-  font-family:'Orbitron';
-  text-shadow:0 0 20px rgba(212,175,55,0.3);
-}
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-.hero p{
-  color:var(--soft);
-}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 5, 5, 0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
 
-/* ===== BUTTONS ===== */
-.btn{
-  padding:12px 22px;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  margin:5px;
-}
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
 
-.btn-primary{
-  background:linear-gradient(135deg,#d4af37,#8c6b1f);
-  color:#000;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+    }
 
-.btn-outline{
-  border:1px solid rgba(212,175,55,0.4);
-  color:var(--gold);
-  background:none;
-}
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.95), rgba(240,201,122,0.9));
+      box-shadow: var(--shadow-red), var(--shadow-gold);
+    }
 
-/* ===== BOTS ===== */
-.bots{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-  padding:40px;
-}
+    .brand-text strong {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 14px;
+    }
 
-.card{
-  width:300px;
-  padding:25px;
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:15px;
-  transition:0.3s;
-}
+    .brand-text span {
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-.card:hover{
-  border:1px solid rgba(212,175,55,0.4);
-  box-shadow:0 0 30px rgba(212,175,55,0.2);
-  transform:translateY(-5px);
-}
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-.card h2{
-  font-family:'Orbitron';
-}
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
 
-.tag{
-  color:var(--gold);
-  font-size:12px;
-}
+    nav a:hover { color: var(--text); }
 
-.coming{
-  color:#888;
-}
+    .nav-cta {
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: #050505;
+      background: linear-gradient(135deg, var(--gold), #fff1cc);
+      font-weight: 800;
+      box-shadow: var(--shadow-gold);
+    }
 
-/* ===== TICKER ===== */
-.ticker{
-  color:var(--gold);
-  text-align:center;
-  padding:10px;
-  border-top:1px solid #111;
-  border-bottom:1px solid #111;
-}
+    .announcement {
+      background: linear-gradient(90deg, rgba(255,35,35,0.12), rgba(240,201,122,0.12), rgba(255,35,35,0.12));
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+      white-space: nowrap;
+    }
 
-/* ===== LIVE SALE ===== */
-#liveSale{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:#0c0c0c;
-  border:1px solid rgba(212,175,55,0.4);
-  padding:12px;
-  border-radius:10px;
-  font-size:12px;
-  display:none;
-}
+    .announcement-track {
+      display: inline-flex;
+      gap: 48px;
+      padding: 14px 0;
+      min-width: 200%;
+      animation: marquee 24s linear infinite;
+      font-weight: 700;
+      color: #f9e4b6;
+    }
 
-</style>
+    .announcement-track span { letter-spacing: 0.06em; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .hero {
+      position: relative;
+      padding: 92px 0 70px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f8d9a0;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--red);
+      box-shadow: 0 0 15px var(--red);
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    h1 {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .gradient-text {
+      background: linear-gradient(180deg, #fff8ea, #e8b961 75%, #a86909);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 35px rgba(240,201,122,0.18);
+    }
+
+    .hero p.lead {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 22px 0 30px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      will-change: transform;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-gold {
+      color: #050505;
+      background: linear-gradient(135deg, var(--gold), #fff0c5);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-dark {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .btn-live {
+      color: #fff;
+      background: linear-gradient(135deg, #ff1b1b, #8f0000);
+      box-shadow: var(--shadow-red);
+      animation: liveFlash 1.4s ease-in-out infinite;
+    }
+
+    @keyframes liveFlash {
+      0%,100% { box-shadow: 0 0 0 rgba(255,35,35,0.25), 0 0 30px rgba(255,35,35,0.12); }
+      50% { box-shadow: 0 0 24px rgba(255,35,35,0.5), 0 0 45px rgba(255,35,35,0.22); }
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+      max-width: 720px;
+    }
+
+    .hero-points .point {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 16px;
+      border-radius: 16px;
+      color: #ede5d8;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 600px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top, rgba(255,35,35,0.2), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(240,201,122,0.18), transparent 30%),
+        #090909;
+      overflow: hidden;
+      box-shadow: var(--shadow-gold), var(--shadow-red);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255,35,35,0.25), transparent 60%);
+      filter: blur(10px);
+      animation: floatGlow 7s ease-in-out infinite;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -10%;
+      bottom: -10%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(240,201,122,0.2), transparent 60%);
+      filter: blur(8px);
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+
+    .robot-core {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 30px;
+      z-index: 2;
+    }
+
+    .robot-head {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      border-radius: 46% 46% 42% 42%;
+      background:
+        linear-gradient(180deg, rgba(36,36,36,1), rgba(11,11,11,1));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.05), 0 0 40px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      animation: robotFloat 4.5s ease-in-out infinite;
+    }
+
+    @keyframes robotFloat {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .robot-head::before,
+    .robot-head::after {
+      content: "";
+      position: absolute;
+      top: 94px;
+      width: 44px;
+      height: 16px;
+      border-radius: 999px;
+      background: #ff2a2a;
+      box-shadow: 0 0 18px rgba(255,42,42,0.7), 0 0 35px rgba(255,42,42,0.38);
+      animation: eyeBlink 2.6s ease-in-out infinite;
+    }
+
+    .robot-head::before { left: 58px; }
+    .robot-head::after { right: 58px; }
+
+    @keyframes eyeBlink {
+      0%, 45%, 100% { transform: scaleY(1); opacity: 1; }
+      48%, 52% { transform: scaleY(0.15); opacity: 0.75; }
+    }
+
+    .robot-neck {
+      width: 110px;
+      height: 88px;
+      margin-top: -8px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(28,28,28,1), rgba(10,10,10,1));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 18px rgba(255,255,255,0.03);
+    }
+
+    .robot-text {
+      margin-top: 26px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .robot-text h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.4rem, 3vw, 2.3rem);
+      letter-spacing: 0.14em;
+      color: #fff1cc;
+    }
+
+    .robot-text p {
+      margin: 0;
+      color: #baaf9c;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+
+    .scan-lines {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%);
+      background-size: 100% 8px;
+      opacity: 0.28;
+      mix-blend-mode: screen;
+      animation: scan 8s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes scan {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(20px); }
+    }
+
+    .side-panel {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      padding: 14px;
+      width: 210px;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      z-index: 3;
+    }
+
+    .side-panel .small-title {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f2cf8a;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 12px;
+    }
+
+    .metric:last-child { border-bottom: 0; }
+    .metric span:first-child { color: #9d9587; }
+    .metric span:last-child { color: #fff; font-weight: 700; }
+
+    .section {
+      padding: 36px 0 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .section-head p {
+      max-width: 700px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .grid-3, .grid-4, .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      position: relative;
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.75), transparent);
+      opacity: 0.7;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #fff4db;
+    }
+
+    .card p, .card li {
+      color: #c8bca8;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .secret-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .secret-list li {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 16px;
+      border-radius: 16px;
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      margin-top: 8px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 18px;
+      white-space: nowrap;
+      min-width: 200%;
+      padding: 18px;
+      animation: reviewMove 32s linear infinite;
+    }
+
+    @keyframes reviewMove {
+      from { transform: translateX(-2%); }
+      to { transform: translateX(-52%); }
+    }
+
+    .review-box {
+      min-width: 320px;
+      max-width: 320px;
+      min-height: 250px;
+      padding: 22px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .review-box strong {
+      display: block;
+      margin: 0;
+      color: #ffe6b0;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+    }
+
+    .review-box p {
+      margin: 0;
+      color: #ddd2c0;
+      line-height: 1.75;
+      font-size: 14px;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .price-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .pricing-main {
+      padding: 28px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
+        rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .pricing-main .mini {
+      color: #f3c56d;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .pricing-main h3 {
+      margin: 12px 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .pricing-main .old {
+      color: #8f8574;
+      text-decoration: line-through;
+      font-size: 18px;
+      margin-right: 12px;
+    }
+
+    .pricing-main .new {
+      color: #fff0c3;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .pricing-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pricing-chip {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .pay-logos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .pay-logo {
+      display: grid;
+      place-items: center;
+      min-height: 72px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #f3e6c9;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .faq {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 22px;
+      font-weight: 700;
+      color: #fff0ce;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: #c7bda9;
+      line-height: 1.75;
+    }
+
+    .footer {
+      padding: 34px 0 60px;
+      color: #938874;
+      font-size: 14px;
+    }
+
+    .final-cta {
+      margin-top: 26px;
+      padding: 30px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,35,35,0.1), rgba(240,201,122,0.08)),
+        rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      box-shadow: var(--shadow-red), var(--shadow-gold);
+    }
+
+    .final-cta h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .disclaimer {
+      margin-top: 16px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #91836e;
+    }
+
+    .broker-ticker-wrap {
+      overflow: hidden;
+      margin: 10px 0 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(90deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08), rgba(255,35,35,0.08));
+      box-shadow: 0 0 30px rgba(255,35,35,0.08), 0 0 30px rgba(240,201,122,0.08);
+    }
+
+    .broker-ticker-track {
+      display: inline-flex;
+      gap: 34px;
+      min-width: 200%;
+      white-space: nowrap;
+      padding: 16px 0;
+      animation: brokerMarquee 22s linear infinite;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f7d999;
+      font-size: 13px;
+    }
+
+    @keyframes brokerMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .broker-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr;
+      gap: 18px;
+    }
+
+    .broker-card {
+      position: relative;
+      padding: 26px;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .broker-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.8), transparent);
+      opacity: 0.8;
+    }
+
+    .broker-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(240,201,122,0.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22), 0 0 26px rgba(240,201,122,0.08);
+    }
+
+    .broker-card h3 {
+      margin: 0 0 12px;
+      color: #fff0ce;
+      font-size: 21px;
+    }
+
+    .broker-card p {
+      margin: 0 0 20px;
+      color: #cdbfa9;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .broker-card.featured {
+      background:
+        radial-gradient(circle at top left, rgba(255,35,35,0.14), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(240,201,122,0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      box-shadow: 0 0 35px rgba(255,35,35,0.08), 0 0 35px rgba(240,201,122,0.08);
+    }
+
+    .broker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f4cf89;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .broker-badge::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff2323;
+      box-shadow: 0 0 14px #ff2323;
+      animation: blink 1.2s infinite;
+    }
+
+    .broker-icon {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-size: 26px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(255,35,35,0.12), rgba(240,201,122,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 18px rgba(240,201,122,0.06);
+    }
+
+    .broker-features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .broker-feature {
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #f2e7d0;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .broker-btn {
+      display: inline-flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .price-card,
+      .grid-3,
+      .grid-4,
+      .grid-2,
+      .broker-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card { min-height: 520px; }
+      nav { display: none; }
+    }
+
+    @media (max-width: 720px) {
+      .hero { padding-top: 64px; }
+      .hero-points { grid-template-columns: 1fr; }
+      .side-panel {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+        margin: 0;
+        padding: 12px;
+      }
+      .robot-core {
+        padding: 200px 18px 24px;
+        justify-content: flex-start;
+      }
+      .robot-head {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 18px;
+      }
+      .robot-head::before, .robot-head::after {
+        top: 60px;
+        width: 28px;
+        height: 12px;
+      }
+      .robot-head::before { left: 36px; }
+      .robot-head::after { right: 36px; }
+      .robot-neck {
+        width: 86px;
+        height: 66px;
+      }
+      .robot-text h3 {
+        font-size: 1.35rem;
+        letter-spacing: 0.09em;
+      }
+      .robot-text p {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+      .hero-card {
+        min-height: 620px;
+      }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
+      .pay-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .review-box {
+        min-width: 280px;
+        max-width: 280px;
+        min-height: 270px;
+      }
+      .broker-features {
+        grid-template-columns: 1fr;
+      }
+      .broker-ticker-track {
+        gap: 22px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="bg-lines"></div>
 
-<header>
-  <div class="logo">GROOTMONEY</div>
-</header>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#home" class="brand">
+        <div class="brand-mark">GM</div>
+        <div class="brand-text">
+          <strong>GROOTMONEY BOT</strong>
+          <span>Powered by ForexWealthEmpire(Pty)Ltd</span>
+        </div>
+      </a>
 
-<section class="hero">
-  <h1>Premium Trading Bots</h1>
-  <p>Advanced MT5 systems built for precision and execution</p>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#offer">Offer</a>
+        <a href="#partners">Broker</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy Now</a>
+      </nav>
+    </div>
+  </header>
 
-  <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
-  <button class="btn btn-outline" onclick="openWhatsApp()">WhatsApp Support</button>
+  <div class="announcement">
+    <div class="announcement-track">
+      <span>50% OFF PRE-ORDER</span>
+      <span>LIMITED FOR 3 DAYS</span>
+      <span>PC VISION ONLY</span>
+      <span>MT5 ONLY</span>
+      <span>DIRECT WHATSAPP SUPPORT</span>
+      <span>FOREX WEALTH EMPIRE</span>
+      <span>50% OFF PRE-ORDER</span>
+      <span>LIMITED FOR 3 DAYS</span>
+      <span>PC VISION ONLY</span>
+      <span>MT5 ONLY</span>
+      <span>DIRECT WHATSAPP SUPPORT</span>
+      <span>FOREX WEALTH EMPIRE</span>
+    </div>
+  </div>
 
-  <div id="countdown"></div>
-  <div id="users"></div>
-</section>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Premium Launch Active</div>
+          <h1>
+            <span class="gradient-text">Broker Killer</span><br />
+            PC Vision MT5 Bot
+          </h1>
+          <p class="lead">
+            Built for serious traders who want premium presentation, aggressive identity, and a MetaTrader 5 product that looks like powerful trading software from the first second they open the page.
+          </p>
 
-<div class="ticker">
-GROOTMONEY • SMART MONEY CONCEPT • HIGH PERFORMANCE EXECUTION
-</div>
+          <div class="cta-row">
+            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Get 50% Off Now</a>
+            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20the%20GrootMoney%20Bot" target="_blank">Live WhatsApp</a>
+            <a class="btn btn-dark" href="https://discord.gg/gKrKw4qxkE" target="_blank">Access Our Discord</a>
+          </div>
 
-<section class
+          <div style="display:flex; flex-wrap:wrap; gap:14px; margin:24px 0 10px;">
+            <div id="countdownBox" style="display:flex; gap:10px; flex-wrap:wrap;">
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
+                <div id="days" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">03</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Days</div>
+              </div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
+                <div id="hours" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">00</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Hours</div>
+              </div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
+                <div id="minutes" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">00</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Minutes</div>
+              </div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
+                <div id="seconds" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">00</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Seconds</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-points">
+            <div class="point">PC Vision only for a focused, premium MT5 experience.</div>
+            <div class="point">Built to look and feel like elite trading software.</div>
+            <div class="point">Fast setup support and direct purchase access.</div>
+            <div class="point">Perfect for traders who want presence, power, and clean execution.</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="scan-lines"></div>
+
+          <div class="side-panel">
+            <div class="small-title">System Status</div>
+            <div class="metric"><span>Bot Status</span><span>SCANNING</span></div>
+            <div class="metric"><span>Mode</span><span>AGGRESSIVE</span></div>
+            <div class="metric"><span>Session</span><span>NEW YORK</span></div>
+            <div class="metric"><span>Platform</span><span>MT5</span></div>
+            <div class="metric"><span>Access</span><span>PC VISION</span></div>
+          </div>
+
+          <div class="robot-core">
+            <div class="robot-head"></div>
+            <div class="robot-neck"></div>
+            <div class="robot-text">
+              <h3>Broker Killer</h3>
+              <p>Powered by ForexWealthEmpire(Pty)Ltd</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why Traders Want It</h2>
+          <p>
+            Because of the high probability no trader deserves to suffer from the market while we are here. This is where your journey begins with us.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <article class="card">
+            <h3>Built for MT5</h3>
+            <p>Clear product direction: this is for MetaTrader 5 and sold as a PC Vision setup, not a mobile trading app.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <h2>How It Works</h2>
+          <p>
+            We keep the exact strategy private, but clients still need a strong explanation of what they are getting. This section gives confidence without exposing the secret sauce.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Secret Edge Presentation</h3>
+            <ul class="secret-list">
+              <li>Designed around structured market behavior and disciplined signal logic.</li>
+              <li>Built to deliver a clean software experience instead of a random retail feel.</li>
+              <li>Focused on powerful presentation, serious branding, and clear buyer confidence.</li>
+              <li>Created for traders who want premium identity around their trading tools.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>What Clients Receive</h3>
+            <ul class="secret-list">
+              <li>Premium GrootMoney Bot access for MT5 PC setup.</li>
+              <li>Guided support through direct WhatsApp communication.</li>
+              <li>Community connection through Discord.</li>
+              <li>Fast pre-order access while the offer is still active.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2>Recent Feedback</h2>
+          <p>
+            Client reactions displayed in a slow premium moving row so the page keeps feeling alive instead of static.
+          </p>
+        </div>
+
+        <div class="ticker-wrap">
+          <div class="ticker-track">
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Loyiso Bandla</strong>
+              <p>Best profitable bot I have used. It is simple to understand, easy to run, and it keeps working while I focus on other things.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Bheki</strong>
+              <p>This bot is clean and powerful. I like waking up and seeing trades already managed for me while I was sleeping.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Wesley Matea</strong>
+              <p>Simple setup, strong performance, and a serious premium feel. It gives me confidence because it actually feels built to make money.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>John</strong>
+              <p>One of the best bots I have seen. Straight to the point, profitable, and perfect for traders who want results without stress.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Maureen Shongwe</strong>
+              <p>I like that it works while I am sleeping. It feels simple, professional, and the results make it look like a bot worth taking seriously.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Loyiso Bandla</strong>
+              <p>Best profitable bot I have used. It is simple to understand, easy to run, and it keeps working while I focus on other things.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Bheki</strong>
+              <p>This bot is clean and powerful. I like waking up and seeing trades already managed for me while I was sleeping.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Wesley Matea</strong>
+              <p>Simple setup, strong performance, and a serious premium feel. It gives me confidence because it actually feels built to make money.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>John</strong>
+              <p>One of the best bots I have seen. Straight to the point, profitable, and perfect for traders who want results without stress.</p>
+            </div>
+            <div class="review-box">
+              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <strong>Maureen Shongwe</strong>
+              <p>I like that it works while I am sleeping. It feels simple, professional, and the results make it look like a bot worth taking seriously.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="offer">
+      <div class="container">
+        <div class="section-head">
+          <h2>Limited Offer</h2>
+          <p>
+            A clean premium offer section that pushes urgency without making the page look cheap.
+          </p>
+        </div>
+
+        <div class="price-card">
+          <div class="pricing-main">
+            <div class="mini">Pre-order now</div>
+            <h3>50% Off GrootMoney Bot</h3>
+            <p>
+              <span class="old">R2000</span>
+              <span class="new">R1000</span>
+            </p>
+            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+              Limited pre-order pricing for serious buyers who want early access to the premium GrootMoney PC Vision MT5 experience.
+            </p>
+            <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
+              <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Through Whop</a>
+              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20claim%20the%2050%25%20off%20GrootMoney%20offer" target="_blank">Claim on WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="pricing-side">
+            <div class="pricing-chip">
+              <h3 style="margin:0 0 10px;">Included</h3>
+              <p style="margin:0;">PC Vision access, MT5 product direction, premium branding, buyer support, and community access.</p>
+            </div>
+            <div class="pricing-chip">
+              <h3 style="margin:0 0 10px;">Important</h3>
+              <p style="margin:0;">This product is presented as PC Vision only and works around MetaTrader 5 positioning.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-logos">
+          <div class="pay-logo">Visa</div>
+          <div class="pay-logo">Mastercard</div>
+          <div class="pay-logo">Binance</div>
+          <div class="pay-logo">Skrill</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="partners">
+      <div class="container">
+        <div class="section-head">
+          <h2>Recommended Broker</h2>
+          <p>
+            Trade with the recommended broker and get smooth setup access, direct support, and community connection in one place.
+          </p>
+        </div>
+
+        <div class="broker-ticker-wrap">
+          <div class="broker-ticker-track">
+            <span>RCG MARKETS</span>
+            <span>MT5 READY</span>
+            <span>FAST SUPPORT</span>
+            <span>PREMIUM ACCESS</span>
+            <span>FOREX WEALTH EMPIRE</span>
+            <span>RCG MARKETS</span>
+            <span>MT5 READY</span>
+            <span>FAST SUPPORT</span>
+            <span>PREMIUM ACCESS</span>
+            <span>FOREX WEALTH EMPIRE</span>
+          </div>
+        </div>
+
+        <div class="broker-grid">
+          <article class="broker-card featured">
+            <div class="broker-badge">Recommended</div>
+            <h3>RCG Markets Broker</h3>
+            <p>
+              We recommend RCG Markets for a smooth experience with the GrootMoney Bot and a clean MetaTrader 5 setup.
+            </p>
+
+            <div class="broker-features">
+              <div class="broker-feature">MT5 Compatible</div>
+              <div class="broker-feature">Fast Account Setup</div>
+              <div class="broker-feature">Bot Ready Direction</div>
+              <div class="broker-feature">Trusted Access</div>
+            </div>
+
+            <a href="https://my.rcgmarkets.com/auth/register?partner_code=9614225" target="_blank" class="btn btn-gold broker-btn">
+              Open RCG Account
+            </a>
+          </article>
+
+          <article class="broker-card">
+            <div class="broker-icon">💬</div>
+            <h3>Community Access</h3>
+            <p>
+              Join our Discord community for updates, support, and live discussions with the Forex Wealth Empire network.
+            </p>
+            <a href="https://discord.gg/gKrKw4qxkE" target="_blank" class="btn btn-dark broker-btn">
+              Join Discord
+            </a>
+          </article>
+
+          <article class="broker-card">
+            <div class="broker-icon">⚡</div>
+            <h3>Fast Support</h3>
+            <p>
+              Get direct help quickly on WhatsApp for setup questions, buying help, and support after access.
+            </p>
+            <a href="https://wa.me/27636136117?text=Hey%20I%20want%20help%20with%20the%20GrootMoney%20Bot" target="_blank" class="btn btn-live broker-btn">
+              Chat on WhatsApp
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="spinwin">
+      <div class="container">
+        <div class="section-head">
+          <h2>Spin & Win</h2>
+          <p>
+            Give visitors one premium spin every 24 hours to unlock a live offer and keep them engaged on the page.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card" style="display:flex; justify-content:center; align-items:center; min-height:520px; overflow:visible;">
+            <div style="position:relative; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;">
+              <div style="position:relative; width:min(360px, 100%); aspect-ratio:1/1; display:grid; place-items:center;">
+                <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:18px solid transparent; border-right:18px solid transparent; border-top:0; border-bottom:34px solid #f0c97a; filter:drop-shadow(0 0 12px rgba(240,201,122,0.35)); z-index:3;"></div>
+                <div id="spinWheel" style="width:100%; height:100%; border-radius:50%; border:10px solid rgba(255,255,255,0.09); box-shadow:0 20px 60px rgba(0,0,0,0.35), 0 0 35px rgba(255,35,35,0.12); position:relative; overflow:hidden; background:conic-gradient(
+                  from -22.5deg,
+                  #8f0000 0deg 45deg,
+                  #c08b2a 45deg 90deg,
+                  #2d2d2d 90deg 135deg,
+                  #d51d1d 135deg 180deg,
+                  #ad7b1d 180deg 225deg,
+                  #1d1d1d 225deg 270deg,
+                  #b31313 270deg 315deg,
+                  #e4b860 315deg 360deg
+                ); transition: transform 5.5s cubic-bezier(.18,.9,.12,1);">
+                  <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at center, transparent 0 54%, rgba(0,0,0,0.14) 55% 100%);"></div>
+                  <div style="position:absolute; inset:0; font-family:'Orbitron',sans-serif; font-weight:800; text-transform:uppercase; color:#fff7e7; font-size:12px; letter-spacing:.06em;">
+                    <div style="position:absolute; left:50%; top:18px; transform:translateX(-50%);">50% Off</div>
+                    <div style="position:absolute; right:48px; top:54px; transform:rotate(45deg);">15% Off</div>
+                    <div style="position:absolute; right:16px; top:50%; transform:translateY(-50%) rotate(90deg);">Signals</div>
+                    <div style="position:absolute; right:50px; bottom:54px; transform:rotate(135deg);">30% Off</div>
+                    <div style="position:absolute; left:50%; bottom:18px; transform:translateX(-50%) rotate(180deg);">Try Again</div>
+                    <div style="position:absolute; left:48px; bottom:54px; transform:rotate(225deg);">15% Off</div>
+                    <div style="position:absolute; left:16px; top:50%; transform:translateY(-50%) rotate(270deg);">Signals</div>
+                    <div style="position:absolute; left:50px; top:54px; transform:rotate(315deg);">30% Off</div>
+                  </div>
+                  <div style="position:absolute; inset:50%; width:96px; height:96px; margin-left:-48px; margin-top:-48px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg, #101010, #252525); border:1px solid rgba(255,255,255,0.1); box-shadow:0 0 24px rgba(0,0,0,0.3); z-index:2; text-align:center; font-family:'Orbitron',sans-serif; color:#f0c97a; font-weight:800;">SPIN</div>
+                </div>
+              </div>
+              <button id="spinButton" class="btn btn-gold" type="button">Spin Now</button>
+              <div id="spinMeta" style="text-align:center; color:#b8ae9b; font-size:13px; line-height:1.7;">1 spin every 24 hours.</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Available Rewards</h3>
+            <ul class="secret-list">
+              <li>50% Off GrootMoney offer</li>
+              <li>30% Off access discount</li>
+              <li>15% Off extra offer</li>
+              <li>Free signals access reward</li>
+              <li>Try again after 24 hours</li>
+            </ul>
+            <div id="spinResult" style="margin-top:18px; padding:18px; border-radius:18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); color:#f1e6d0; min-height:120px; display:flex; align-items:center; line-height:1.8;">
+              Spin the wheel to unlock your offer.
+            </div>
+            <div class="cta-row" style="margin-top:18px;">
+              <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20want%20to%20claim%20my%20spin%20reward" target="_blank">Claim Reward</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Important Info</h2>
+          <p>
+            This section answers the questions serious buyers will ask before they pay.
+          </p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item" open>
+            <summary>Is this a mobile app?</summary>
+            <p>No. This version is positioned as a PC Vision MT5 product, not a mobile trading app.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What platform is this for?</summary>
+            <p>This offer is presented for MetaTrader 5 use and should be marketed that way clearly across the website.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I get support after buying?</summary>
+            <p>Buyers can reach you directly through the live WhatsApp button and also enter your Discord community for additional support.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How long is the offer valid?</summary>
+            <p>The website is currently set to show a limited 3-day 50% off pre-order offer.</p>
+          </details>
+        </div>
+
+        <div class="final-cta">
+          <h3>Ready To Move Like Premium?</h3>
+          <p style="max-width:780px; margin:0 auto 18px; color:#d3c8b7; line-height:1.8;">
+            Get the GrootMoney Broker Killer page live with a premium sales flow, strong presentation, and direct conversion path.
+          </p>
+          <div class="cta-row" style="justify-content:center; margin-bottom:0;">
+            <a class="btn btn-gold" href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank">Buy Now</a>
+            <a class="btn btn-live" href="https://wa.me/27636136117?text=Hey%20I%20am%20ready%20to%20buy%20GrootMoney" target="_blank">Talk on WhatsApp</a>
+            <a class="btn btn-dark" href="https://discord.gg/gKrKw4qxkE" target="_blank">Join Discord</a>
+          </div>
+          <div class="disclaimer">
+            Trading involves risk. Presentation and support do not guarantee profits. Always trade responsibly and understand your own risk tolerance.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;">
+      <div>© 2026 ForexWealthEmpire(Pty)Ltd. All rights reserved.</div>
+      <div>GrootMoney Broker Killer • Premium PC Vision • MT5 Direction</div>
+    </div>
+  </footer>
+
+  <div id="scrollOfferPopup" style="position:fixed; right:20px; bottom:20px; width:min(360px, calc(100% - 24px)); z-index:999; opacity:0; transform:translateY(24px) scale(0.96); pointer-events:none; transition:all 0.35s ease;">
+    <div style="position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:linear-gradient(135deg, rgba(255,35,35,0.96), rgba(120,0,0,0.96) 55%, rgba(240,201,122,0.94)); box-shadow:0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(255,35,35,0.25); color:#fff; padding:22px; backdrop-filter:blur(12px);">
+      <button id="closeOfferPopup" style="position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.14); color:#fff; font-size:18px; font-weight:800;">×</button>
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:14px;">Limited Offer Live</div>
+      <h3 style="margin:0 0 10px; font-family:'Orbitron', sans-serif; text-transform:uppercase; line-height:1.05; font-size:1.6rem;">Get 50% Off GrootMoney</h3>
+      <p style="margin:0 0 16px; color:rgba(255,255,255,0.9); line-height:1.7; font-size:14px;">Secure the premium bot now for <strong style="color:#fff4c9;">R1000</strong> instead of <span style="text-decoration:line-through; opacity:0.8;">R2000</span>. Buy while the offer is still active.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:linear-gradient(135deg, #f0c97a, #fff0c5); color:#0a0a0a; font-weight:900;">Claim 50% Off</a>
+        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20the%2050%25%20off%20GrootMoney%20offer" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:800;">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const popup = document.getElementById('scrollOfferPopup');
+      const closeBtn = document.getElementById('closeOfferPopup');
+      if(!popup) return;
+      let dismissed = false;
+      function showPopup(){
+        if(dismissed) return;
+        popup.style.opacity = '1';
+        popup.style.transform = 'translateY(0) scale(1)';
+        popup.style.pointerEvents = 'auto';
+      }
+      function hidePopup(){
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateY(24px) scale(0.96)';
+        popup.style.pointerEvents = 'none';
+      }
+      window.addEventListener('scroll', function(){
+        const trigger = window.innerHeight * 0.35;
+        if(window.scrollY > trigger) showPopup();
+        else if(!dismissed) hidePopup();
+      });
+      closeBtn && closeBtn.addEventListener('click', function(){
+        dismissed = true;
+        hidePopup();
+      });
+      if(window.scrollY > window.innerHeight * 0.35) showPopup();
+    })();
+
+    (function(){
+      const endKey = 'grootmoney_offer_end';
+      let savedEnd = localStorage.getItem(endKey);
+      let endDate = savedEnd ? new Date(savedEnd) : null;
+      if(!endDate || isNaN(endDate.getTime()) || endDate < new Date()){
+        endDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+        localStorage.setItem(endKey, endDate.toISOString());
+      }
+      const d = document.getElementById('days');
+      const h = document.getElementById('hours');
+      const m = document.getElementById('minutes');
+      const s = document.getElementById('seconds');
+      function pad(n){ return String(n).padStart(2,'0'); }
+      function tick(){
+        const now = new Date();
+        let diff = endDate - now;
+        if(diff < 0) diff = 0;
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff / (1000*60*60)) % 24);
+        const minutes = Math.floor((diff / (1000*60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        if(d) d.textContent = pad(days);
+        if(h) h.textContent = pad(hours);
+        if(m) m.textContent = pad(minutes);
+        if(s) s.textContent = pad(seconds);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    (function(){
+      const names = ['Loyiso Bandla', 'John', 'Bheki', 'Maureen', 'Wesley', 'Sipho', 'Thando'];
+      const cities = ['Eastern Cape', 'Johannesburg', 'Pretoria', 'Durban', 'Cape Town'];
+      const actions = [
+        'just purchased GrootMoney',
+        'joined the Discord community',
+        'activated the bot'
+      ];
+
+      const holder = document.createElement('div');
+      holder.id = 'livePurchasePopup';
+      holder.style.cssText = 'position:fixed;left:20px;bottom:20px;z-index:998;width:min(340px,calc(100% - 24px));opacity:0;transform:translateY(20px);pointer-events:none;transition:all .35s ease;';
+      holder.innerHTML = '<div style="border-radius:22px;padding:18px;background:linear-gradient(180deg, rgba(19,19,19,0.96), rgba(7,7,7,0.96));border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 45px rgba(0,0,0,0.35);"><div style="display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(255,35,35,0.12);border:1px solid rgba(255,255,255,0.08);color:#f0c97a;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:10px;">Live Activity</div><div id="livePurchaseText" style="color:#f1e6d0;font-size:14px;line-height:1.7;font-weight:600;"></div></div>';
+      document.body.appendChild(holder);
+      const text = holder.querySelector('#livePurchaseText');
+
+      const timeOptions = [
+        '3 days ago',
+        '2 days ago',
+        '1 day ago',
+        '5 hours ago',
+        '2 hours ago',
+        '30 minutes ago'
+      ];
+
+      function showOne(){
+        const name = names[Math.floor(Math.random()*names.length)];
+        const city = cities[Math.floor(Math.random()*cities.length)];
+        const action = actions[Math.floor(Math.random()*actions.length)];
+        const time = timeOptions[Math.floor(Math.random()*timeOptions.length)];
+
+        text.textContent = `${name} from ${city} ${action} ${time}.`;
+
+        holder.style.opacity = '1';
+        holder.style.transform = 'translateY(0)';
+
+        setTimeout(()=>{
+          holder.style.opacity = '0';
+          holder.style.transform = 'translateY(20px)';
+        }, 4500);
+      }
+
+      setTimeout(showOne, 3000);
+      setInterval(showOne, 30000);
+    })();
+
+    (function(){
+      const wheel = document.getElementById('spinWheel');
+      const btn = document.getElementById('spinButton');
+      const result = document.getElementById('spinResult');
+      const meta = document.getElementById('spinMeta');
+      if(!wheel || !btn || !result || !meta) return;
+
+      const outcomes = [
+        {label:'50% Off', code:'GM50', message:'You unlocked 50% off. Use this reward now before it expires.', weight:10},
+        {label:'15% Off', code:'GM15', message:'You unlocked 15% off access. Solid saving for today.', weight:18},
+        {label:'30% Off', code:'GM30', message:'You unlocked 30% off. Good reward — claim it now.', weight:16},
+        {label:'Try Again', code:'TRY24', message:'No reward this time. Come back after 24 hours for your next spin.', weight:20},
+        {label:'15% Off', code:'GM15', message:'You unlocked 15% off access. Solid saving for today.', weight:18},
+        {label:'30% Off', code:'GM30', message:'You unlocked 30% off. Good reward — claim it now.', weight:16}
+      ];
+
+      const storageKey = 'grootmoney_spin_state_v1';
+      let currentRotation = 0;
+      let spinning = false;
+
+      function readState(){
+        try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); }
+        catch(e){ return {}; }
+      }
+
+      function writeState(state){
+        localStorage.setItem(storageKey, JSON.stringify(state));
+      }
+
+      function nextAvailableText(nextAt){
+        const diff = nextAt - Date.now();
+        if(diff <= 0) return 'You can spin now.';
+        const hrs = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        return `Next spin in ${hrs}h ${mins}m.`;
+      }
+
+      function refreshAvailability(){
+        const state = readState();
+        if(state.nextAt && Date.now() < state.nextAt){
+          btn.disabled = true;
+          btn.style.opacity = '0.6';
+          btn.style.cursor = 'not-allowed';
+          meta.textContent = nextAvailableText(state.nextAt);
+          if(state.lastMessage){
+            result.innerHTML = `<div><strong style="color:#f0c97a;">Last reward:</strong><br>${state.lastMessage}${state.lastCode ? `<br><span style="color:#fff4c9;">Code: ${state.lastCode}</span>` : ''}</div>`;
+          }
+        } else {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          btn.style.cursor = 'pointer';
+          meta.textContent = '1 spin every 24 hours.';
+        }
+      }
+
+      function chooseIndex(){
+        const total = outcomes.reduce((sum, item) => sum + item.weight, 0);
+        let roll = Math.random() * total;
+        for(let i=0; i<outcomes.length; i++){
+          roll -= outcomes[i].weight;
+          if(roll <= 0) return i;
+        }
+        return 0;
+      }
+
+      btn.addEventListener('click', function(){
+        if(spinning || btn.disabled) return;
+        spinning = true;
+        const index = chooseIndex();
+        const selected = outcomes[index];
+        const segmentAngle = 45;
+        const segmentCenter = index * segmentAngle + segmentAngle / 2;
+        const targetRotation = 360 - segmentCenter;
+        currentRotation += 360 * 6 + targetRotation;
+        wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+        result.textContent = 'Spinning for your reward...';
+
+        setTimeout(() => {
+          const nextAt = Date.now() + 24 * 60 * 60 * 1000;
+          const state = {
+            nextAt,
+            lastLabel: selected.label,
+            lastCode: selected.code,
+            lastMessage: selected.message
+          };
+          writeState(state);
+          result.innerHTML = `<div><strong style="color:#f0c97a; font-size:16px;">${selected.label}</strong><br>${selected.message}<br><span style="color:#fff4c9;">Code: ${selected.code}</span></div>`;
+          meta.textContent = nextAvailableText(nextAt);
+          btn.disabled = true;
+          btn.style.opacity = '0.6';
+          btn.style.cursor = 'not-allowed';
+          spinning = false;
+        }, 5600);
+      });
+
+      refreshAvailability();
+      setInterval(refreshAvailability, 60000);
+    })();
+  </script>
+</body>
+  </html>
