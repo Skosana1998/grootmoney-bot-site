@@ -3,138 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrootMoney | Forex Wealth Empire</title>
+<title>GrootMoney | Trading Bots</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= ROOT ================= */
-:root {
-  --bg: #050505;
-  --bg-soft: #0c0c0c;
-
-  --gold: #d4af37;
-  --gold-soft: #f5d97a;
-
-  --text: #ffffff;
-  --text-soft: #aaaaaa;
-
-  --card: rgba(255,255,255,0.04);
-  --stroke: rgba(255,255,255,0.08);
+/* ===== ROOT ===== */
+:root{
+  --bg:#050505;
+  --gold:#d4af37;
+  --text:#fff;
+  --soft:#aaa;
 }
 
 body{
   margin:0;
-  font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
+  font-family:'Inter',sans-serif;
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 header{
+  padding:20px 30px;
   display:flex;
   justify-content:space-between;
-  padding:20px 30px;
 }
 
 .logo{
   font-family:'Orbitron';
-  font-weight:900;
   color:var(--gold);
+  font-weight:900;
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
   text-align:center;
   padding:80px 20px;
 }
 
 .hero h1{
-  font-size:32px;
+  font-family:'Orbitron';
   text-shadow:0 0 20px rgba(212,175,55,0.3);
 }
 
 .hero p{
-  color:var(--text-soft);
+  color:var(--soft);
 }
 
-/* ================= TICKER ================= */
-.ticker{
+/* ===== BUTTONS ===== */
+.btn{
+  padding:12px 22px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  margin:5px;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#d4af37,#8c6b1f);
+  color:#000;
+}
+
+.btn-outline{
+  border:1px solid rgba(212,175,55,0.4);
   color:var(--gold);
-  white-space:nowrap;
-  overflow:hidden;
-  animation:ticker 15s linear infinite;
-  border-top:1px solid var(--stroke);
-  border-bottom:1px solid var(--stroke);
-  padding:10px 0;
+  background:none;
 }
 
-@keyframes ticker{
-  0%{transform:translateX(100%)}
-  100%{transform:translateX(-100%)}
-}
-
-/* ================= BOTS ================= */
+/* ===== BOTS ===== */
 .bots{
   display:flex;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-}
-
-.bot{
-  min-width:100%;
-  scroll-snap-align:center;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
   padding:40px;
-  text-align:center;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--stroke);
-  border-radius:16px;
-  padding:30px;
-  max-width:400px;
-  margin:auto;
-  transition:0.4s;
+  width:300px;
+  padding:25px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:15px;
+  transition:0.3s;
 }
 
 .card:hover{
   border:1px solid rgba(212,175,55,0.4);
-  box-shadow:0 0 40px rgba(212,175,55,0.2);
+  box-shadow:0 0 30px rgba(212,175,55,0.2);
+  transform:translateY(-5px);
 }
 
-/* ================= BUTTON ================= */
-.btn{
-  margin-top:20px;
-  background:linear-gradient(135deg,#d4af37,#8c6b1f);
-  color:#000;
-  padding:12px 20px;
-  border:none;
-  border-radius:10px;
-  font-weight:800;
-  cursor:pointer;
+.card h2{
+  font-family:'Orbitron';
 }
 
-/* ================= POPUP ================= */
-.popup{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:999;
+.tag{
+  color:var(--gold);
+  font-size:12px;
 }
 
-.popup-box{
-  background:#111;
-  padding:30px;
-  border:1px solid var(--gold);
+.coming{
+  color:#888;
+}
+
+/* ===== TICKER ===== */
+.ticker{
+  color:var(--gold);
   text-align:center;
+  padding:10px;
+  border-top:1px solid #111;
+  border-bottom:1px solid #111;
+}
+
+/* ===== LIVE SALE ===== */
+#liveSale{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#0c0c0c;
+  border:1px solid rgba(212,175,55,0.4);
+  padding:12px;
+  border-radius:10px;
+  font-size:12px;
+  display:none;
 }
 
 </style>
@@ -147,79 +141,18 @@ header{
 </header>
 
 <section class="hero">
-  <h1>Premium Trading Systems</h1>
-  <p>Powered by ForexWealthEmpire (Pty)Ltd</p>
+  <h1>Premium Trading Bots</h1>
+  <p>Advanced MT5 systems built for precision and execution</p>
+
+  <button class="btn btn-primary" onclick="buyNow()">Buy Now</button>
+  <button class="btn btn-outline" onclick="openWhatsApp()">WhatsApp Support</button>
+
+  <div id="countdown"></div>
+  <div id="users"></div>
 </section>
 
 <div class="ticker">
-GROOTMONEY SYSTEM ACTIVE • SMART MONEY CONCEPT • HIGH PERFORMANCE EXECUTION • PREMIUM BOT SYSTEM
+GROOTMONEY • SMART MONEY CONCEPT • HIGH PERFORMANCE EXECUTION
 </div>
 
-<section class="bots">
-
-  <!-- BOT 1 -->
-  <div class="bot">
-    <div class="card">
-      <h2>Broker Killer 5.1</h2>
-      <p>Available now for serious traders.</p>
-      <p>Precision entries. Controlled execution.</p>
-      <button class="btn">Buy Now</button>
-    </div>
-  </div>
-
-  <!-- BOT 2 -->
-  <div class="bot">
-    <div class="card">
-      <h2>Broker Destroyer 6.1</h2>
-      <p>Coming soon (30 days).</p>
-      <p>Day trader & swing trader system.</p>
-    </div>
-  </div>
-
-  <!-- BOT 3 -->
-  <div class="bot">
-    <div class="card">
-      <h2>Mission Gun 5.5</h2>
-      <p>High-speed sculpting bot.</p>
-      <p>Fast growth. Aggressive execution.</p>
-
-      <p>
-      Modes: Aggressive / Ultra / Auto<br>
-      Hold: 3s / 5s / 8s / 10s
-      </p>
-    </div>
-  </div>
-
-</section>
-
-<!-- POPUP 1 -->
-<div class="popup" id="popup1">
-  <div class="popup-box">
-    <h2>Welcome to GrootMoney</h2>
-    <button onclick="openSecond()">Enter</button>
-  </div>
-</div>
-
-<!-- POPUP 2 -->
-<div class="popup" id="popup2" style="display:none;">
-  <div class="popup-box">
-    <h2>Mission Gun 5.5 Coming</h2>
-    <button onclick="closeAll()">Continue</button>
-  </div>
-</div>
-
-<script>
-
-function openSecond(){
-  document.getElementById("popup1").style.display="none";
-  document.getElementById("popup2").style.display="flex";
-}
-
-function closeAll(){
-  document.getElementById("popup2").style.display="none";
-}
-
-</script>
-
-</body>
-</html>
+<section class
