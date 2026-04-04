@@ -1,1281 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrootMoney Bot Site | Forex Wealth Empire</title>
-  <meta name="description" content="Premium GrootMoney trading bots by Forex Wealth Empire. Choose Broker Killer 5.1, Broker Destroyer 6.1 coming in 30 days, or the new GrootMoney Mission Gun 5.5 sculpting bot." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#050505;
-      --bg-soft:#0a0a0a;
-      --panel:rgba(255,255,255,0.05);
-      --panel-2:rgba(255,255,255,0.03);
-      --stroke:rgba(255,255,255,0.08);
-      --text:#ffffff;
-      --muted:rgba(255,255,255,0.68);
-      --red:#ff1f1f;
-      --red-dark:#7d0000;
-      --red-glow:rgba(255,31,31,0.28);
-      --shadow:0 25px 80px rgba(0,0,0,0.45);
-      --radius:28px;
-      --radius-sm:18px;
-      --max:1240px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(255,31,31,0.08), transparent 24%),
-        linear-gradient(180deg,#030303 0%,#090909 42%,#030303 100%);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size:34px 34px;
-      opacity:.13;
-      z-index:0;
-    }
-
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-    button{font:inherit}
-
-    .container{
-      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-      position:relative;
-      z-index:2;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:blur(18px);
-      background:rgba(4,4,4,0.78);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-
-    .topbar-inner{
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
-    .brand-mark{
-      width:48px;
-      height:48px;
-      border-radius:16px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.14), transparent 30%),
-        linear-gradient(135deg, #220000, #0c0c0c 68%);
-      border:1px solid rgba(255,31,31,0.24);
-      box-shadow:0 0 30px rgba(255,31,31,0.16);
-      display:grid;
-      place-items:center;
-      font-family:'Orbitron',sans-serif;
-      font-weight:900;
-      color:#fff;
-      letter-spacing:.06em;
-    }
-
-    .brand-copy{
-      min-width:0;
-    }
-
-    .brand-title{
-      margin:0;
-      font-size:1rem;
-      font-weight:900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand-sub{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:.82rem;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    .nav a{
-      padding:12px 16px;
-      border-radius:14px;
-      color:rgba(255,255,255,0.8);
-      transition:.25s ease;
-      font-weight:700;
-      font-size:.95rem;
-    }
-
-    .nav a:hover{
-      background:rgba(255,255,255,0.05);
-      color:#fff;
-    }
-
-    .nav .nav-cta{
-      background:linear-gradient(135deg, var(--red), var(--red-dark));
-      color:#fff;
-      box-shadow:0 12px 30px var(--red-glow);
-    }
-
-    .hero{
-      padding:88px 0 42px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      right:-120px;
-      top:-120px;
-      width:400px;
-      height:400px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,31,31,0.16), transparent 62%);
-      filter:blur(6px);
-      z-index:1;
-      pointer-events:none;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:26px;
-      align-items:stretch;
-    }
-
-    .hero-card,
-    .hero-side-card,
-    .section-card,
-    .feature-card,
-    .bot-card,
-    .cta-panel,
-    .review-card{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
-        rgba(10,10,10,0.95);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-card::before,
-    .hero-side-card::before,
-    .section-card::before,
-    .feature-card::before,
-    .bot-card::before,
-    .cta-panel::before,
-    .review-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at top right, rgba(255,31,31,0.15), transparent 32%);
-      pointer-events:none;
-    }
-
-    .hero-card{
-      padding:38px;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,31,31,0.22);
-      background:rgba(255,31,31,0.08);
-      color:#ff5858;
-      font-size:.76rem;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:900;
-      margin-bottom:20px;
-    }
-
-    .hero h1{
-      margin:0 0 14px;
-      font-family:'Orbitron',sans-serif;
-      font-size:clamp(2.25rem, 5vw, 5.2rem);
-      line-height:.98;
-      letter-spacing:-0.03em;
-    }
-
-    .hero h1 .accent{color:var(--red)}
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:1.04rem;
-      max-width:760px;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:28px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 22px;
-      border-radius:18px;
-      font-weight:800;
-      letter-spacing:.02em;
-      transition:.28s ease;
-      border:1px solid transparent;
-      cursor:pointer;
-    }
-
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{
-      background:linear-gradient(135deg, var(--red), var(--red-dark));
-      box-shadow:0 14px 36px var(--red-glow);
-      color:#fff;
-    }
-
-    .btn-secondary{
-      background:rgba(255,255,255,0.04);
-      border-color:rgba(255,255,255,0.1);
-      color:#fff;
-    }
-
-    .hero-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
-    }
-
-    .meta-pill{
-      padding:12px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      color:#fff;
-      font-weight:700;
-      font-size:.92rem;
-    }
-
-    .hero-side-card{
-      padding:28px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:100%;
-    }
-
-    .hero-side-topline{
-      display:inline-flex;
-      width:max-content;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,31,31,0.1);
-      border:1px solid rgba(255,31,31,0.24);
-      color:#ff7272;
-      font-size:.74rem;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:900;
-      margin-bottom:16px;
-    }
-
-    .hero-side-card h3{
-      margin:0 0 12px;
-      font-size:1.6rem;
-      font-weight:900;
-    }
-
-    .hero-side-card p{
-      color:var(--muted);
-      line-height:1.7;
-      margin:0 0 18px;
-    }
-
-    .hero-side-list{
-      display:grid;
-      gap:10px;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .hero-side-list li{
-      padding:14px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      font-weight:700;
-      color:#fff;
-    }
-
-    .section{
-      padding:34px 0;
-      position:relative;
-      z-index:2;
-    }
-
-    .section-head{
-      margin-bottom:24px;
-    }
-
-    .section-kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,31,31,0.22);
-      background:rgba(255,31,31,0.08);
-      color:#ff6464;
-      font-size:.76rem;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .section-title{
-      margin:0 0 10px;
-      font-size:clamp(1.7rem, 3.4vw, 3rem);
-      line-height:1.03;
-      font-weight:900;
-      letter-spacing:-0.03em;
-    }
-
-    .section-copy{
-      margin:0;
-      max-width:850px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:1rem;
-    }
-
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:20px;
-    }
-
-    .feature-card{
-      padding:24px;
-      min-height:220px;
-    }
-
-    .feature-icon{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg, rgba(255,31,31,0.18), rgba(255,255,255,0.04));
-      border:1px solid rgba(255,31,31,0.18);
-      color:#fff;
-      font-weight:900;
-      font-size:1.1rem;
-      margin-bottom:16px;
-    }
-
-    .feature-card h3{
-      margin:0 0 10px;
-      font-size:1.18rem;
-      font-weight:900;
-    }
-
-    .feature-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:.96rem;
-    }
-
-    .bot-options{
-      padding-top:10px;
-    }
-
-    .bot-swipe-wrap{
-      overflow:hidden;
-      width:100%;
-      position:relative;
-    }
-
-    .bot-swipe-track{
-      display:flex;
-      gap:24px;
-      transition:transform .45s ease;
-      will-change:transform;
-      touch-action:pan-y;
-    }
-
-    .bot-card{
-      min-width:100%;
-      padding:30px;
-    }
-
-    .bot-card-topline{
-      display:inline-flex;
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      margin-bottom:16px;
-    }
-
-    .available-line{
-      color:#fff;
-      background:linear-gradient(90deg, var(--red), var(--red-dark));
-    }
-
-    .coming-line,
-    .mission-line{
-      color:#ffb7b7;
-      background:rgba(255,31,31,0.1);
-      border:1px solid rgba(255,31,31,0.24);
-    }
-
-    .bot-card-badge{
-      color:rgba(255,255,255,0.42);
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:900;
-      margin-bottom:10px;
-    }
-
-    .bot-card-title{
-      margin:0 0 12px;
-      font-size:clamp(1.65rem, 3vw, 2.9rem);
-      line-height:1.02;
-      font-weight:900;
-    }
-
-    .bot-card-price{
-      color:#ff3131;
-      font-size:clamp(1.15rem, 2.1vw, 1.9rem);
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .bot-card-desc{
-      margin:0 0 20px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:1rem;
-      max-width:860px;
-    }
-
-    .bot-card-points{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:24px;
-    }
-
-    .bot-card-points span{
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      font-size:.92rem;
-      font-weight:700;
-      color:#fff;
-    }
-
-    .bot-card-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .bot-swipe-nav{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-      margin-top:24px;
-    }
-
-    .swipe-nav-btn{
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.04);
-      color:#fff;
-      font-size:24px;
-      cursor:pointer;
-    }
-
-    .swipe-dots{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .swipe-dot{
-      width:11px;
-      height:11px;
-      border-radius:999px;
-      border:none;
-      background:rgba(255,255,255,0.2);
-      cursor:pointer;
-      transition:all .25s ease;
-    }
-
-    .swipe-dot.active{
-      width:34px;
-      background:linear-gradient(90deg, var(--red), var(--red-dark));
-    }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-    }
-
-    .section-card{
-      padding:26px;
-    }
-
-    .section-card h3{
-      margin:0 0 12px;
-      font-size:1.2rem;
-      font-weight:900;
-    }
-
-    .section-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .review-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:20px;
-    }
-
-    .review-card{
-      padding:24px;
-    }
-
-    .review-stars{
-      color:#ff4f4f;
-      letter-spacing:.18em;
-      font-size:1rem;
-      margin-bottom:14px;
-    }
-
-    .review-card p{
-      margin:0 0 16px;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .review-name{
-      font-weight:800;
-      color:#fff;
-      font-size:.95rem;
-    }
-
-    .cta-panel{
-      padding:34px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .cta-panel h3{
-      margin:0 0 10px;
-      font-size:clamp(1.5rem, 3vw, 2.3rem);
-      line-height:1.03;
-      font-weight:900;
-    }
-
-    .cta-panel p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-      max-width:760px;
-    }
-
-    .footer{
-      padding:30px 0 42px;
-      color:rgba(255,255,255,0.6);
-      font-size:.92rem;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      padding-top:20px;
-      border-top:1px solid rgba(255,255,255,0.08);
-    }
-
-    .announcement-bar{
-      position:relative;
-      overflow:hidden;
-      border-top:1px solid rgba(255,255,255,0.06);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      background:linear-gradient(90deg, rgba(255,31,31,0.12), rgba(255,255,255,0.03), rgba(255,31,31,0.12));
-      height:48px;
-      display:flex;
-      align-items:center;
-    }
-
-    .announcement-track{
-      white-space:nowrap;
-      display:inline-flex;
-      gap:38px;
-      font-weight:800;
-      color:#fff;
-      padding-left:100%;
-      animation:marquee 26s linear infinite;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      font-size:.88rem;
-    }
-
-    @keyframes marquee{
-      0%{transform:translateX(0)}
-      100%{transform:translateX(-100%)}
-    }
-
-    .modal-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.72);
-      backdrop-filter:blur(7px);
-      z-index:999;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-    }
-
-    .modal-overlay.active{
-      display:flex;
-      animation:fadeIn .25s ease;
-    }
-
-    @keyframes fadeIn{
-      from{opacity:0}
-      to{opacity:1}
-    }
-
-    .modal-box{
-      width:min(560px, 100%);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        rgba(8,8,8,0.97);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:30px;
-      padding:28px;
-      box-shadow:0 30px 90px rgba(0,0,0,0.55);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .modal-box::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at top right, rgba(255,31,31,0.18), transparent 34%);
-      pointer-events:none;
-    }
-
-    .modal-close{
-      position:absolute;
-      top:14px;
-      right:14px;
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,0.1);
-      background:rgba(255,255,255,0.04);
-      color:#fff;
-      font-size:22px;
-      cursor:pointer;
-    }
-
-    .modal-pill{
-      display:inline-flex;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,31,31,0.1);
-      border:1px solid rgba(255,31,31,0.22);
-      color:#ff6b6b;
-      font-size:.74rem;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      margin-bottom:16px;
-    }
-
-    .modal-box h3{
-      margin:0 0 12px;
-      font-size:clamp(1.7rem, 3vw, 2.5rem);
-      line-height:1.02;
-      font-weight:900;
-    }
-
-    .modal-box p{
-      margin:0 0 18px;
-      color:var(--muted);
-      line-height:1.75;
-    }
-
-    .modal-list{
-      display:grid;
-      gap:10px;
-      margin-bottom:22px;
-    }
-
-    .modal-list span{
-      padding:12px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      color:#fff;
-      font-weight:700;
-      font-size:.93rem;
-    }
-
-    .modal-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    @media (max-width: 1080px){
-      .hero-grid,
-      .feature-grid,
-      .two-col,
-      .review-grid{
-        grid-template-columns:1fr;
-      }
-
-      .cta-panel{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-
-    @media (max-width: 860px){
-      .topbar-inner{
-        min-height:auto;
-        padding:14px 0;
-        align-items:flex-start;
-        flex-direction:column;
-      }
-
-      .nav{
-        width:100%;
-        justify-content:flex-start;
-      }
-
-      .hero{
-        padding-top:70px;
-      }
-    }
-
-    @media (max-width: 640px){
-      .container{
-        width:min(var(--max), calc(100% - 22px));
-      }
-
-      .hero-card,
-      .hero-side-card,
-      .section-card,
-      .feature-card,
-      .bot-card,
-      .review-card,
-      .cta-panel{
-        padding:22px;
-        border-radius:24px;
-      }
-
-      .hero-actions,
-      .bot-card-actions,
-      .modal-actions{
-        flex-direction:column;
-      }
-
-      .btn,
-      .bot-card .btn{
-        width:100%;
-      }
-
-      .announcement-track{
-        font-size:.78rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrootMoney Bot | Forex Wealth Empire</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#050505;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* CHART BACKGROUND */
+#chartBg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  opacity:0.15;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+.logo{
+  font-family:'Orbitron';
+  font-weight:900;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:80px 20px;
+  position:relative;
+  z-index:2;
+}
+
+/* ROBOT EYE */
+.robot-eye{
+  margin:40px auto;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #ff1f1f;
+}
+
+.eye{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#ff1f1f;
+  box-shadow:0 0 20px red;
+  animation:move 3s infinite;
+}
+
+@keyframes move{
+  0%{transform:translate(0,0)}
+  50%{transform:translate(20px,-10px)}
+  100%{transform:translate(0,0)}
+}
+
+/* BOT CARDS */
+.bot-container{
+  display:flex;
+  overflow:hidden;
+}
+
+.bot{
+  min-width:100%;
+  padding:40px;
+  text-align:center;
+}
+
+/* BUTTON */
+.btn{
+  background:red;
+  padding:12px 20px;
+  border:none;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* POPUPS */
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.popup-box{
+  background:#111;
+  padding:30px;
+  text-align:center;
+}
+
+</style>
 </head>
+
 <body>
 
-  <div class="announcement-bar">
-    <div class="announcement-track">
-      <span>GrootMoney Broker Killer 5.1 Available Now</span>
-      <span>GrootMoney Broker Destroyer 6.1 Coming In 30 Days</span>
-      <span>GrootMoney Mission Gun 5.5 Sculpting Bot Loading</span>
-      <span>Premium MT5 Bots By Forex Wealth Empire</span>
-      <span>Fast Execution • Aggressive Systems • Direct Support</span>
-    </div>
+<canvas id="chartBg"></canvas>
+
+<header>
+  <div class="logo">GROOTMONEY</div>
+</header>
+
+<section class="hero">
+  <h1>Choose Your Trading Weapon</h1>
+
+  <div class="robot-eye">
+    <div class="eye"></div>
   </div>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-mark">GM</div>
-        <div class="brand-copy">
-          <p class="brand-title">Forex Wealth Empire</p>
-          <p class="brand-sub">Premium GrootMoney Bot Collection</p>
-        </div>
-      </div>
+</section>
 
-      <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#bot-options">Bot Options</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#buy" class="nav-cta">Buy Now</a>
-      </nav>
-    </div>
-  </header>
+<section class="bot-container" id="slider">
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-card">
-          <div class="eyebrow">Premium MT5 Bot Collection</div>
-          <h1>
-            Choose Your <span class="accent">GrootMoney</span><br />
-            Trading Weapon
-          </h1>
-          <p>
-            Premium black and red trading software presentation built for serious traders.
-            Broker Killer 5.1 is available now, Broker Destroyer 6.1 is coming in 30 days,
-            and GrootMoney Mission Gun 5.5 is the new fast sculpting bot loading next.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#bot-options">Choose Bot</a>
-            <a class="btn btn-secondary" href="https://wa.me/" target="_blank" rel="noopener">Talk on WhatsApp</a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="meta-pill">PC Vision MT5 Bots</div>
-            <div class="meta-pill">Premium Red & Black Theme</div>
-            <div class="meta-pill">Fast Direct Support</div>
-          </div>
-        </div>
-
-        <div class="hero-side-card">
-          <div>
-            <div class="hero-side-topline">Current Bot Lineup</div>
-            <h3>Three GrootMoney Options</h3>
-            <p>
-              One live bot ready now. One powerful upcoming release landing in 30 days.
-              One new Mission Gun 5.5 sculpting bot built for fast pressure-based growth.
-            </p>
-          </div>
-
-          <ul class="hero-side-list">
-            <li>Broker Killer 5.1 — Available Now</li>
-            <li>Broker Destroyer 6.1 — Coming In 30 Days</li>
-            <li>Mission Gun 5.5 — Sculpting Bot Loading</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Why Traders Choose GrootMoney</div>
-          <h2 class="section-title">Built To Feel Like Real Premium Trading Software</h2>
-          <p class="section-copy">
-            Clean premium identity, powerful system presentation, and aggressive MT5 bot options for traders who want more than a basic robot page.
-          </p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="feature-icon">01</div>
-            <h3>Professional Bot Options</h3>
-            <p>Swipe through the GrootMoney collection and choose the bot that matches your current trading style and account plan.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">02</div>
-            <h3>Fast Market Identity</h3>
-            <p>Everything is presented with a strong black and red trading-software feel built for aggressive premium branding.</p>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">03</div>
-            <h3>Direct Support Flow</h3>
-            <p>Push straight into WhatsApp for support, questions, buying guidance, and waiting-list access on upcoming releases.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section bot-options" id="bot-options">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Bot Options</div>
-          <h2 class="section-title">Choose Your GrootMoney Bot</h2>
-          <p class="section-copy">
-            Swipe left to select your bot. Broker Killer 5.1 is available now, Broker Destroyer 6.1 is coming in 30 days, and GrootMoney Mission Gun 5.5 is the new sculpting bot loading next.
-          </p>
-        </div>
-
-        <div class="bot-swipe-wrap">
-          <div class="bot-swipe-track" id="botSwipeTrack">
-
-            <article class="bot-card">
-              <div class="bot-card-topline available-line">Available Now</div>
-              <div class="bot-card-badge">Option 1</div>
-              <h3 class="bot-card-title">GrootMoney Broker Killer 5.1</h3>
-              <div class="bot-card-price">R2000</div>
-              <p class="bot-card-desc">
-                The current live GrootMoney MT5 bot ready for serious traders who want immediate access, premium system identity, and direct support.
-              </p>
-
-              <div class="bot-card-points">
-                <span>MT5 Ready</span>
-                <span>PC Vision Setup</span>
-                <span>Available Right Now</span>
-              </div>
-
-              <div class="bot-card-actions">
-                <a class="btn btn-primary" href="https://whop.com/" target="_blank" rel="noopener">Buy 5.1 Now</a>
-                <a class="btn btn-secondary" href="https://wa.me/" target="_blank" rel="noopener">Buy on WhatsApp</a>
-              </div>
-            </article>
-
-            <article class="bot-card">
-              <div class="bot-card-topline coming-line">Coming In 30 Days</div>
-              <div class="bot-card-badge">Option 2</div>
-              <h3 class="bot-card-title">GrootMoney Broker Destroyer 6.1</h3>
-              <div class="bot-card-price">Release In 30 Days</div>
-              <p class="bot-card-desc">
-                Designed for day traders and swing traders with customizable time frame alignment and a stronger premium execution identity.
-              </p>
-
-              <div class="bot-card-points">
-                <span>Day Trader Ready</span>
-                <span>Swing Trader Ready</span>
-                <span>Time Frame Alignment</span>
-              </div>
-
-              <div class="bot-card-actions">
-                <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener">Notify Me</a>
-                <a class="btn btn-secondary" href="https://wa.me/" target="_blank" rel="noopener">Ask on WhatsApp</a>
-              </div>
-            </article>
-
-            <article class="bot-card">
-              <div class="bot-card-topline mission-line">New Bot Loading</div>
-              <div class="bot-card-badge">Option 3</div>
-              <h3 class="bot-card-title">GrootMoney Mission Gun 5.5</h3>
-              <div class="bot-card-price">Sculpting Bot</div>
-              <p class="bot-card-desc">
-                Non-stop fast growth scalping bot built for aggressive market interaction. One of the best bomb-style execution systems in the GrootMoney line.
-              </p>
-
-              <div class="bot-card-points">
-                <span>Custom Hold: 3s / 5s / 8s / 10s</span>
-                <span>Custom Mode: Aggressive / Ultra / Auto</span>
-                <span>Fast Scalping Pressure Engine</span>
-              </div>
-
-              <div class="bot-card-actions">
-                <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener">Join Waiting List</a>
-                <a class="btn btn-secondary" href="https://wa.me/" target="_blank" rel="noopener">Ask About Mission Gun</a>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-        <div class="bot-swipe-nav">
-          <button class="swipe-nav-btn" id="botPrevBtn" type="button">‹</button>
-          <div class="swipe-dots" id="botSwipeDots">
-            <button class="swipe-dot active" type="button" data-index="0"></button>
-            <button class="swipe-dot" type="button" data-index="1"></button>
-            <button class="swipe-dot" type="button" data-index="2"></button>
-          </div>
-          <button class="swipe-nav-btn" id="botNextBtn" type="button">›</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container two-col">
-        <article class="section-card">
-          <h3>Mission Gun 5.5 Highlights</h3>
-          <p>
-            Mission Gun 5.5 is positioned as a sculpting bot built for fast pressure interaction. It is designed to feel aggressive, customizable, and premium in the lineup without replacing the two existing GrootMoney options.
-          </p>
-        </article>
-
-        <article class="section-card">
-          <h3>Why Keep All 3 Bots</h3>
-          <p>
-            This gives your site stronger depth. One option sells now. One option creates countdown energy. One option builds hype for the new Mission Gun line and gives clients another reason to stay connected.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="reviews">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Client Reactions</div>
-          <h2 class="section-title">Built To Look Premium From The First Second</h2>
-          <p class="section-copy">
-            Strong presentation, serious trader identity, and a clean premium layout that supports your GrootMoney brand properly.
-          </p>
-        </div>
-
-        <div class="review-grid">
-          <article class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>This looks like a real premium trading brand, not a basic bot page. Serious feel from top to bottom.</p>
-            <div class="review-name">Client Style Feedback</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>The swiping bot options make it feel modern and clean. Easy for people to understand what is live and what is coming.</p>
-            <div class="review-name">Bot Launch Feedback</div>
-          </article>
-
-          <article class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>Mission Gun 5.5 now stands out properly in the lineup. It feels powerful and premium without removing the other products.</p>
-            <div class="review-name">Brand Layout Feedback</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="buy">
-      <div class="container">
-        <div class="cta-panel">
-          <div>
-            <h3>Ready To Move With GrootMoney?</h3>
-            <p>
-              Choose the bot that matches your trading style now, secure your current access, and get positioned for the next GrootMoney releases.
-            </p>
-          </div>
-
-          <div class="hero-actions" style="margin-top:0">
-            <a class="btn btn-primary" href="https://whop.com/" target="_blank" rel="noopener">Buy Now</a>
-            <a class="btn btn-secondary" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp Support</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>© Forex Wealth Empire (Pty)Ltd</div>
-      <div>GrootMoney Premium Bot Collection</div>
-    </div>
-  </footer>
-
-  <!-- FIRST POPUP -->
-  <div class="modal-overlay active" id="launchPopup">
-    <div class="modal-box">
-      <button class="modal-close" id="closeLaunchPopup" type="button">×</button>
-      <div class="modal-pill">Current Promotion</div>
-      <h3>GrootMoney Bot Options Are Now Stronger</h3>
-      <p>
-        Broker Killer 5.1 is available now, Broker Destroyer 6.1 is coming in 30 days, and the new GrootMoney Mission Gun 5.5 sculpting bot is now added to the line.
-      </p>
-      <div class="modal-list">
-        <span>Available Now: GrootMoney Broker Killer 5.1</span>
-        <span>Coming In 30 Days: GrootMoney Broker Destroyer 6.1</span>
-        <span>New Added Bot: GrootMoney Mission Gun 5.5</span>
-      </div>
-      <div class="modal-actions">
-        <a class="btn btn-primary" href="#bot-options">View Bot Options</a>
-        <a class="btn btn-secondary" href="https://wa.me/" target="_blank" rel="noopener">Talk on WhatsApp</a>
-      </div>
-    </div>
+  <div class="bot">
+    <h2>Broker Killer 5.1</h2>
+    <p>Available Now</p>
+    <button class="btn">Buy Now</button>
   </div>
 
-  <!-- SECOND POPUP AFTER EXIT -->
-  <div class="modal-overlay" id="missionPopup">
-    <div class="modal-box">
-      <button class="modal-close" id="closeMissionPopup" type="button">×</button>
-      <div class="modal-pill">Mission Gun 5.5</div>
-      <h3>GrootMoney Mission Gun 5.5 Is Loading</h3>
-      <p>
-        Sculpting bot. Non-stop fast growth style. Built for aggressive market interaction and fast pressure execution.
-      </p>
-      <div class="modal-list">
-        <span>Custom Holding Time: 3s / 5s / 8s / 10s</span>
-        <span>Custom Trade Modes: Aggressive / Ultra / Auto</span>
-        <span>Fast Scalping Pressure Engine</span>
-      </div>
-      <div class="modal-actions">
-        <a class="btn btn-primary" href="https://wa.me/" target="_blank" rel="noopener">Join Waiting List</a>
-        <a class="btn btn-secondary" href="#bot-options">See Full Bot Options</a>
-      </div>
-    </div>
+  <div class="bot">
+    <h2>Broker Destroyer 6.1</h2>
+    <p>Coming in 30 Days</p>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const track = document.getElementById("botSwipeTrack");
-      const prevBtn = document.getElementById("botPrevBtn");
-      const nextBtn = document.getElementById("botNextBtn");
-      const dotsWrap = document.getElementById("botSwipeDots");
-      const dots = Array.from(dotsWrap.querySelectorAll(".swipe-dot"));
-      const cards = Array.from(track.children);
+  <div class="bot">
+    <h2>Mission Gun 5.5</h2>
+    <p>Fast Sculpting Bot</p>
+  </div>
 
-      let currentIndex = 0;
-      let startX = 0;
-      let currentX = 0;
-      let isDragging = false;
+</section>
 
-      function updateSlider() {
-        const style = getComputedStyle(track);
-        const gap = parseFloat(style.columnGap || style.gap || 24);
-        const cardWidth = cards[0].getBoundingClientRect().width + gap;
-        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+<!-- POPUP 1 -->
+<div class="popup" id="popup1">
+  <div class="popup-box">
+    <h2>Bot Collection Updated</h2>
+    <button onclick="closePopup()">Enter</button>
+  </div>
+</div>
 
-        dots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentIndex);
-        });
-      }
+<!-- POPUP 2 -->
+<div class="popup" id="popup2" style="display:none;">
+  <div class="popup-box">
+    <h2>Mission Gun 5.5 Loading</h2>
+    <button onclick="closePopup2()">Close</button>
+  </div>
+</div>
 
-      function goToSlide(index) {
-        if (index < 0) index = 0;
-        if (index > cards.length - 1) index = cards.length - 1;
-        currentIndex = index;
-        updateSlider();
-      }
+<script>
 
-      prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
-      nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
+/* CHART BACKGROUND */
+const canvas = document.getElementById("chartBg");
+const ctx = canvas.getContext("2d");
 
-      dots.forEach((dot) => {
-        dot.addEventListener("click", () => {
-          goToSlide(Number(dot.dataset.index));
-        });
-      });
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-      track.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-        currentX = startX;
-        isDragging = true;
-      }, { passive: true });
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.beginPath();
+  ctx.moveTo(0,canvas.height/2);
 
-      track.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-      }, { passive: true });
+  for(let i=0;i<canvas.width;i+=20){
+    let y = canvas.height/2 + Math.random()*100-50;
+    ctx.lineTo(i,y);
+  }
 
-      track.addEventListener("touchend", () => {
-        if (!isDragging) return;
-        const diff = startX - currentX;
-        if (diff > 50) goToSlide(currentIndex + 1);
-        if (diff < -50) goToSlide(currentIndex - 1);
-        isDragging = false;
-        startX = 0;
-        currentX = 0;
-      });
+  ctx.strokeStyle="red";
+  ctx.stroke();
+}
 
-      window.addEventListener("resize", updateSlider);
-      updateSlider();
+setInterval(draw,1500);
 
-      const launchPopup = document.getElementById("launchPopup");
-      const missionPopup = document.getElementById("missionPopup");
-      const closeLaunchPopup = document.getElementById("closeLaunchPopup");
-      const closeMissionPopup = document.getElementById("closeMissionPopup");
+/* POPUPS */
+function closePopup(){
+  document.getElementById("popup1").style.display="none";
+  document.getElementById("popup2").style.display="flex";
+}
 
-      closeLaunchPopup.addEventListener("click", function () {
-        launchPopup.classList.remove("active");
-        setTimeout(() => {
-          missionPopup.classList.add("active");
-        }, 180);
-      });
+function closePopup2(){
+  document.getElementById("popup2").style.display="none";
+}
 
-      closeMissionPopup.addEventListener("click", function () {
-        missionPopup.classList.remove("active");
-      });
+</script>
 
-      launchPopup.addEventListener("click", function (e) {
-        if (e.target === launchPopup) {
-          launchPopup.classList.remove("active");
-          setTimeout(() => {
-            missionPopup.classList.add("active");
-          }, 180);
-        }
-      });
-
-      missionPopup.addEventListener("click", function (e) {
-        if (e.target === missionPopup) {
-          missionPopup.classList.remove("active");
-        }
-      });
-    });
-  </script>
 </body>
-  </html>
+</html>
