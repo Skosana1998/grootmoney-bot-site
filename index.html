@@ -3,97 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrootMoney System Boot</title>
+<title>Maintenance | GrootMoney</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+
 body{
   margin:0;
-  background:#000;
-  font-family:'Orbitron',sans-serif;
+  background:#050505;
+  font-family:'Inter',sans-serif;
   color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
   overflow:hidden;
 }
 
-/* GRID */
-.grid{
+/* BACKGROUND CHART */
+canvas{
   position:absolute;
   width:100%;
   height:100%;
-  background:
-    linear-gradient(rgba(255,0,0,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,0,0,0.05) 1px, transparent 1px);
-  background-size:40px 40px;
+  opacity:0.15;
 }
 
-/* ROBOT CORE */
-.core{
-  position:absolute;
-  top:40%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background:radial-gradient(circle,#ff0000,transparent);
-  box-shadow:0 0 80px red;
-  animation:pulse 2s infinite;
+/* CENTER BOX */
+.container{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:40px;
+  background:rgba(0,0,0,0.6);
+  border:1px solid rgba(255,0,0,0.2);
+  border-radius:15px;
+  box-shadow:0 0 40px rgba(255,0,0,0.15);
+  max-width:400px;
 }
 
-.eye{
-  width:40px;
-  height:40px;
-  background:red;
-  border-radius:50%;
-  margin:auto;
-  margin-top:70px;
-  box-shadow:0 0 30px red;
-  animation:scan 3s infinite;
+/* LOGO */
+.logo{
+  font-family:'Orbitron';
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:20px;
 }
 
-@keyframes pulse{
-  0%{transform:translate(-50%,-50%) scale(1)}
-  50%{transform:translate(-50%,-50%) scale(1.2)}
-  100%{transform:translate(-50%,-50%) scale(1)}
-}
-
-@keyframes scan{
-  0%{transform:translateX(0)}
-  50%{transform:translateX(20px)}
-  100%{transform:translateX(0)}
-}
-
-/* TERMINAL */
-.terminal{
-  position:absolute;
-  bottom:20%;
-  left:50%;
-  transform:translateX(-50%);
-  width:80%;
-  max-width:600px;
-  background:#050505;
-  border:1px solid red;
-  padding:20px;
-  font-size:12px;
+/* STATUS */
+.status{
   color:#ff2b2b;
-  box-shadow:0 0 20px red;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+/* TEXT */
+.desc{
+  font-size:14px;
+  color:#ccc;
 }
 
 /* LOADER */
 .loader{
-  margin-top:10px;
-  height:4px;
+  margin:30px auto;
+  width:200px;
+  height:5px;
   background:#111;
   overflow:hidden;
+  border-radius:10px;
 }
 
 .loader span{
   display:block;
   height:100%;
   width:40%;
-  background:red;
-  animation:load 1s infinite;
+  background:#ff1f1f;
+  animation:load 1.5s infinite;
 }
 
 @keyframes load{
@@ -101,33 +86,27 @@ body{
   100%{margin-left:100%}
 }
 
-/* WARNING */
-.warning{
+/* FOOTER */
+.footer{
+  margin-top:20px;
+  font-size:11px;
+  color:#666;
+}
+
+/* FLOATING RED LIGHT */
+.glow{
   position:absolute;
-  top:10px;
-  width:100%;
-  text-align:center;
-  color:red;
-  animation:blink 1s infinite;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(255,0,0,0.2), transparent);
+  animation:pulse 4s infinite;
+  z-index:0;
 }
 
-@keyframes blink{
-  0%{opacity:1}
-  50%{opacity:0}
-  100%{opacity:1}
-}
-
-/* COUNTDOWN */
-.count{
-  font-size:28px;
-  margin-top:10px;
-}
-
-canvas{
-  position:absolute;
-  width:100%;
-  height:100%;
-  opacity:0.2;
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.4)}
+  100%{transform:scale(1)}
 }
 
 </style>
@@ -135,62 +114,32 @@ canvas{
 
 <body>
 
-<div class="grid"></div>
-
 <canvas id="chart"></canvas>
+<div class="glow"></div>
 
-<div class="warning">
-⚠️ HIGH FREQUENCY SYSTEM DETECTED • BROKER RISK ACTIVE ⚠️
+<div class="container">
+
+  <div class="logo">GROOTMONEY</div>
+
+  <div class="status">WEBSITE UNDER MAINTENANCE</div>
+
+  <div class="desc">
+    We are currently upgrading our trading systems and improving performance.
+    <br><br>
+    Please check back shortly.
+  </div>
+
+  <div class="loader"><span></span></div>
+
+  <div class="footer">
+    Powered by ForexWealthEmpire (Pty)Ltd
+  </div>
+
 </div>
-
-<div class="core">
-  <div class="eye"></div>
-</div>
-
-<div class="terminal" id="terminal">
-> Initializing GrootMoney Engine...<br>
-</div>
-
-<div class="count" id="count"></div>
 
 <script>
 
-/* TERMINAL TEXT */
-const lines = [
-"> Connecting to market...",
-"> Loading candle pressure engine...",
-"> Activating Mission Gun system...",
-"> Checking broker stability...",
-"> WARNING: High win-rate detected...",
-"> Final calibration..."
-];
-
-let i = 0;
-
-function typeLine(){
-  if(i < lines.length){
-    document.getElementById("terminal").innerHTML += lines[i] + "<br>";
-    i++;
-    setTimeout(typeLine, 1000);
-  }
-}
-typeLine();
-
-/* COUNTDOWN */
-let time = 5;
-function countdown(){
-  document.getElementById("count").innerText = "ENTERING SYSTEM IN " + time;
-  time--;
-
-  if(time < 0){
-    window.location.href = "https://skosana1998.github.io/grootmoney-bot-site/";
-  } else {
-    setTimeout(countdown,1000);
-  }
-}
-setTimeout(countdown,4000);
-
-/* CANDLE ANIMATION */
+/* CLEAN FOREX LINE BACKGROUND */
 const canvas = document.getElementById("chart");
 const ctx = canvas.getContext("2d");
 
@@ -200,18 +149,21 @@ canvas.height = window.innerHeight;
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  for(let x=0;x<canvas.width;x+=20){
-    let open = Math.random()*canvas.height;
-    let close = open + (Math.random()*100 - 50);
+  ctx.beginPath();
+  ctx.moveTo(0,canvas.height/2);
 
-    ctx.strokeStyle="red";
-    ctx.beginPath();
-    ctx.moveTo(x, open);
-    ctx.lineTo(x, close);
-    ctx.stroke();
+  for(let i=0;i<canvas.width;i+=20){
+    let y = canvas.height/2 + Math.random()*80 - 40;
+    ctx.lineTo(i,y);
   }
+
+  ctx.strokeStyle="#ff1f1f";
+  ctx.shadowColor="#ff1f1f";
+  ctx.shadowBlur=10;
+  ctx.stroke();
 }
-setInterval(draw,800);
+
+setInterval(draw,2000);
 
 </script>
 
