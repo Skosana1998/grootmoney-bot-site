@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrootMoney.Bots | Forex Wealth Empire</title>
-  <meta name="description" content="Premium PC Vision MT5 bot collection by Forex Wealth Empire. GrootMoney Broker Killer 5.1 available now, Broker Destroyer 6.1 coming soon, plus funded account reservations with Comit Capital Prop Firm." />
+  <title>GrootMoney.bots | Forex Wealth Empire</title>
+  <meta name="description" content="Premium MT5 bot collection by Forex Wealth Empire. Broker Killer 5.1 available now, Mission Gun 5.5 currently in sale, and Broker Destroyer 5.2 coming in 30 days." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,19 +14,18 @@
     :root{
       --bg:#050505;
       --bg-soft:#0c0c0c;
-      --panel:#111111;
-      --panel-2:#171717;
+      --card:rgba(255,255,255,0.04);
+      --card-2:rgba(255,255,255,0.025);
       --stroke:rgba(255,255,255,0.08);
-      --text:#f5f5f5;
-      --muted:#bdbdbd;
+      --text:#f4f4f4;
+      --muted:#bbbbbb;
       --gold:#d4af37;
-      --gold-2:#f1d77a;
-      --red:#c1121f;
-      --red-2:#ff3c4f;
+      --gold-2:#f4dd8c;
+      --red:#b70f1c;
+      --red-2:#ff3f52;
       --green:#00c27a;
+      --radius:28px;
       --shadow:0 20px 60px rgba(0,0,0,0.5);
-      --radius:24px;
-      --radius-sm:16px;
       --max:1250px;
     }
 
@@ -44,7 +43,7 @@
       font-family:'Inter',sans-serif;
       background:
         radial-gradient(circle at top, rgba(212,175,55,0.08), transparent 25%),
-        radial-gradient(circle at right, rgba(193,18,31,0.10), transparent 20%),
+        radial-gradient(circle at right, rgba(183,15,28,0.10), transparent 20%),
         #050505;
       color:var(--text);
       overflow-x:hidden;
@@ -53,11 +52,6 @@
     a{
       text-decoration:none;
       color:inherit;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
     }
 
     .container{
@@ -69,35 +63,19 @@
       padding:90px 0;
     }
 
-    .section-title{
-      font-family:'Orbitron',sans-serif;
-      font-size:clamp(28px,4vw,48px);
-      line-height:1.05;
-      letter-spacing:0.04em;
-      margin-bottom:14px;
-      text-transform:uppercase;
-    }
-
-    .section-subtitle{
-      color:var(--muted);
-      max-width:760px;
-      line-height:1.75;
-      font-size:16px;
-    }
-
     .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:10px 14px;
-      border:1px solid rgba(212,175,55,0.22);
+      border:1px solid rgba(212,175,55,0.24);
       border-radius:999px;
-      color:var(--gold-2);
       background:rgba(212,175,55,0.08);
+      color:var(--gold-2);
       font-size:12px;
       font-weight:800;
-      text-transform:uppercase;
       letter-spacing:0.14em;
+      text-transform:uppercase;
       margin-bottom:18px;
     }
 
@@ -107,7 +85,23 @@
       height:8px;
       border-radius:50%;
       background:linear-gradient(135deg,var(--gold),var(--red-2));
-      box-shadow:0 0 18px rgba(212,175,55,0.55);
+      box-shadow:0 0 16px rgba(212,175,55,0.55);
+    }
+
+    .section-title{
+      font-family:'Orbitron',sans-serif;
+      font-size:clamp(28px,4vw,50px);
+      line-height:1.06;
+      text-transform:uppercase;
+      margin-bottom:14px;
+      letter-spacing:0.04em;
+    }
+
+    .section-subtitle{
+      color:var(--muted);
+      max-width:780px;
+      line-height:1.85;
+      font-size:16px;
     }
 
     /* HEADER */
@@ -131,22 +125,22 @@
     .brand{
       display:flex;
       flex-direction:column;
-      gap:3px;
+      gap:4px;
     }
 
     .brand-title{
       font-family:'Orbitron',sans-serif;
-      font-size:clamp(20px,2.4vw,32px);
+      font-size:clamp(20px,2.6vw,32px);
       font-weight:900;
+      text-transform:lowercase;
       letter-spacing:0.08em;
       color:#fff;
-      text-transform:uppercase;
     }
 
     .brand-sub{
       color:var(--gold-2);
       font-size:12px;
-      letter-spacing:0.16em;
+      letter-spacing:0.14em;
       text-transform:uppercase;
       font-weight:700;
     }
@@ -176,90 +170,83 @@
       background:linear-gradient(135deg,var(--red),var(--gold));
       color:#fff !important;
       font-weight:800;
-      box-shadow:0 12px 30px rgba(193,18,31,0.26);
+      box-shadow:0 12px 30px rgba(183,15,28,0.3);
     }
 
-    .nav-cta:hover{
-      transform:translateY(-1px);
-      box-shadow:0 16px 40px rgba(193,18,31,0.35);
-    }
-
-    /* SCROLL BAR / MARQUEE */
-    .ticker{
-      border-top:1px solid rgba(255,255,255,0.04);
-      border-bottom:1px solid rgba(255,255,255,0.04);
-      background:linear-gradient(90deg, rgba(212,175,55,0.10), rgba(255,255,255,0.02), rgba(193,18,31,0.10));
+    /* HEADER MOVING STRIP LEFT TO RIGHT */
+    .top-strip{
       overflow:hidden;
       white-space:nowrap;
-      position:relative;
+      border-top:1px solid rgba(255,255,255,0.04);
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      background:linear-gradient(90deg, rgba(212,175,55,0.10), rgba(255,255,255,0.02), rgba(183,15,28,0.10));
     }
 
-    .ticker-track{
+    .top-strip-track{
       display:flex;
       width:max-content;
-      animation:scrollTicker 28s linear infinite;
+      animation:headerScrollLTR 28s linear infinite;
       will-change:transform;
     }
 
-    .ticker-content{
+    .top-strip-content{
       display:flex;
       align-items:center;
-      gap:42px;
+      gap:36px;
       padding:14px 0;
       flex-shrink:0;
     }
 
-    .ticker-item{
+    .top-strip-item{
       font-family:'Orbitron',sans-serif;
-      color:#f4f4f4;
       font-size:13px;
       font-weight:800;
       letter-spacing:0.1em;
       text-transform:uppercase;
-      opacity:0.95;
+      color:#f5f5f5;
     }
 
-    .ticker-item strong{
+    .top-strip-item strong{
       color:var(--gold-2);
-      font-weight:900;
     }
 
-    @keyframes scrollTicker{
-      from{ transform:translateX(0); }
-      to{ transform:translateX(-50%); }
+    @keyframes headerScrollLTR{
+      from{ transform:translateX(-50%); }
+      to{ transform:translateX(0); }
     }
 
     /* HERO */
     .hero{
-      position:relative;
       padding:88px 0 74px;
+      position:relative;
       overflow:hidden;
     }
 
     .hero::before{
       content:"";
       position:absolute;
-      inset:-80px -20px auto auto;
-      width:460px;
-      height:460px;
-      background:radial-gradient(circle, rgba(212,175,55,0.12), transparent 60%);
-      pointer-events:none;
+      right:-60px;
+      top:-80px;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(212,175,55,0.12), transparent 65%);
       filter:blur(6px);
+      pointer-events:none;
     }
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.08fr 0.92fr;
-      gap:34px;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:32px;
       align-items:center;
     }
 
     .hero-copy h1{
       font-family:'Orbitron',sans-serif;
-      font-size:clamp(40px,6vw,84px);
+      font-size:clamp(38px,6vw,82px);
       line-height:0.95;
       text-transform:uppercase;
-      letter-spacing:0.02em;
       margin-bottom:18px;
     }
 
@@ -271,8 +258,8 @@
     }
 
     .hero-copy p{
-      max-width:720px;
       color:var(--muted);
+      max-width:740px;
       font-size:17px;
       line-height:1.9;
       margin-bottom:28px;
@@ -286,25 +273,24 @@
     }
 
     .btn{
-      border:none;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
       min-height:54px;
       padding:0 22px;
       border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       font-weight:800;
       font-size:14px;
       letter-spacing:0.03em;
       transition:0.25s ease;
+      border:none;
+      cursor:pointer;
     }
 
     .btn-primary{
       color:#fff;
       background:linear-gradient(135deg,var(--red),var(--gold));
-      box-shadow:0 14px 36px rgba(193,18,31,0.28);
+      box-shadow:0 14px 36px rgba(183,15,28,0.28);
     }
 
     .btn-primary:hover{
@@ -326,14 +312,13 @@
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:14px;
-      max-width:760px;
     }
 
     .stat-card{
+      padding:20px 18px;
+      border-radius:20px;
       background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
       border:1px solid var(--stroke);
-      border-radius:20px;
-      padding:20px 18px;
       box-shadow:var(--shadow);
     }
 
@@ -347,28 +332,27 @@
     .stat-label{
       color:var(--muted);
       font-size:13px;
-      line-height:1.55;
+      line-height:1.65;
     }
 
     .hero-visual{
-      position:relative;
-      min-height:560px;
       display:flex;
-      align-items:center;
       justify-content:center;
+      align-items:center;
+      min-height:560px;
     }
 
     .hero-card{
-      position:relative;
       width:min(100%, 520px);
+      padding:28px;
       border-radius:32px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, rgba(212,175,55,0.10), rgba(193,18,31,0.08));
+        linear-gradient(135deg, rgba(212,175,55,0.08), rgba(183,15,28,0.08));
       border:1px solid rgba(255,255,255,0.08);
-      box-shadow:0 20px 70px rgba(0,0,0,0.58);
+      box-shadow:0 20px 70px rgba(0,0,0,0.55);
+      position:relative;
       overflow:hidden;
-      padding:28px;
     }
 
     .hero-card::before{
@@ -379,8 +363,8 @@
         linear-gradient(transparent 96%, rgba(212,175,55,0.08) 100%),
         linear-gradient(90deg, transparent 96%, rgba(212,175,55,0.05) 100%);
       background-size:100% 24px, 24px 100%;
+      opacity:0.38;
       pointer-events:none;
-      opacity:0.4;
     }
 
     .hero-top{
@@ -389,6 +373,8 @@
       justify-content:space-between;
       gap:12px;
       margin-bottom:24px;
+      position:relative;
+      z-index:2;
     }
 
     .hero-badge{
@@ -402,8 +388,8 @@
       color:var(--gold-2);
       font-size:12px;
       font-weight:800;
-      text-transform:uppercase;
       letter-spacing:0.1em;
+      text-transform:uppercase;
     }
 
     .scan-dot{
@@ -412,15 +398,17 @@
       border-radius:50%;
       background:var(--green);
       box-shadow:0 0 18px rgba(0,194,122,0.6);
-      animation:pulseDot 1.4s infinite;
+      animation:pulseDot 1.3s infinite;
     }
 
     @keyframes pulseDot{
       0%,100%{ transform:scale(1); opacity:1; }
-      50%{ transform:scale(1.25); opacity:0.6; }
+      50%{ transform:scale(1.25); opacity:0.65; }
     }
 
     .hero-box{
+      position:relative;
+      z-index:2;
       border:1px solid rgba(255,255,255,0.08);
       border-radius:22px;
       padding:18px;
@@ -429,21 +417,22 @@
     }
 
     .hero-box h3{
+      font-family:'Orbitron',sans-serif;
       font-size:14px;
       letter-spacing:0.12em;
       text-transform:uppercase;
-      color:#fff;
       margin-bottom:10px;
-      font-family:'Orbitron',sans-serif;
     }
 
     .hero-box p{
       color:var(--muted);
       font-size:14px;
-      line-height:1.7;
+      line-height:1.75;
     }
 
     .hero-grid-mini{
+      position:relative;
+      z-index:2;
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
@@ -454,15 +443,15 @@
       border-radius:18px;
       border:1px solid rgba(255,255,255,0.08);
       padding:16px;
-      background:rgba(0,0,0,0.22);
+      background:rgba(0,0,0,0.24);
     }
 
     .mini-label{
       font-size:12px;
       color:var(--muted);
-      margin-bottom:8px;
       text-transform:uppercase;
       letter-spacing:0.1em;
+      margin-bottom:8px;
     }
 
     .mini-value{
@@ -471,28 +460,30 @@
       color:#fff;
     }
 
-    /* BOT CARDS */
+    /* BOTS */
     .bots-grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:24px;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
       margin-top:34px;
     }
 
     .bot-card{
       position:relative;
+      padding:28px;
+      border-radius:30px;
       background:linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
       border:1px solid var(--stroke);
-      border-radius:30px;
-      overflow:hidden;
       box-shadow:var(--shadow);
-      padding:28px;
+      overflow:hidden;
     }
 
     .bot-card::before{
       content:"";
       position:absolute;
-      inset:0 0 auto 0;
+      left:0;
+      right:0;
+      top:0;
       height:4px;
       background:linear-gradient(90deg,var(--gold),var(--red-2));
     }
@@ -504,8 +495,8 @@
       background:rgba(255,255,255,0.04);
       border:1px solid rgba(255,255,255,0.08);
       color:var(--gold-2);
-      font-weight:800;
       font-size:12px;
+      font-weight:800;
       text-transform:uppercase;
       letter-spacing:0.14em;
       margin-bottom:18px;
@@ -513,7 +504,7 @@
 
     .bot-card h3{
       font-family:'Orbitron',sans-serif;
-      font-size:clamp(24px,3vw,34px);
+      font-size:clamp(22px,2.6vw,32px);
       line-height:1.08;
       text-transform:uppercase;
       margin-bottom:12px;
@@ -521,8 +512,8 @@
 
     .bot-card p{
       color:var(--muted);
-      line-height:1.8;
       font-size:15px;
+      line-height:1.8;
       margin-bottom:20px;
     }
 
@@ -537,6 +528,7 @@
       position:relative;
       color:#ededed;
       font-size:14px;
+      line-height:1.6;
     }
 
     .bot-points span::before{
@@ -553,17 +545,17 @@
 
     .price-wrap{
       display:flex;
-      align-items:flex-end;
       justify-content:space-between;
-      gap:20px;
+      align-items:flex-end;
+      gap:14px;
       flex-wrap:wrap;
       padding-top:18px;
       border-top:1px solid rgba(255,255,255,0.08);
     }
 
     .price-box .label{
-      color:var(--muted);
       font-size:12px;
+      color:var(--muted);
       text-transform:uppercase;
       letter-spacing:0.1em;
       margin-bottom:8px;
@@ -571,21 +563,21 @@
 
     .price-box .price{
       font-family:'Orbitron',sans-serif;
+      font-size:28px;
       color:var(--gold-2);
-      font-size:30px;
       font-weight:900;
     }
 
-    .coming-soon{
-      color:#fff;
-      background:rgba(193,18,31,0.15);
-      border:1px solid rgba(193,18,31,0.28);
-      padding:14px 18px;
+    .coming-box{
+      padding:14px 16px;
       border-radius:16px;
+      background:rgba(183,15,28,0.14);
+      border:1px solid rgba(183,15,28,0.24);
+      color:#fff;
       font-weight:800;
     }
 
-    /* HOW IT WORKS */
+    /* HOW */
     .steps{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -594,23 +586,23 @@
     }
 
     .step-card{
+      padding:28px;
+      border-radius:26px;
       background:linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
       border:1px solid var(--stroke);
-      border-radius:26px;
-      padding:28px;
       box-shadow:var(--shadow);
     }
 
     .step-number{
       width:54px;
       height:54px;
-      border-radius:18px;
       display:grid;
       place-items:center;
+      border-radius:18px;
+      background:linear-gradient(135deg,var(--red),var(--gold));
+      color:#fff;
       font-family:'Orbitron',sans-serif;
       font-weight:900;
-      color:#fff;
-      background:linear-gradient(135deg,var(--red),var(--gold));
       margin-bottom:18px;
     }
 
@@ -621,19 +613,28 @@
 
     .step-card p{
       color:var(--muted);
-      line-height:1.8;
       font-size:15px;
+      line-height:1.8;
     }
 
-    /* REVIEWS */
-    .reviews-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
+    /* REVIEWS MOVING RIGHT TO LEFT */
+    .review-marquee{
       margin-top:34px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .review-track{
+      display:flex;
+      width:max-content;
+      animation:reviewsRTL 24s linear infinite;
+      will-change:transform;
+      gap:20px;
     }
 
     .review-card{
+      width:340px;
+      flex-shrink:0;
       border:1px solid var(--stroke);
       border-radius:24px;
       padding:24px;
@@ -649,7 +650,7 @@
     }
 
     .review-card p{
-      color:#e6e6e6;
+      color:#e7e7e7;
       line-height:1.85;
       font-size:15px;
       margin-bottom:18px;
@@ -662,77 +663,45 @@
       letter-spacing:0.1em;
     }
 
-    /* OFFER */
-    .offer-box{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025)),
-        linear-gradient(135deg, rgba(212,175,55,0.12), rgba(193,18,31,0.10));
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:32px;
+    @keyframes reviewsRTL{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    /* FUNDED */
+    .funded-panel{
+      margin-top:34px;
       padding:34px;
-      box-shadow:var(--shadow);
-      margin-top:34px;
-    }
-
-    .offer-grid{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:22px;
-      align-items:center;
-    }
-
-    .offer-box h3{
-      font-family:'Orbitron',sans-serif;
-      font-size:clamp(26px,4vw,40px);
-      line-height:1.08;
-      margin-bottom:12px;
-      text-transform:uppercase;
-    }
-
-    .offer-box p{
-      color:var(--muted);
-      line-height:1.85;
-      max-width:720px;
-    }
-
-    /* PARTNERS / COMIT */
-    .partners-wrap{
-      margin-top:34px;
-    }
-
-    .reservation-panel{
-      position:relative;
       border-radius:34px;
-      padding:34px;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, rgba(212,175,55,0.09), rgba(193,18,31,0.09));
+        linear-gradient(135deg, rgba(212,175,55,0.09), rgba(183,15,28,0.09));
       border:1px solid rgba(255,255,255,0.08);
       box-shadow:0 24px 80px rgba(0,0,0,0.55);
+      position:relative;
       overflow:hidden;
     }
 
-    .reservation-panel::before{
+    .funded-panel::before{
       content:"";
       position:absolute;
-      top:-120px;
-      right:-80px;
-      width:260px;
-      height:260px;
+      top:-100px;
+      right:-60px;
+      width:240px;
+      height:240px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+      background:radial-gradient(circle, rgba(212,175,55,0.16), transparent 70%);
       pointer-events:none;
     }
 
-    .reservation-panel-inner{
+    .funded-panel-inner{
       position:relative;
       z-index:2;
+      text-align:center;
     }
 
-    .reservation-tag{
+    .funded-tag{
       display:inline-flex;
-      align-items:center;
-      gap:10px;
       padding:10px 14px;
       border-radius:999px;
       background:rgba(212,175,55,0.10);
@@ -740,12 +709,12 @@
       color:var(--gold-2);
       font-size:12px;
       font-weight:800;
-      text-transform:uppercase;
       letter-spacing:0.12em;
+      text-transform:uppercase;
       margin-bottom:16px;
     }
 
-    .reservation-panel h2{
+    .funded-panel h2{
       font-family:'Orbitron',sans-serif;
       font-size:clamp(28px,4vw,46px);
       line-height:1.06;
@@ -753,53 +722,33 @@
       margin-bottom:12px;
     }
 
-    .reservation-panel p{
+    .funded-panel p{
       color:var(--muted);
-      max-width:740px;
+      max-width:760px;
+      margin:0 auto 26px;
       line-height:1.85;
-      margin-bottom:28px;
       font-size:15px;
     }
 
-    .reservation-buttons{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:16px;
-    }
-
-    .reserve-btn{
-      min-height:68px;
-      padding:18px 20px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        rgba(0,0,0,0.24);
-      display:flex;
+    .funded-btn{
+      min-width:260px;
+      min-height:64px;
+      padding:0 24px;
+      border-radius:999px;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
-      text-align:center;
+      background:linear-gradient(135deg,var(--red),var(--gold));
       color:#fff;
-      font-weight:800;
-      line-height:1.4;
+      font-weight:900;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+      box-shadow:0 16px 36px rgba(183,15,28,0.28);
       transition:0.25s ease;
-      box-shadow:0 12px 30px rgba(0,0,0,0.25);
     }
 
-    .reserve-btn:hover{
+    .funded-btn:hover{
       transform:translateY(-3px);
-      border-color:rgba(212,175,55,0.35);
-      color:var(--gold-2);
-      box-shadow:0 18px 38px rgba(0,0,0,0.35);
-    }
-
-    .reserve-btn:last-child{
-      grid-column:1 / -1;
-      min-height:72px;
-      font-size:16px;
-      background:
-        linear-gradient(135deg, rgba(193,18,31,0.18), rgba(212,175,55,0.14)),
-        rgba(0,0,0,0.24);
     }
 
     /* FAQ */
@@ -817,28 +766,28 @@
     }
 
     .faq-item h3{
+      color:#fff;
       font-size:18px;
       margin-bottom:10px;
-      color:#fff;
     }
 
     .faq-item p{
       color:var(--muted);
-      line-height:1.8;
       font-size:15px;
+      line-height:1.8;
     }
 
     /* FOOTER */
     .footer{
       padding:38px 0 50px;
       border-top:1px solid rgba(255,255,255,0.06);
-      background:rgba(0,0,0,0.25);
+      background:rgba(0,0,0,0.24);
     }
 
     .footer-inner{
       display:flex;
-      align-items:center;
       justify-content:space-between;
+      align-items:center;
       gap:18px;
       flex-wrap:wrap;
     }
@@ -846,9 +795,9 @@
     .footer-brand{
       font-family:'Orbitron',sans-serif;
       font-size:18px;
-      color:#fff;
+      text-transform:lowercase;
       letter-spacing:0.08em;
-      text-transform:uppercase;
+      color:#fff;
     }
 
     .footer-copy{
@@ -858,15 +807,10 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 1100px){
+    @media (max-width:1100px){
       .hero-grid,
       .bots-grid,
-      .steps,
-      .reviews-grid{
-        grid-template-columns:1fr;
-      }
-
-      .offer-grid{
+      .steps{
         grid-template-columns:1fr;
       }
 
@@ -875,7 +819,7 @@
       }
     }
 
-    @media (max-width: 760px){
+    @media (max-width:760px){
       .nav-wrap{
         padding:14px 0;
         align-items:flex-start;
@@ -891,20 +835,13 @@
         padding-top:62px;
       }
 
-      .hero-stats{
-        grid-template-columns:1fr;
-      }
-
-      .reservation-buttons{
-        grid-template-columns:1fr;
-      }
-
-      .reserve-btn:last-child{
-        grid-column:auto;
-      }
-
+      .hero-stats,
       .hero-grid-mini{
         grid-template-columns:1fr;
+      }
+
+      .review-card{
+        width:300px;
       }
 
       .section{
@@ -913,9 +850,7 @@
 
       .bot-card,
       .step-card,
-      .review-card,
-      .offer-box,
-      .reservation-panel{
+      .funded-panel{
         padding:24px;
       }
     }
@@ -926,45 +861,38 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <div class="brand">
-        <div class="brand-title">GrootMoney.Bots</div>
-        <div class="brand-sub">Powered by ForexWealthEmpire(Pty)Ltd</div>
+        <div class="brand-title">GrootMoney.bots</div>
+        <div class="brand-sub">Powered by Forex Wealth Empire(Pty)Ltd</div>
       </div>
 
       <nav>
-        <a href="#features">Features</a>
+        <a href="#bots">Bots</a>
         <a href="#how">How It Works</a>
         <a href="#reviews">Reviews</a>
-        <a href="#offer">Offer</a>
-        <a href="#partners">Broker</a>
+        <a href="#funded">Get Funded</a>
         <a href="#faq">FAQ</a>
-        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy 5.1 Now</a>
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" class="nav-cta" target="_blank">Buy Now</a>
       </nav>
     </div>
 
-    <div class="ticker">
-      <div class="ticker-track">
-        <div class="ticker-content">
-          <div class="ticker-item"><strong>GrootMoney.Bots</strong></div>
-          <div class="ticker-item">Broker Killer 5.1 Available Now</div>
-          <div class="ticker-item">Broker Destroyer 6.1 Coming Soon</div>
-          <div class="ticker-item">Comit Capital Prop Firm</div>
-          <div class="ticker-item">Get Funded With <strong>R100 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R200 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R500 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R1 000 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R2 000 000</strong></div>
+    <div class="top-strip">
+      <div class="top-strip-track">
+        <div class="top-strip-content">
+          <div class="top-strip-item"><strong>GrootMoney.bots</strong></div>
+          <div class="top-strip-item">Powered by Forex Wealth Empire(Pty)Ltd</div>
+          <div class="top-strip-item">Get funded up to <strong>R 2 000 000</strong></div>
+          <div class="top-strip-item">Broker Killer 5.1</div>
+          <div class="top-strip-item">Broker Destroyer 5.2</div>
+          <div class="top-strip-item">Mission Gun 5.5</div>
         </div>
 
-        <div class="ticker-content" aria-hidden="true">
-          <div class="ticker-item"><strong>GrootMoney.Bots</strong></div>
-          <div class="ticker-item">Broker Killer 5.1 Available Now</div>
-          <div class="ticker-item">Broker Destroyer 6.1 Coming Soon</div>
-          <div class="ticker-item">Comit Capital Prop Firm</div>
-          <div class="ticker-item">Get Funded With <strong>R100 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R200 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R500 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R1 000 000</strong></div>
-          <div class="ticker-item">Get Funded With <strong>R2 000 000</strong></div>
+        <div class="top-strip-content" aria-hidden="true">
+          <div class="top-strip-item"><strong>GrootMoney.bots</strong></div>
+          <div class="top-strip-item">Powered by Forex Wealth Empire(Pty)Ltd</div>
+          <div class="top-strip-item">Get funded up to <strong>R 2 000 000</strong></div>
+          <div class="top-strip-item">Broker Killer 5.1</div>
+          <div class="top-strip-item">Broker Destroyer 5.2</div>
+          <div class="top-strip-item">Mission Gun 5.5</div>
         </div>
       </div>
     </div>
@@ -977,32 +905,31 @@
         <div class="hero-copy">
           <div class="eyebrow">Premium MT5 Bot Collection</div>
           <h1>
-            GrootMoney <span>Broker Killer 5.1</span><br>
-            & Destroyer 6.1
+            Trade with <span>GrootMoney.bots</span>
           </h1>
           <p>
-            Premium PC Vision MT5 bot collection built for serious traders. Access the available
-            Broker Killer 5.1 today, stay ready for Broker Destroyer 6.1, and reserve your funded
-            opportunity through Comit Capital Prop Firm.
+            Premium bot collection built for traders who want strong execution, clean presentation,
+            and direct access to live offers. Broker Killer 5.1 is available now, Mission Gun 5.5 is
+            currently in sale, and Broker Destroyer 5.2 lands in 30 days.
           </p>
 
           <div class="hero-actions">
             <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" class="btn btn-primary">Buy Broker Killer 5.1</a>
-            <a href="#partners" class="btn btn-secondary">Reserve Funded Account</a>
+            <a href="#funded" class="btn btn-secondary">Get Funded</a>
           </div>
 
           <div class="hero-stats">
             <div class="stat-card">
               <div class="stat-number">5.1</div>
-              <div class="stat-label">Broker Killer version currently available for purchase.</div>
+              <div class="stat-label">Broker Killer available now for traders ready to buy.</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">6.1</div>
-              <div class="stat-label">Destroyer version coming soon for day traders and swing traders.</div>
+              <div class="stat-number">5.5</div>
+              <div class="stat-label">Mission Gun currently in sale and displayed as a live offer.</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">5 Sizes</div>
-              <div class="stat-label">Funded account reservation options inside one premium panel.</div>
+              <div class="stat-number">30 Days</div>
+              <div class="stat-label">Broker Destroyer 5.2 release countdown for the next drop.</div>
             </div>
           </div>
         </div>
@@ -1010,15 +937,15 @@
         <div class="hero-visual">
           <div class="hero-card">
             <div class="hero-top">
-              <div class="hero-badge">Live System Access</div>
+              <div class="hero-badge">Live Bot Access</div>
               <div class="scan-dot"></div>
             </div>
 
             <div class="hero-box">
-              <h3>Bot Collection</h3>
+              <h3>Collection Status</h3>
               <p>
-                Professional trading systems designed for MT5 users who want premium presentation,
-                stronger branding, and a cleaner route to bot access plus funded opportunities.
+                Three strong systems in one premium brand layout. Current offers stay visible while the
+                next release is positioned with strong anticipation.
               </p>
             </div>
 
@@ -1029,26 +956,25 @@
               </div>
 
               <div class="mini-cell">
-                <div class="mini-label">Coming Soon</div>
-                <div class="mini-value">Destroyer 6.1</div>
+                <div class="mini-label">Currently In Sale</div>
+                <div class="mini-value">Mission Gun 5.5</div>
               </div>
 
               <div class="mini-cell">
-                <div class="mini-label">Price</div>
-                <div class="mini-value">R2000</div>
+                <div class="mini-label">Coming In</div>
+                <div class="mini-value">30 Days</div>
               </div>
 
               <div class="mini-cell">
-                <div class="mini-label">Funded Panel</div>
-                <div class="mini-value">Comit Capital</div>
+                <div class="mini-label">Funded Access</div>
+                <div class="mini-value">Up To R 2 000 000</div>
               </div>
             </div>
 
             <div class="hero-box" style="margin-top:16px;">
-              <h3>Brand Focus</h3>
+              <h3>Get Funded</h3>
               <p>
-                Built to reflect Forex Wealth Empire style with a premium dark presentation,
-                cleaner calls to action, and direct funded account reservation flow.
+                Clean funded route connected to your prop form with a single premium call to action.
               </p>
             </div>
           </div>
@@ -1056,58 +982,80 @@
       </div>
     </section>
 
-    <section class="section" id="features">
+    <section class="section" id="bots">
       <div class="container">
-        <div class="eyebrow">Premium Bot Collection</div>
-        <h2 class="section-title">Choose Your GrootMoney System</h2>
+        <div class="eyebrow">Three Bot Systems</div>
+        <h2 class="section-title">The GrootMoney Bot Lineup</h2>
         <p class="section-subtitle">
-          One product line, two strong options. Keep the currently available Broker Killer 5.1 live on the site,
-          while also showcasing Broker Destroyer 6.1 as the next premium release.
+          Built to show the full brand live on the website with clean visibility for the current offers
+          and the next release.
         </p>
 
         <div class="bots-grid">
           <article class="bot-card">
             <div class="bot-tag">Available Now</div>
-            <h3>GrootMoney Broker Killer 5.1</h3>
+            <h3>Broker Killer 5.1</h3>
             <p>
-              Premium MT5 bot currently available for clients who want access now. Designed for the
-              GrootMoney ecosystem with clean premium branding and direct checkout flow.
+              Premium trading system currently live and ready for buyers who want immediate access.
             </p>
 
             <div class="bot-points">
-              <span>PC Vision MT5 trading bot</span>
-              <span>Premium design for serious traders</span>
-              <span>Direct Whop checkout integration</span>
-              <span>Works perfectly as your main live offer</span>
+              <span>Live offer on the website</span>
+              <span>Strong premium presentation</span>
+              <span>Direct checkout access</span>
+              <span>Clean call to action for buyers</span>
             </div>
 
             <div class="price-wrap">
               <div class="price-box">
-                <div class="label">Available Price</div>
-                <div class="price">R2000</div>
+                <div class="label">Status</div>
+                <div class="price">Buy Now</div>
               </div>
 
-              <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" class="btn btn-primary">Buy 5.1 Now</a>
+              <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" class="btn btn-primary">Buy 5.1</a>
             </div>
           </article>
 
           <article class="bot-card">
-            <div class="bot-tag">Coming Soon</div>
-            <h3>GrootMoney Broker Destroyer 6.1</h3>
+            <div class="bot-tag">Currently In Sale</div>
+            <h3>Mission Gun 5.5</h3>
             <p>
-              New premium release coming soon for day traders and swing traders. Presented as a high-end
-              future system with customizable time frame alignment.
+              Built as another live selling system inside the GrootMoney collection with premium visibility.
             </p>
 
             <div class="bot-points">
-              <span>Designed for day traders and swing traders</span>
-              <span>Customizable for time frame alignment</span>
-              <span>Premium upcoming GrootMoney release</span>
-              <span>Strong positioning for your next sales push</span>
+              <span>Positioned as currently in sale</span>
+              <span>Strong visual product placement</span>
+              <span>Fits the premium bot ecosystem</span>
+              <span>Ready to be marketed live</span>
             </div>
 
             <div class="price-wrap">
-              <div class="coming-soon">Currently Not In Sale</div>
+              <div class="price-box">
+                <div class="label">Status</div>
+                <div class="price">In Sale</div>
+              </div>
+
+              <a href="#funded" class="btn btn-secondary">View Live</a>
+            </div>
+          </article>
+
+          <article class="bot-card">
+            <div class="bot-tag">Coming In 30 Days</div>
+            <h3>Broker Destroyer 5.2</h3>
+            <p>
+              Upcoming premium release positioned for anticipation and future conversion on the site.
+            </p>
+
+            <div class="bot-points">
+              <span>New version coming in 30 days</span>
+              <span>Built for strong future positioning</span>
+              <span>Premium next-release presentation</span>
+              <span>Clean visibility without clutter</span>
+            </div>
+
+            <div class="price-wrap">
+              <div class="coming-box">Coming In 30 Days</div>
             </div>
           </article>
         </div>
@@ -1117,37 +1065,34 @@
     <section class="section" id="how">
       <div class="container">
         <div class="eyebrow">How It Works</div>
-        <h2 class="section-title">Simple Flow. Premium Delivery.</h2>
+        <h2 class="section-title">Simple, Clean, Live</h2>
         <p class="section-subtitle">
-          Keep the site clean and professional. Give people a direct route either to buy the current bot
-          or reserve a funded option through your prop partner panel.
+          This layout gives people a direct way to see the bots, move through the brand, and click into
+          the funded route without confusion.
         </p>
 
         <div class="steps">
           <div class="step-card">
             <div class="step-number">01</div>
-            <h3>Choose Your Path</h3>
+            <h3>See The Bot Lineup</h3>
             <p>
-              Visitors can either buy GrootMoney Broker Killer 5.1 right away or move to the funded
-              reservation section for prop account opportunities.
+              Visitors land on the page and immediately see all three GrootMoney bots clearly positioned.
             </p>
           </div>
 
           <div class="step-card">
             <div class="step-number">02</div>
-            <h3>Reserve Funded Size</h3>
+            <h3>Choose A Live Route</h3>
             <p>
-              Inside one premium panel, users select the funded amount they want and continue through
-              your Comit Capital reservation form.
+              Buyers can move toward the current live offers or continue into the funded opportunity section.
             </p>
           </div>
 
           <div class="step-card">
             <div class="step-number">03</div>
-            <h3>Build The Ecosystem</h3>
+            <h3>Click Get Funded</h3>
             <p>
-              This structure lets you keep your current bot live, promote the future release, and
-              create a cleaner funnel around funded opportunities.
+              One premium funded button keeps the section clean while still pushing users into the prop form.
             </p>
           </div>
         </div>
@@ -1156,92 +1101,102 @@
 
     <section class="section" id="reviews">
       <div class="container">
-        <div class="eyebrow">Client Energy</div>
-        <h2 class="section-title">Built To Look Trusted</h2>
+        <div class="eyebrow">Moving Reviews</div>
+        <h2 class="section-title">What People See</h2>
         <p class="section-subtitle">
-          Premium review styling helps the full website feel more established and stronger for conversion.
+          Reviews now move smoothly from right to left to keep the website feeling active and alive.
         </p>
 
-        <div class="reviews-grid">
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>
-              Clean premium setup. The presentation feels serious and the bot offer is easy to understand.
-            </p>
-            <div class="review-name">Trader Review</div>
-          </div>
+        <div class="review-marquee">
+          <div class="review-track">
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                Clean premium design. The page looks alive and the bot lineup is easy to understand.
+              </p>
+              <div class="review-name">Client Review</div>
+            </div>
 
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>
-              Strong branding and smooth flow. The available bot and coming soon release are both positioned well.
-            </p>
-            <div class="review-name">Client Feedback</div>
-          </div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                Strong presentation. Broker Killer, Mission Gun, and Destroyer all stand out properly.
+              </p>
+              <div class="review-name">Trader Feedback</div>
+            </div>
 
-          <div class="review-card">
-            <div class="review-stars">★★★★★</div>
-            <p>
-              The funded reservation section looks premium. One panel with multiple options feels much better.
-            </p>
-            <div class="review-name">Community Response</div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                The funded section looks more professional now with one clean button instead of too many.
+              </p>
+              <div class="review-name">Community View</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                Smooth movement across the page gives the website a stronger premium live feel.
+              </p>
+              <div class="review-name">User Response</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                Clean premium design. The page looks alive and the bot lineup is easy to understand.
+              </p>
+              <div class="review-name">Client Review</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                Strong presentation. Broker Killer, Mission Gun, and Destroyer all stand out properly.
+              </p>
+              <div class="review-name">Trader Feedback</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                The funded section looks more professional now with one clean button instead of too many.
+              </p>
+              <div class="review-name">Community View</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                Smooth movement across the page gives the website a stronger premium live feel.
+              </p>
+              <div class="review-name">User Response</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="offer">
+    <section class="section" id="funded">
       <div class="container">
-        <div class="eyebrow">Current Offer</div>
-        <h2 class="section-title">Live Now + Ready For What’s Next</h2>
-
-        <div class="offer-box">
-          <div class="offer-grid">
-            <div>
-              <h3>Broker Killer 5.1 Is Available Now For R2000</h3>
-              <p>
-                Keep your current live product clean and visible while still teasing GrootMoney Broker
-                Destroyer 6.1 as the next premium release. This layout makes the site feel stronger,
-                cleaner, and more professional without clutter.
-              </p>
-            </div>
-
-            <div>
-              <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" class="btn btn-primary">Get 5.1 Access</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="partners">
-      <div class="container">
-        <div class="eyebrow">Broker / Prop Firm</div>
-        <h2 class="section-title">Comit Capital Funded Reservations</h2>
+        <div class="eyebrow">Get Funded</div>
+        <h2 class="section-title">Funding Up To R 2 000 000</h2>
         <p class="section-subtitle">
-          One single premium panel. Multiple funded amounts inside it. Each button sends the user to your
-          provided Comit Capital reservation form.
+          One clean funded section. One button. Strong premium look.
         </p>
 
-        <div class="partners-wrap">
-          <section class="reservation-panel" id="comit-capital">
-            <div class="reservation-panel-inner">
-              <span class="reservation-tag">Comit Capital Prop Firm</span>
-              <h2>Funded Account Reservations</h2>
-              <p>
-                Select your preferred funded account size below and reserve your position through the official
-                Comit Capital form linked to your site.
-              </p>
+        <div class="funded-panel">
+          <div class="funded-panel-inner">
+            <div class="funded-tag">Comit Capital Prop Firm</div>
+            <h2>Get Funded Up To R 2 000 000</h2>
+            <p>
+              Take the next step through the funded route and move into the official reservation form.
+            </p>
 
-              <div class="reservation-buttons">
-                <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" class="reserve-btn">Get Funded With R100 000</a>
-                <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" class="reserve-btn">Get Funded With R200 000</a>
-                <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" class="reserve-btn">Get Funded With R500 000</a>
-                <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" class="reserve-btn">Get Funded With R1 000 000</a>
-                <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" class="reserve-btn">Get Funded With R2 000 000</a>
-              </div>
-            </div>
-          </section>
+            <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543" target="_blank" class="funded-btn">
+              Get Funded
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -1249,41 +1204,30 @@
     <section class="section" id="faq">
       <div class="container">
         <div class="eyebrow">FAQ</div>
-        <h2 class="section-title">Questions Clients May Ask</h2>
+        <h2 class="section-title">Quick Answers</h2>
         <p class="section-subtitle">
-          Clean answers for the common things people want to know before buying or reserving.
+          Clean public answers that help visitors move through the page faster.
         </p>
 
         <div class="faq-list">
           <div class="faq-item">
-            <h3>Is GrootMoney Broker Killer 5.1 available now?</h3>
-            <p>
-              Yes. Broker Killer 5.1 is the live offer currently available on the site for R2000.
-            </p>
+            <h3>Which bot is available now?</h3>
+            <p>Broker Killer 5.1 is available now.</p>
           </div>
 
           <div class="faq-item">
-            <h3>Is Broker Destroyer 6.1 already on sale?</h3>
-            <p>
-              Not yet. It is presented as coming soon for day traders and swing traders with customizable
-              time frame alignment.
-            </p>
+            <h3>Which bot is currently in sale?</h3>
+            <p>Mission Gun 5.5 is currently in sale.</p>
           </div>
 
           <div class="faq-item">
-            <h3>How do the funded buttons work?</h3>
-            <p>
-              Each funded button opens the same Comit Capital reservation form. The button labels simply
-              show the funded amount the client is interested in.
-            </p>
+            <h3>Which bot is coming next?</h3>
+            <p>Broker Destroyer 5.2 is coming in 30 days.</p>
           </div>
 
           <div class="faq-item">
-            <h3>Can I change each amount to a different link later?</h3>
-            <p>
-              Yes. You can easily replace each button link with a different URL anytime if you later get
-              separate reservation forms or tracking links.
-            </p>
+            <h3>How does the funded section work?</h3>
+            <p>The Get Funded button opens the funded reservation form directly.</p>
           </div>
         </div>
       </div>
@@ -1293,12 +1237,10 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="footer-brand">GrootMoney.Bots</div>
-      <div class="footer-copy">
-        Powered by ForexWealthEmpire(Pty)Ltd · Premium MT5 bot ecosystem
-      </div>
+      <div class="footer-brand">GrootMoney.bots</div>
+      <div class="footer-copy">Powered by Forex Wealth Empire(Pty)Ltd</div>
     </div>
   </footer>
 
 </body>
-  </html>
+                                                           </html>
