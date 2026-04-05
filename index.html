@@ -176,7 +176,7 @@
       gap: 48px;
       padding: 14px 0;
       min-width: 200%;
-      animation: marqueeReverse 26s linear infinite;
+      animation: marqueeRight 26s linear infinite;
       font-weight: 800;
       color: #f9e4b6;
       text-transform: uppercase;
@@ -184,7 +184,7 @@
 
     .announcement-track span { letter-spacing: 0.06em; }
 
-    @keyframes marqueeReverse {
+    @keyframes marqueeRight {
       0% { transform: translateX(-50%); }
       100% { transform: translateX(0); }
     }
@@ -640,12 +640,12 @@
       white-space: nowrap;
       min-width: 200%;
       padding: 18px;
-      animation: reviewMove 32s linear infinite;
+      animation: reviewMoveRight 32s linear infinite;
     }
 
-    @keyframes reviewMove {
-      from { transform: translateX(-2%); }
-      to { transform: translateX(-52%); }
+    @keyframes reviewMoveRight {
+      0% { transform: translateX(-52%); }
+      100% { transform: translateX(-2%); }
     }
 
     .review-box {
@@ -808,7 +808,7 @@
       min-width: 200%;
       white-space: nowrap;
       padding: 16px 0;
-      animation: brokerMarquee 22s linear infinite;
+      animation: brokerMarqueeRight 22s linear infinite;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -816,9 +816,9 @@
       font-size: 13px;
     }
 
-    @keyframes brokerMarquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    @keyframes brokerMarqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
     }
 
     .broker-grid {
