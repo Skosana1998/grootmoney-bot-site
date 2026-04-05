@@ -10,19 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050505;
-      --bg-soft: #0c0c0c;
-      --card: rgba(255,255,255,0.05);
-      --card-2: rgba(255,255,255,0.03);
-      --stroke: rgba(255,255,255,0.08);
-      --text: #f6f3ea;
-      --muted: #b8ae9b;
-      --gold: #f0c97a;
-      --gold-2: #9d6f18;
+      --bg: #05070a;
+      --bg-soft: #0a1018;
+      --card: rgba(0, 207, 255, 0.08);
+      --card-2: rgba(0, 207, 255, 0.04);
+      --stroke: rgba(0, 207, 255, 0.14);
+      --text: #eafcff;
+      --muted: #8db7c4;
+      --blue: #00cfff;
+      --blue-2: #009dff;
+      --cyan: #6df7ff;
+      --deep: #07131d;
       --red: #ff2323;
       --red-soft: rgba(255,35,35,0.22);
       --green: #67ff9f;
-      --shadow-gold: 0 0 30px rgba(240,201,122,0.18);
+      --shadow-blue: 0 0 30px rgba(0, 207, 255, 0.22);
+      --shadow-cyan: 0 0 40px rgba(109, 247, 255, 0.16);
       --shadow-red: 0 0 35px rgba(255,35,35,0.15);
       --radius: 24px;
       --max: 1220px;
@@ -33,9 +36,9 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at 20% 10%, rgba(255,35,35,0.12), transparent 25%),
-        radial-gradient(circle at 80% 0%, rgba(240,201,122,0.12), transparent 25%),
-        linear-gradient(180deg, #020202 0%, #080808 35%, #030303 100%);
+        radial-gradient(circle at 20% 10%, rgba(0,207,255,0.10), transparent 25%),
+        radial-gradient(circle at 80% 0%, rgba(109,247,255,0.10), transparent 25%),
+        linear-gradient(180deg, #020508 0%, #081019 35%, #03060a 100%);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
@@ -60,13 +63,13 @@
     }
 
     .bg-lines::before {
-      background: radial-gradient(circle at center, rgba(255,35,35,0.15), transparent 35%);
+      background: radial-gradient(circle at center, rgba(0,207,255,0.15), transparent 35%);
       filter: blur(40px);
       animation: pulseGlow 6s ease-in-out infinite;
     }
 
     .bg-lines::after {
-      background: radial-gradient(circle at 60% 40%, rgba(240,201,122,0.14), transparent 28%);
+      background: radial-gradient(circle at 60% 40%, rgba(109,247,255,0.14), transparent 28%);
       filter: blur(55px);
       animation: floatGlow 9s ease-in-out infinite;
     }
@@ -91,8 +94,8 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(16px);
-      background: rgba(5, 5, 5, 0.65);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(5, 8, 12, 0.68);
+      border-bottom: 1px solid rgba(0,207,255,0.08);
     }
 
     .topbar-inner {
@@ -120,10 +123,9 @@
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
       font-size: 15px;
-      color: #fff;
-      background:
-        linear-gradient(135deg, rgba(255,35,35,0.95), rgba(240,201,122,0.9));
-      box-shadow: var(--shadow-red), var(--shadow-gold);
+      color: #001018;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: var(--shadow-blue), var(--shadow-cyan);
     }
 
     .brand-text strong {
@@ -157,16 +159,16 @@
     .nav-cta {
       padding: 12px 18px;
       border-radius: 999px;
-      color: #050505;
-      background: linear-gradient(135deg, var(--gold), #fff1cc);
+      color: #031018;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
       font-weight: 800;
-      box-shadow: var(--shadow-gold);
+      box-shadow: var(--shadow-blue);
     }
 
     .announcement {
-      background: linear-gradient(90deg, rgba(255,35,35,0.12), rgba(240,201,122,0.12), rgba(255,35,35,0.12));
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: linear-gradient(90deg, rgba(0,207,255,0.10), rgba(109,247,255,0.10), rgba(0,207,255,0.10));
+      border-top: 1px solid rgba(0,207,255,0.08);
+      border-bottom: 1px solid rgba(0,207,255,0.08);
       overflow: hidden;
       white-space: nowrap;
     }
@@ -176,9 +178,9 @@
       gap: 48px;
       padding: 14px 0;
       min-width: 200%;
-      animation: marqueeRight 26s linear infinite;
+      animation: marqueeRight 42s linear infinite;
       font-weight: 800;
-      color: #f9e4b6;
+      color: #8ff5ff;
       text-transform: uppercase;
     }
 
@@ -208,9 +210,9 @@
       gap: 10px;
       padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #f8d9a0;
+      background: rgba(0,207,255,0.06);
+      border: 1px solid rgba(0,207,255,0.16);
+      color: #8ff5ff;
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -223,8 +225,8 @@
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: var(--red);
-      box-shadow: 0 0 15px var(--red);
+      background: var(--blue);
+      box-shadow: 0 0 15px var(--blue);
       animation: blink 1.2s infinite;
     }
 
@@ -243,12 +245,12 @@
     }
 
     .gradient-text {
-      background: linear-gradient(180deg, #fff8ea, #e8b961 75%, #a86909);
+      background: linear-gradient(180deg, #ecfeff, #7fefff 70%, #00a8d7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 35px rgba(240,201,122,0.18);
+      text-shadow: 0 0 35px rgba(0, 207, 255, 0.2);
     }
 
     .hero p.lead {
@@ -265,10 +267,10 @@
       padding: 18px 20px;
       border-radius: 22px;
       background:
-        linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.10)),
+        linear-gradient(135deg, rgba(0,207,255,0.08), rgba(109,247,255,0.08)),
         rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.16), 0 0 18px rgba(240,201,122,0.08);
+      border: 1px solid rgba(0,207,255,0.12);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16), 0 0 18px rgba(0,207,255,0.08);
       overflow: hidden;
     }
 
@@ -278,7 +280,7 @@
       inset: 0 auto auto 0;
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.85), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,207,255,0.85), transparent);
       opacity: 0.9;
     }
 
@@ -288,9 +290,9 @@
       gap: 8px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #f4cf89;
+      background: rgba(0,207,255,0.05);
+      border: 1px solid rgba(0,207,255,0.08);
+      color: #8ff5ff;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -299,7 +301,7 @@
     }
 
     .hero-highlight-text {
-      color: #ece2d0;
+      color: #d7f4ff;
       line-height: 1.9;
       font-size: 15px;
       margin: 0;
@@ -329,15 +331,15 @@
     .btn:hover { transform: translateY(-2px); }
 
     .btn-gold {
-      color: #050505;
-      background: linear-gradient(135deg, var(--gold), #fff0c5);
-      box-shadow: var(--shadow-gold);
+      color: #031018;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: var(--shadow-blue);
     }
 
     .btn-dark {
       color: var(--text);
-      background: rgba(255,255,255,0.03);
-      border-color: rgba(255,255,255,0.08);
+      background: rgba(0, 207, 255, 0.05);
+      border-color: rgba(0, 207, 255, 0.18);
       backdrop-filter: blur(14px);
     }
 
@@ -362,11 +364,11 @@
     }
 
     .hero-points .point {
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0, 207, 255, 0.04);
+      border: 1px solid rgba(0, 207, 255, 0.12);
       padding: 14px 16px;
       border-radius: 16px;
-      color: #ede5d8;
+      color: #d8f7ff;
       font-weight: 600;
     }
 
@@ -374,14 +376,14 @@
       position: relative;
       min-height: 600px;
       border-radius: 32px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0,207,255,0.12);
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        radial-gradient(circle at top, rgba(255,35,35,0.2), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(240,201,122,0.18), transparent 30%),
-        #090909;
+        radial-gradient(circle at top, rgba(0,207,255,0.20), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(109,247,255,0.16), transparent 30%),
+        #090d12;
       overflow: hidden;
-      box-shadow: var(--shadow-gold), var(--shadow-red);
+      box-shadow: var(--shadow-blue), var(--shadow-cyan);
     }
 
     .hero-card::before {
@@ -390,7 +392,7 @@
       inset: -40% auto auto -20%;
       width: 320px;
       height: 320px;
-      background: radial-gradient(circle, rgba(255,35,35,0.25), transparent 60%);
+      background: radial-gradient(circle, rgba(0,207,255,0.22), transparent 60%);
       filter: blur(10px);
       animation: floatGlow 7s ease-in-out infinite;
     }
@@ -402,7 +404,7 @@
       bottom: -10%;
       width: 280px;
       height: 280px;
-      background: radial-gradient(circle, rgba(240,201,122,0.2), transparent 60%);
+      background: radial-gradient(circle, rgba(109,247,255,0.16), transparent 60%);
       filter: blur(8px);
       animation: pulseGlow 8s ease-in-out infinite;
     }
@@ -424,10 +426,9 @@
       width: 240px;
       height: 240px;
       border-radius: 46% 46% 42% 42%;
-      background:
-        linear-gradient(180deg, rgba(36,36,36,1), rgba(11,11,11,1));
-      border: 1px solid rgba(255,255,255,0.09);
-      box-shadow: inset 0 0 30px rgba(255,255,255,0.05), 0 0 40px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, rgba(25,32,40,1), rgba(8,12,18,1));
+      border: 1px solid rgba(0,207,255,0.10);
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.03), 0 0 40px rgba(0,0,0,0.6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -448,8 +449,8 @@
       width: 44px;
       height: 16px;
       border-radius: 999px;
-      background: #ff2a2a;
-      box-shadow: 0 0 18px rgba(255,42,42,0.7), 0 0 35px rgba(255,42,42,0.38);
+      background: var(--blue);
+      box-shadow: 0 0 18px rgba(0,207,255,0.8), 0 0 35px rgba(109,247,255,0.4);
       animation: eyeBlink 2.6s ease-in-out infinite;
     }
 
@@ -466,9 +467,9 @@
       height: 88px;
       margin-top: -8px;
       border-radius: 18px;
-      background: linear-gradient(180deg, rgba(28,28,28,1), rgba(10,10,10,1));
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: inset 0 0 18px rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, rgba(18,24,30,1), rgba(8,12,18,1));
+      border: 1px solid rgba(0,207,255,0.08);
+      box-shadow: inset 0 0 18px rgba(255,255,255,0.02);
     }
 
     .robot-text {
@@ -481,12 +482,12 @@
       margin: 0 0 10px;
       font-size: clamp(1.4rem, 3vw, 2.3rem);
       letter-spacing: 0.14em;
-      color: #fff1cc;
+      color: #dffcff;
     }
 
     .robot-text p {
       margin: 0;
-      color: #baaf9c;
+      color: #8db7c4;
       font-size: 13px;
       letter-spacing: 0.12em;
     }
@@ -494,7 +495,7 @@
     .scan-lines {
       position: absolute;
       inset: 0;
-      background: linear-gradient(transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%);
+      background: linear-gradient(transparent 0%, rgba(0,207,255,0.03) 50%, transparent 100%);
       background-size: 100% 8px;
       opacity: 0.28;
       mix-blend-mode: screen;
@@ -514,8 +515,8 @@
       padding: 14px;
       width: 225px;
       border-radius: 18px;
-      background: rgba(0,0,0,0.45);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(2,10,18,0.55);
+      border: 1px solid rgba(0,207,255,0.12);
       backdrop-filter: blur(10px);
       z-index: 3;
     }
@@ -524,7 +525,7 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #f2cf8a;
+      color: #8ff5ff;
       margin-bottom: 12px;
       font-weight: 800;
     }
@@ -534,12 +535,12 @@
       justify-content: space-between;
       gap: 10px;
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(0,207,255,0.08);
       font-size: 12px;
     }
 
     .metric:last-child { border-bottom: 0; }
-    .metric span:first-child { color: #9d9587; }
+    .metric span:first-child { color: #89aebe; }
     .metric span:last-child { color: #fff; font-weight: 700; }
 
     .section {
@@ -583,8 +584,8 @@
       position: relative;
       padding: 24px;
       border-radius: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
-      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(0,207,255,0.05), rgba(0,207,255,0.025));
+      border: 1px solid rgba(0,207,255,0.12);
       overflow: hidden;
       backdrop-filter: blur(14px);
     }
@@ -595,18 +596,18 @@
       inset: 0 auto auto 0;
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.75), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,207,255,0.85), transparent);
       opacity: 0.7;
     }
 
     .card h3 {
       margin: 0 0 12px;
       font-size: 18px;
-      color: #fff4db;
+      color: #dffcff;
     }
 
     .card p, .card li {
-      color: #c8bca8;
+      color: #b7ddea;
       line-height: 1.7;
       font-size: 15px;
     }
@@ -620,8 +621,8 @@
     }
 
     .secret-list li {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0, 207, 255, 0.04);
+      border: 1px solid rgba(0, 207, 255, 0.10);
       padding: 14px 16px;
       border-radius: 16px;
     }
@@ -630,8 +631,8 @@
       overflow: hidden;
       margin-top: 8px;
       border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(0,207,255,0.08);
+      background: rgba(0,207,255,0.03);
     }
 
     .ticker-track {
@@ -640,7 +641,7 @@
       white-space: nowrap;
       min-width: 200%;
       padding: 18px;
-      animation: reviewMoveRight 32s linear infinite;
+      animation: reviewMoveRight 50s linear infinite;
     }
 
     @keyframes reviewMoveRight {
@@ -654,9 +655,8 @@
       min-height: 250px;
       padding: 22px;
       border-radius: 22px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(0,207,255,0.06), rgba(0,207,255,0.03));
+      border: 1px solid rgba(0,207,255,0.10);
       box-shadow: 0 10px 30px rgba(0,0,0,0.18);
       display: flex;
       flex-direction: column;
@@ -668,14 +668,14 @@
     .review-box strong {
       display: block;
       margin: 0;
-      color: #ffe6b0;
+      color: #8ff5ff;
       font-size: 15px;
       letter-spacing: 0.04em;
     }
 
     .review-box p {
       margin: 0;
-      color: #ddd2c0;
+      color: #d4f4ff;
       line-height: 1.75;
       font-size: 14px;
       white-space: normal;
@@ -686,15 +686,15 @@
       padding: 28px;
       border-radius: 28px;
       background:
-        linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
+        linear-gradient(135deg, rgba(0,207,255,0.08), rgba(109,247,255,0.08)),
         rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.09);
+      border: 1px solid rgba(0,207,255,0.12);
       position: relative;
       overflow: hidden;
     }
 
     .pricing-main .mini {
-      color: #f3c56d;
+      color: #8ff5ff;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-size: 12px;
@@ -708,7 +708,7 @@
     }
 
     .pricing-main .new {
-      color: #fff0c3;
+      color: #dffcff;
       font-size: 32px;
       font-weight: 900;
     }
@@ -725,9 +725,9 @@
       place-items: center;
       min-height: 72px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #f3e6c9;
+      background: rgba(0, 207, 255, 0.04);
+      border: 1px solid rgba(0, 207, 255, 0.12);
+      color: #dffcff;
       font-weight: 800;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -740,8 +740,8 @@
 
     .faq-item {
       border-radius: 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,207,255,0.03);
+      border: 1px solid rgba(0,207,255,0.10);
       overflow: hidden;
     }
 
@@ -750,20 +750,20 @@
       cursor: pointer;
       padding: 20px 22px;
       font-weight: 700;
-      color: #fff0ce;
+      color: #dffcff;
     }
 
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item p {
       margin: 0;
       padding: 0 22px 20px;
-      color: #c7bda9;
+      color: #b7ddea;
       line-height: 1.75;
     }
 
     .footer {
       padding: 34px 0 60px;
-      color: #938874;
+      color: #7ea5b2;
       font-size: 14px;
     }
 
@@ -772,11 +772,11 @@
       padding: 30px;
       border-radius: 28px;
       background:
-        linear-gradient(135deg, rgba(255,35,35,0.1), rgba(240,201,122,0.08)),
+        linear-gradient(135deg, rgba(0,207,255,0.10), rgba(109,247,255,0.08)),
         rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(0,207,255,0.10);
       text-align: center;
-      box-shadow: var(--shadow-red), var(--shadow-gold);
+      box-shadow: var(--shadow-blue), var(--shadow-cyan);
     }
 
     .final-cta h3 {
@@ -790,16 +790,16 @@
       margin-top: 16px;
       font-size: 12px;
       line-height: 1.7;
-      color: #91836e;
+      color: #7a9dab;
     }
 
     .broker-ticker-wrap {
       overflow: hidden;
       margin: 10px 0 24px;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(90deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08), rgba(255,35,35,0.08));
-      box-shadow: 0 0 30px rgba(255,35,35,0.08), 0 0 30px rgba(240,201,122,0.08);
+      border: 1px solid rgba(0,207,255,0.08);
+      background: linear-gradient(90deg, rgba(0,207,255,0.08), rgba(109,247,255,0.08), rgba(0,207,255,0.08));
+      box-shadow: 0 0 30px rgba(0,207,255,0.08), 0 0 30px rgba(109,247,255,0.06);
     }
 
     .broker-ticker-track {
@@ -808,11 +808,11 @@
       min-width: 200%;
       white-space: nowrap;
       padding: 16px 0;
-      animation: brokerMarqueeRight 22s linear infinite;
+      animation: brokerMarqueeRight 38s linear infinite;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #f7d999;
+      color: #8ff5ff;
       font-size: 13px;
     }
 
@@ -831,9 +831,8 @@
       position: relative;
       padding: 26px;
       border-radius: 26px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(0,207,255,0.05), rgba(0,207,255,0.025));
+      border: 1px solid rgba(0,207,255,0.12);
       overflow: hidden;
       backdrop-filter: blur(14px);
       transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
@@ -845,35 +844,35 @@
       inset: 0 auto auto 0;
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(240,201,122,0.8), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,207,255,0.8), transparent);
       opacity: 0.8;
     }
 
     .broker-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(240,201,122,0.18);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.22), 0 0 26px rgba(240,201,122,0.08);
+      border-color: rgba(0,207,255,0.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22), 0 0 26px rgba(0,207,255,0.08);
     }
 
     .broker-card h3 {
       margin: 0 0 12px;
-      color: #fff0ce;
+      color: #dffcff;
       font-size: 21px;
     }
 
     .broker-card p {
       margin: 0 0 20px;
-      color: #cdbfa9;
+      color: #b7ddea;
       line-height: 1.8;
       font-size: 15px;
     }
 
     .broker-card.featured {
       background:
-        radial-gradient(circle at top left, rgba(255,35,35,0.14), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(240,201,122,0.14), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
-      box-shadow: 0 0 35px rgba(255,35,35,0.08), 0 0 35px rgba(240,201,122,0.08);
+        radial-gradient(circle at top left, rgba(0,207,255,0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(109,247,255,0.12), transparent 34%),
+        linear-gradient(180deg, rgba(0,207,255,0.06), rgba(0,207,255,0.025));
+      box-shadow: 0 0 35px rgba(0,207,255,0.08), 0 0 35px rgba(109,247,255,0.06);
     }
 
     .broker-badge {
@@ -882,9 +881,9 @@
       gap: 10px;
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #f4cf89;
+      background: rgba(0,207,255,0.05);
+      border: 1px solid rgba(0,207,255,0.08);
+      color: #8ff5ff;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -897,8 +896,8 @@
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: #ff2323;
-      box-shadow: 0 0 14px #ff2323;
+      background: var(--blue);
+      box-shadow: 0 0 14px var(--blue);
       animation: blink 1.2s infinite;
     }
 
@@ -910,9 +909,9 @@
       border-radius: 18px;
       font-size: 26px;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(255,35,35,0.12), rgba(240,201,122,0.12));
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 0 18px rgba(240,201,122,0.06);
+      background: linear-gradient(135deg, rgba(0,207,255,0.12), rgba(109,247,255,0.12));
+      border: 1px solid rgba(0,207,255,0.08);
+      box-shadow: 0 0 18px rgba(0,207,255,0.06);
     }
 
     .broker-features {
@@ -925,9 +924,9 @@
     .broker-feature {
       padding: 13px 14px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.07);
-      color: #f2e7d0;
+      background: rgba(0, 207, 255, 0.04);
+      border: 1px solid rgba(0, 207, 255, 0.12);
+      color: #dffcff;
       font-size: 14px;
       font-weight: 700;
       text-align: center;
@@ -1069,7 +1068,7 @@
           <div class="hero-highlight">
             <div class="hero-highlight-title">Product Update</div>
             <p class="hero-highlight-text">
-              <strong style="color:#fff2cd;">GrootMoney Broker Killer 5.1</strong> is available now for <strong style="color:#f0c97a;">R2000</strong>, while <strong style="color:#fff2cd;">GrootMoney Broker Destroyer 6.1</strong> is coming soon for day traders and swing traders with customizable time frame alignment.
+              <strong style="color:#ecfeff;">GrootMoney Broker Killer 5.1</strong> is available now for <strong style="color:#6df7ff;">R2000</strong>, while <strong style="color:#ecfeff;">GrootMoney Broker Destroyer 6.1</strong> is coming soon for day traders and swing traders with customizable time frame alignment.
             </p>
           </div>
 
@@ -1081,21 +1080,21 @@
 
           <div style="display:flex; flex-wrap:wrap; gap:14px; margin:24px 0 10px;">
             <div id="countdownBox" style="display:flex; gap:10px; flex-wrap:wrap;">
-              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
-                <div id="days" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">30</div>
-                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Days</div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(0,207,255,0.04); border:1px solid rgba(0,207,255,0.12); text-align:center;">
+                <div id="days" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#dffcff;">30</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#8db7c4;">Days</div>
               </div>
-              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
-                <div id="hours" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">00</div>
-                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Hours</div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(0,207,255,0.04); border:1px solid rgba(0,207,255,0.12); text-align:center;">
+                <div id="hours" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#dffcff;">00</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#8db7c4;">Hours</div>
               </div>
-              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
-                <div id="minutes" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">00</div>
-                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Minutes</div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(0,207,255,0.04); border:1px solid rgba(0,207,255,0.12); text-align:center;">
+                <div id="minutes" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#dffcff;">00</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#8db7c4;">Minutes</div>
               </div>
-              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); text-align:center;">
-                <div id="seconds" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#fff1cc;">00</div>
-                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#b8ae9b;">Seconds</div>
+              <div style="min-width:78px; padding:14px 12px; border-radius:18px; background:rgba(0,207,255,0.04); border:1px solid rgba(0,207,255,0.12); text-align:center;">
+                <div id="seconds" style="font-family:'Orbitron',sans-serif; font-size:1.35rem; color:#dffcff;">00</div>
+                <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#8db7c4;">Seconds</div>
               </div>
             </div>
           </div>
@@ -1207,52 +1206,52 @@
         <div class="ticker-wrap">
           <div class="ticker-track">
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Loyiso Bandla</strong>
               <p>Best profitable bot I have used. It is simple to understand, easy to run, and it keeps working while I focus on other things.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Bheki</strong>
               <p>This bot is clean and powerful. I like waking up and seeing trades already managed for me while I was sleeping.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Wesley Matea</strong>
               <p>Simple setup, strong performance, and a serious premium feel. It gives me confidence because it actually feels built to make money.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>John</strong>
               <p>One of the best bots I have seen. Straight to the point, profitable, and perfect for traders who want results without stress.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Maureen Shongwe</strong>
               <p>I like that it works while I am sleeping. It feels simple, professional, and the results make it look like a bot worth taking seriously.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Loyiso Bandla</strong>
               <p>Best profitable bot I have used. It is simple to understand, easy to run, and it keeps working while I focus on other things.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Bheki</strong>
               <p>This bot is clean and powerful. I like waking up and seeing trades already managed for me while I was sleeping.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Wesley Matea</strong>
               <p>Simple setup, strong performance, and a serious premium feel. It gives me confidence because it actually feels built to make money.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>John</strong>
               <p>One of the best bots I have seen. Straight to the point, profitable, and perfect for traders who want results without stress.</p>
             </div>
             <div class="review-box">
-              <div style="font-size:18px; color:#f0c97a; letter-spacing:3px;">★★★★★</div>
+              <div style="font-size:18px; color:#6df7ff; letter-spacing:3px;">★★★★★</div>
               <strong>Maureen Shongwe</strong>
               <p>I like that it works while I am sleeping. It feels simple, professional, and the results make it look like a bot worth taking seriously.</p>
             </div>
@@ -1277,7 +1276,7 @@
             <p>
               <span class="new">R2000</span>
             </p>
-            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+            <p style="color:#b7ddea; line-height:1.8; max-width:640px;">
               The current live GrootMoney bot available for purchase right now. Built for traders who want immediate access to the GrootMoney MT5 experience.
             </p>
             <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
@@ -1287,7 +1286,7 @@
           </div>
 
           <div class="pricing-main">
-            <div style="position:absolute; top:18px; right:18px; padding:8px 12px; border-radius:999px; background:rgba(255,35,35,0.14); border:1px solid rgba(255,255,255,0.08); color:#ffd6d6; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800;">
+            <div style="position:absolute; top:18px; right:18px; padding:8px 12px; border-radius:999px; background:rgba(0,207,255,0.12); border:1px solid rgba(0,207,255,0.12); color:#dffcff; font-size:11px; text-transform:uppercase; letter-spacing:.12em; font-weight:800;">
               Coming Soon
             </div>
             <div class="mini">Option 2</div>
@@ -1295,7 +1294,7 @@
             <p>
               <span class="new" style="font-size:24px;">Release In 30 Days</span>
             </p>
-            <p style="color:#d8ccb9; line-height:1.8; max-width:640px;">
+            <p style="color:#b7ddea; line-height:1.8; max-width:640px;">
               Releasing soon. Designed for day traders and swing traders, with customizable time frame alignment and a stronger premium software identity.
             </p>
             <div class="cta-row" style="margin-top:22px; margin-bottom:0;">
@@ -1413,7 +1412,7 @@
 
         <div class="final-cta">
           <h3>Ready To Move Like Premium?</h3>
-          <p style="max-width:780px; margin:0 auto 18px; color:#d3c8b7; line-height:1.8;">
+          <p style="max-width:780px; margin:0 auto 18px; color:#b7ddea; line-height:1.8;">
             Get GrootMoney Broker Killer 5.1 now or join the upcoming flow for Destroyer 6.1 with strong presentation and direct support.
           </p>
           <div class="cta-row" style="justify-content:center; margin-bottom:0;">
@@ -1437,14 +1436,14 @@
   </footer>
 
   <div id="scrollOfferPopup" style="position:fixed; right:20px; bottom:20px; width:min(360px, calc(100% - 24px)); z-index:999; opacity:0; transform:translateY(24px) scale(0.96); pointer-events:none; transition:all 0.35s ease;">
-    <div style="position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(255,255,255,0.1); background:linear-gradient(135deg, rgba(255,35,35,0.96), rgba(120,0,0,0.96) 55%, rgba(240,201,122,0.94)); box-shadow:0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(255,35,35,0.25); color:#fff; padding:22px; backdrop-filter:blur(12px);">
-      <button id="closeOfferPopup" style="position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.14); color:#fff; font-size:18px; font-weight:800;">×</button>
-      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:14px;">Live Product</div>
+    <div style="position:relative; border-radius:24px; overflow:hidden; border:1px solid rgba(0,207,255,0.14); background:linear-gradient(135deg, rgba(0,207,255,0.92), rgba(0,120,180,0.92) 55%, rgba(109,247,255,0.90)); box-shadow:0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(0,207,255,0.25); color:#031018; padding:22px; backdrop-filter:blur(12px);">
+      <button id="closeOfferPopup" style="position:absolute; top:12px; right:12px; width:34px; height:34px; border:none; border-radius:999px; cursor:pointer; background:rgba(255,255,255,0.18); color:#031018; font-size:18px; font-weight:800;">×</button>
+      <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(3,16,24,0.12); border:1px solid rgba(255,255,255,0.18); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:800; margin-bottom:14px;">Live Product</div>
       <h3 style="margin:0 0 10px; font-family:'Orbitron', sans-serif; text-transform:uppercase; line-height:1.05; font-size:1.5rem;">Broker Killer 5.1 Available Now</h3>
-      <p style="margin:0 0 16px; color:rgba(255,255,255,0.9); line-height:1.7; font-size:14px;">Buy GrootMoney Broker Killer 5.1 now for <strong style="color:#fff4c9;">R2000</strong>. Destroyer 6.1 is coming in <strong style="color:#fff4c9;">30 days</strong>.</p>
+      <p style="margin:0 0 16px; color:#052031; line-height:1.7; font-size:14px;">Buy GrootMoney Broker Killer 5.1 now for <strong>R2000</strong>. Destroyer 6.1 is coming in <strong>30 days</strong>.</p>
       <div style="display:flex; flex-wrap:wrap; gap:10px;">
-        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:linear-gradient(135deg, #f0c97a, #fff0c5); color:#0a0a0a; font-weight:900;">Buy 5.1</a>
-        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20details%20about%20GrootMoney%20bots" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:800;">WhatsApp</a>
+        <a href="https://whop.com/checkout/plan_0l3vOYe8ADKtt" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:#031018; color:#eafcff; font-weight:900;">Buy 5.1</a>
+        <a href="https://wa.me/27636136117?text=Hey%20I%20want%20more%20details%20about%20GrootMoney%20bots" target="_blank" style="flex:1 1 150px; text-align:center; text-decoration:none; padding:14px 16px; border-radius:16px; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.15); color:#031018; font-weight:800;">WhatsApp</a>
       </div>
     </div>
   </div>
@@ -1526,7 +1525,7 @@
       const holder = document.createElement('div');
       holder.id = 'livePurchasePopup';
       holder.style.cssText = 'position:fixed;left:20px;bottom:20px;z-index:998;width:min(340px,calc(100% - 24px));opacity:0;transform:translateY(20px);pointer-events:none;transition:all .35s ease;';
-      holder.innerHTML = '<div style="border-radius:22px;padding:18px;background:linear-gradient(180deg, rgba(19,19,19,0.96), rgba(7,7,7,0.96));border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 45px rgba(0,0,0,0.35);"><div style="display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(255,35,35,0.12);border:1px solid rgba(255,255,255,0.08);color:#f0c97a;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:10px;">Live Activity</div><div id="livePurchaseText" style="color:#f1e6d0;font-size:14px;line-height:1.7;font-weight:600;"></div></div>';
+      holder.innerHTML = '<div style="border-radius:22px;padding:18px;background:linear-gradient(180deg, rgba(6,16,24,0.96), rgba(4,8,12,0.96));border:1px solid rgba(0,207,255,0.10);box-shadow:0 20px 45px rgba(0,0,0,0.35);"><div style="display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(0,207,255,0.12);border:1px solid rgba(0,207,255,0.08);color:#8ff5ff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:10px;">Live Activity</div><div id="livePurchaseText" style="color:#eafcff;font-size:14px;line-height:1.7;font-weight:600;"></div></div>';
       document.body.appendChild(holder);
       const text = holder.querySelector('#livePurchaseText');
 
@@ -1561,4 +1560,4 @@
     })();
   </script>
 </body>
-  </html>
+                                     </html>
