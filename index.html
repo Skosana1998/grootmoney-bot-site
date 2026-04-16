@@ -3,134 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrootMoney Bot | Premium</title>
+<title>GrootMoney AI Bot</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg:#020203;
-  --bg-soft:#0a0b0f;
+:root{
+  --bg:#03040a;
+  --bg2:#0b0f1c;
 
-  --text:#f8f7f2;
-  --muted:#9f9787;
+  --text:#eaf0ff;
+  --muted:#8892b0;
 
-  --gold:#ffcc66;
-  --red:#ff1f3d;
-  --neon:#00ffa6;
+  --blue:#4da3ff;
+  --blue-glow:rgba(77,163,255,0.4);
 
-  --shadow-gold:0 0 40px rgba(255,204,102,0.25);
-  --shadow-red:0 0 40px rgba(255,31,61,0.22);
-  --shadow-neon:0 0 35px rgba(0,255,166,0.25);
+  --neon:#00ffcc;
+  --neon-glow:rgba(0,255,204,0.4);
+
+  --purple:#7a5cff;
+  --purple-glow:rgba(122,92,255,0.4);
+
+  --card:rgba(255,255,255,0.03);
+  --border:rgba(255,255,255,0.08);
 }
 
+/* GLOBAL */
 body{
   margin:0;
   font-family:'Inter',sans-serif;
   color:var(--text);
   background:
-    radial-gradient(circle at 15% 10%, rgba(255,31,61,0.15), transparent),
-    radial-gradient(circle at 85% 0%, rgba(255,204,102,0.12), transparent),
-    radial-gradient(circle at 50% 100%, rgba(0,255,166,0.10), transparent),
-    linear-gradient(180deg,#010101,#050507,#020202);
+    radial-gradient(circle at 20% 10%, var(--blue-glow), transparent 30%),
+    radial-gradient(circle at 80% 0%, var(--purple-glow), transparent 30%),
+    radial-gradient(circle at 50% 100%, var(--neon-glow), transparent 35%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
 }
 
 /* NAV */
 .topbar{
   position:sticky;
   top:0;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.6);
-  padding:15px 20px;
+  padding:16px 30px;
   display:flex;
   justify-content:space-between;
+  backdrop-filter:blur(16px);
+  background:rgba(0,0,0,0.6);
+  border-bottom:1px solid var(--border);
 }
 
 .brand{
   font-family:'Orbitron';
   font-weight:800;
-  color:var(--gold);
+  letter-spacing:2px;
+  color:var(--blue);
 }
 
 .nav-cta{
-  padding:10px 16px;
+  padding:12px 18px;
   border-radius:20px;
-  background:linear-gradient(135deg,var(--gold),#fff3cc);
-  color:#000;
+  background:linear-gradient(135deg,var(--blue),var(--neon));
+  color:#001;
   font-weight:800;
+  box-shadow:0 0 25px var(--blue-glow);
 }
 
 /* HERO */
 .hero{
-  padding:80px 20px;
+  padding:100px 20px;
   text-align:center;
 }
 
 h1{
   font-family:'Orbitron';
-  font-size:3rem;
+  font-size:4rem;
   margin:0;
+  letter-spacing:2px;
 }
 
 .gradient{
-  background:linear-gradient(180deg,#fff,#ffcc66);
+  background:linear-gradient(90deg,var(--blue),var(--neon),var(--purple));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .lead{
-  color:var(--muted);
-  max-width:600px;
+  max-width:650px;
   margin:20px auto;
+  color:var(--muted);
+  font-size:18px;
 }
 
 /* BUTTONS */
 .btn{
-  padding:14px 20px;
+  padding:16px 22px;
   border-radius:14px;
   text-decoration:none;
   font-weight:800;
   display:inline-block;
-  margin:5px;
-}
-
-.btn-gold{
-  background:linear-gradient(135deg,var(--gold),#fff3cc);
-  color:#000;
-  box-shadow:var(--shadow-gold);
-}
-
-.btn-live{
-  background:linear-gradient(135deg,var(--red),#700012);
-  color:#fff;
-  box-shadow:var(--shadow-red);
-  animation:pulse 1.2s infinite;
-}
-
-.btn-profit{
-  background:linear-gradient(135deg,var(--neon),#aaffdd);
-  color:#001;
-  box-shadow:var(--shadow-neon);
-}
-
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 0 rgba(255,31,61,0.3);}
-  50%{box-shadow:0 0 25px rgba(255,31,61,0.7);}
-}
-
-/* CARD */
-.card{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:20px;
-  border-radius:20px;
-  margin:10px;
+  margin:8px;
   transition:.3s;
 }
 
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:var(--shadow-gold);
+.btn-primary{
+  background:linear-gradient(135deg,var(--blue),var(--neon));
+  color:#001;
+  box-shadow:0 0 30px var(--blue-glow);
+}
+
+.btn-danger{
+  background:linear-gradient(135deg,#ff2a4d,#70001a);
+  color:#fff;
+  box-shadow:0 0 30px rgba(255,0,60,0.4);
+}
+
+.btn-alt{
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  color:#fff;
+}
+
+/* ROBOT */
+.robot{
+  width:180px;
+  height:180px;
+  margin:60px auto;
+  background:linear-gradient(180deg,#111,#050505);
+  border-radius:30px;
+  position:relative;
+  box-shadow:0 0 40px rgba(0,0,0,0.6);
+}
+
+.robot::before,.robot::after{
+  content:"";
+  position:absolute;
+  top:70px;
+  width:30px;
+  height:10px;
+  background:var(--neon);
+  box-shadow:0 0 20px var(--neon);
+  animation:blink 2s infinite;
+}
+
+.robot::before{left:40px;}
+.robot::after{right:40px;}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0.3;}
 }
 
 /* GRID */
@@ -138,42 +157,55 @@ h1{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
-  padding:40px 20px;
+  padding:60px 30px;
 }
 
-/* ROBOT */
-.robot{
-  width:150px;
-  height:150px;
-  margin:40px auto;
-  background:#111;
+.card{
+  padding:25px;
   border-radius:20px;
-  position:relative;
+  background:var(--card);
+  border:1px solid var(--border);
+  backdrop-filter:blur(10px);
+  transition:.3s;
 }
 
-.robot::before,.robot::after{
-  content:"";
-  position:absolute;
-  top:60px;
-  width:25px;
-  height:10px;
-  background:var(--neon);
-  box-shadow:0 0 20px var(--neon);
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 30px var(--blue-glow);
 }
 
-.robot::before{left:30px;}
-.robot::after{right:30px;}
+/* LIVE TICKER */
+.ticker{
+  overflow:hidden;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin-top:40px;
+}
+
+.ticker-track{
+  display:flex;
+  gap:50px;
+  padding:15px;
+  animation:scroll 20s linear infinite;
+  font-weight:800;
+  color:var(--neon);
+}
+
+@keyframes scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:30px;
+  padding:40px;
   color:var(--muted);
 }
 
 /* selection */
 ::selection{
-  background:var(--gold);
+  background:var(--neon);
   color:#000;
 }
 </style>
@@ -182,48 +214,60 @@ footer{
 <body>
 
 <header class="topbar">
-<div class="brand">GROOTMONEY</div>
-<a class="nav-cta" href="#">Buy Now</a>
+<div class="brand">GROOTMONEY AI</div>
+<a href="#" class="nav-cta">BUY NOW</a>
 </header>
 
 <section class="hero">
-<h1><span class="gradient">Broker Killer 5.1</span></h1>
+<h1><span class="gradient">BROKER KILLER 5.1</span></h1>
 
 <p class="lead">
-Premium MT5 bot built for traders who want automation, power, and clean execution.
+AI-powered MT5 trading system designed for traders who want automation, precision, and dominance in the market.
 </p>
 
-<a class="btn btn-gold" href="#">Buy Now</a>
-<a class="btn btn-live" href="#">WhatsApp</a>
-<a class="btn btn-profit" href="#">Join Discord</a>
+<a href="#" class="btn btn-primary">Buy Now</a>
+<a href="#" class="btn btn-danger">WhatsApp</a>
+<a href="#" class="btn btn-alt">Join Discord</a>
 
 <div class="robot"></div>
 </section>
 
+<div class="ticker">
+<div class="ticker-track">
+<span>LIVE PROFITS</span>
+<span>AI EXECUTION</span>
+<span>SMART ENTRIES</span>
+<span>MT5 READY</span>
+<span>GROOTMONEY SYSTEM</span>
+<span>LIVE PROFITS</span>
+<span>AI EXECUTION</span>
+</div>
+</div>
+
 <section class="grid">
 <div class="card">
-<h3>MT5 Ready</h3>
-<p>Fully optimized for MetaTrader 5.</p>
+<h3>AI Trading</h3>
+<p>Automated decision-making with precision entries.</p>
 </div>
 
 <div class="card">
-<h3>Auto Trading</h3>
-<p>Bot trades while you sleep.</p>
+<h3>MT5 Integration</h3>
+<p>Fully compatible with MetaTrader 5.</p>
 </div>
 
 <div class="card">
-<h3>Fast Setup</h3>
-<p>Easy install and run instantly.</p>
+<h3>24/7 Execution</h3>
+<p>Trades while you sleep and monitor performance.</p>
 </div>
 
 <div class="card">
-<h3>Next Version</h3>
-<p>Destroyer 6.1 coming soon.</p>
+<h3>Next Upgrade</h3>
+<p>Destroyer 6.1 launching soon.</p>
 </div>
 </section>
 
 <footer>
-© 2026 GrootMoney Bot
+© 2026 GrootMoney AI System
 </footer>
 
 </body>
