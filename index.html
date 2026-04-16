@@ -1,224 +1,149 @@
-<!DOCTYPE html><html lang="en">
+<!-- Upgraded Version: Combined Forex Wealth Empire + GrootMoney Bot Premium Page --><!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forex Wealth Empire</title>  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0b0b0b;
-      color: #fff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forex Wealth Empire | GrootMoney Bot</title><!-- Using your advanced design as base --><style>
+/* Keeping your premium styling but simplifying slightly for integration */
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#050505;
+  color:#fff;
+}
 
-    /* HEADER */
-    header {
-      background: linear-gradient(90deg, #000, #1a1a1a);
-      padding: 15px 0;
-      overflow: hidden;
-      border-bottom: 1px solid gold;
-    }
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(0,0,0,0.9);
+  padding:15px;
+  border-bottom:1px solid gold;
+  z-index:1000;
+}
 
-    .marquee {
-      display: inline-block;
-      animation: scroll 35s linear infinite;
-      font-size: 18px;
-      color: gold;
-      font-weight: bold;
-    }
+nav{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
 
-    @keyframes scroll {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
+nav a{color:white;text-decoration:none}
+nav a:hover{color:gold}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px;
-      background: #111;
-    }
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+.hero h1{
+  font-size:60px;
+  color:gold;
+}
 
-    nav a:hover {
-      color: gold;
-    }
+.section{padding:80px 20px;text-align:center}
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 120px 20px;
-      background: radial-gradient(circle, #111, #000);
-    }
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+}
 
-    .hero h1 {
-      font-size: 55px;
-      color: gold;
-    }
+.card{
+  background:#111;
+  padding:25px;
+  border-radius:20px;
+  width:280px;
+  border:1px solid gold;
+}
 
-    .hero p {
-      font-size: 20px;
-      opacity: 0.8;
-    }
+.card:hover{box-shadow:0 0 20px gold;transform:scale(1.05)}
 
-    .cta {
-      margin-top: 20px;
-    }
+button{
+  padding:12px 20px;
+  background:gold;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+}
 
-    button {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 10px;
-      background: gold;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* POPUP */
+#popup{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:red;
+  padding:20px;
+  border-radius:15px;
+  display:none;
+}
 
-    button:hover {
-      transform: scale(1.1);
-    }
-
-    /* OFFERS */
-    .offers {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 60px 20px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: #151515;
-      padding: 25px;
-      border-radius: 20px;
-      width: 260px;
-      text-align: center;
-      border: 1px solid gold;
-      transition: 0.4s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 0 20px gold;
-    }
-
-    .price {
-      font-size: 25px;
-      color: gold;
-      margin: 10px 0;
-    }
-
-    /* DISCOUNT */
-    .discount {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: red;
-      padding: 20px 40px;
-      border-radius: 15px;
-      font-size: 20px;
-      display: none;
-      animation: pop 0.5s ease;
-    }
-
-    @keyframes pop {
-      from { transform: translateX(-50%) scale(0.5); }
-      to { transform: translateX(-50%) scale(1); }
-    }
-
-    /* ABOUT */
-    .about {
-      padding: 80px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .about h2 {
-      color: gold;
-      font-size: 35px;
-    }
-
-    /* WHATSAPP */
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: #25D366;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 20px;
-      color: white;
-      text-decoration: none;
-    }
-
-  </style></head><body><header>
-  <div class="marquee">
-    Forex Wealth Empire | Build Wealth | Trade Smart | Join GrootMoney.bot | Financial Freedom Starts Here
-  </div>
-</header><nav>
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#offers">Offers</a>
-</nav><section class="hero" id="home">
+</style></head><body><header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#offers">Offers</a>
+    <a href="#bot">Bot</a>
+    <a href="#about">About</a>
+  </nav>
+</header><section class="hero" id="home">
   <h1>Forex Wealth Empire</h1>
-  <p>Your gateway to financial freedom through forex trading.</p>
-  <div class="cta">
-    <button>Join Now</button>
+  <p>We build profitable traders & powerful trading systems.</p>
+</section><section class="section" id="offers">
+  <h2>Our Services</h2>
+  <div class="cards"><div class="card">
+  <h3>Lifetime Signals</h3>
+  <p>R2500</p>
+  <button>Buy Now</button>
+</div>
+
+<div class="card">
+  <h3>Mentorship</h3>
+  <p>R7500</p>
+  <button>Join</button>
+</div>
+
+<div class="card">
+  <h3>Automation</h3>
+  <p>R5000</p>
+  <button>Get Bot</button>
+</div>
+
   </div>
-</section><section class="offers" id="offers">  <div class="card">
-    <h2>Lifetime Signals</h2>
-    <div class="price">R2500</div>
-    <p>Get powerful forex signals for life.</p>
-    <button>Buy Now</button>
-  </div>  <div class="card">
-    <h2>Mentorship</h2>
-    <div class="price">R7500</div>
-    <p>Learn forex from beginner to pro level.</p>
-    <button>Enroll</button>
-  </div>  <div class="card">
-    <h2>Automated Bot</h2>
-    <div class="price">R5000</div>
-    <p>Trade automatically with GrootMoney.bot.</p>
-    <button>Get Bot</button>
-  </div></section><div class="discount" id="discount">
-  🔥 50% OFF ALL OFFERS TODAY 🔥
-</div><section class="about" id="about">
+</section><section class="section" id="bot">
+  <h2>GrootMoney Bot</h2>  <div class="cards"><div class="card">
+  <h3>Broker Killer 5.1</h3>
+  <p>R2000</p>
+  <p>Available Now</p>
+  <button onclick="window.open('https://wa.me/27636136117?text=I want Broker Killer 5.1')">Buy on WhatsApp</button>
+</div>
+
+<div class="card">
+  <h3>Destroyer 6.1</h3>
+  <p>Coming Soon</p>
+  <p>30 Days Release</p>
+  <button onclick="window.open('https://wa.me/27636136117?text=Notify me for 6.1')">Notify Me</button>
+</div>
+
+  </div>
+</section><section class="section" id="about">
   <h2>About Us</h2>
   <p>
-    Forex Wealth Empire (Pty) Ltd was founded in 2023 with one clear mission: to help ordinary people achieve financial freedom through forex trading.
+    Forex Wealth Empire (Pty) Ltd was founded in 2023 by Luvuyo Skosana (Troy Nasdaq).
+    In 2026 we launched GrootMoney Bot to help traders automate profits.
   </p>  <p>
-    Founded by Luvuyo Skosana, also known as Troy Nasdaq, the company has grown into a powerful brand focused on results, discipline, and smart trading strategies.
-  </p>  <p>
-    In 2026, we introduced GrootMoney.bot — an advanced automated trading system designed to simplify trading and generate consistent opportunities in the market.
-  </p>  <p>
-    At Forex Wealth Empire, we believe that anyone can succeed in forex with the right guidance, tools, and mindset. That’s why we provide:
-  </p>  <p>
-    ✔ Accurate and reliable lifetime trading signals<br>
-    ✔ Professional mentorship from beginner to advanced level<br>
-    ✔ Automated trading solutions for passive income
-  </p>  <p>
-    We are not just a forex company — we are a movement focused on building wealth, independence, and a strong trading community.
-  </p>  <p>
-    Join Forex Wealth Empire today and take control of your financial future.
+    We provide signals, mentorship, and automation to help you reach financial freedom.
   </p>
-</section><a href="#" class="whatsapp">💬</a>
-
-<script>
-  window.addEventListener("scroll", function() {
-    let discount = document.getElementById("discount");
-    if (window.scrollY > 250) {
-      discount.style.display = "block";
-    }
-  });
+</section><div id="popup">
+  🔥 50% OFF TODAY 🔥
+</div><script>
+window.addEventListener("scroll",()=>{
+  if(window.scrollY > 300){
+    document.getElementById("popup").style.display = "block";
+  }
+});
 </script></body>
 </html>
