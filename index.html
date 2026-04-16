@@ -1,274 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrootMoney AI Bot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forex Wealth Empire</title>  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    /* HEADER */
+    header {
+      background: linear-gradient(90deg, #000, #1a1a1a);
+      padding: 15px 0;
+      overflow: hidden;
+      border-bottom: 1px solid gold;
+    }
 
-<style>
-:root{
-  --bg:#03040a;
-  --bg2:#0b0f1c;
+    .marquee {
+      display: inline-block;
+      animation: scroll 35s linear infinite;
+      font-size: 18px;
+      color: gold;
+      font-weight: bold;
+    }
 
-  --text:#eaf0ff;
-  --muted:#8892b0;
+    @keyframes scroll {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
 
-  --blue:#4da3ff;
-  --blue-glow:rgba(77,163,255,0.4);
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      background: #111;
+    }
 
-  --neon:#00ffcc;
-  --neon-glow:rgba(0,255,204,0.4);
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-  --purple:#7a5cff;
-  --purple-glow:rgba(122,92,255,0.4);
+    nav a:hover {
+      color: gold;
+    }
 
-  --card:rgba(255,255,255,0.03);
-  --border:rgba(255,255,255,0.08);
-}
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      background: radial-gradient(circle, #111, #000);
+    }
 
-/* GLOBAL */
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 20% 10%, var(--blue-glow), transparent 30%),
-    radial-gradient(circle at 80% 0%, var(--purple-glow), transparent 30%),
-    radial-gradient(circle at 50% 100%, var(--neon-glow), transparent 35%),
-    linear-gradient(180deg,var(--bg),var(--bg2));
-}
+    .hero h1 {
+      font-size: 55px;
+      color: gold;
+    }
 
-/* NAV */
-.topbar{
-  position:sticky;
-  top:0;
-  padding:16px 30px;
-  display:flex;
-  justify-content:space-between;
-  backdrop-filter:blur(16px);
-  background:rgba(0,0,0,0.6);
-  border-bottom:1px solid var(--border);
-}
+    .hero p {
+      font-size: 20px;
+      opacity: 0.8;
+    }
 
-.brand{
-  font-family:'Orbitron';
-  font-weight:800;
-  letter-spacing:2px;
-  color:var(--blue);
-}
+    .cta {
+      margin-top: 20px;
+    }
 
-.nav-cta{
-  padding:12px 18px;
-  border-radius:20px;
-  background:linear-gradient(135deg,var(--blue),var(--neon));
-  color:#001;
-  font-weight:800;
-  box-shadow:0 0 25px var(--blue-glow);
-}
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      background: gold;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-/* HERO */
-.hero{
-  padding:100px 20px;
-  text-align:center;
-}
+    button:hover {
+      transform: scale(1.1);
+    }
 
-h1{
-  font-family:'Orbitron';
-  font-size:4rem;
-  margin:0;
-  letter-spacing:2px;
-}
+    /* OFFERS */
+    .offers {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
 
-.gradient{
-  background:linear-gradient(90deg,var(--blue),var(--neon),var(--purple));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+    .card {
+      background: #151515;
+      padding: 25px;
+      border-radius: 20px;
+      width: 260px;
+      text-align: center;
+      border: 1px solid gold;
+      transition: 0.4s;
+    }
 
-.lead{
-  max-width:650px;
-  margin:20px auto;
-  color:var(--muted);
-  font-size:18px;
-}
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 20px gold;
+    }
 
-/* BUTTONS */
-.btn{
-  padding:16px 22px;
-  border-radius:14px;
-  text-decoration:none;
-  font-weight:800;
-  display:inline-block;
-  margin:8px;
-  transition:.3s;
-}
+    .price {
+      font-size: 25px;
+      color: gold;
+      margin: 10px 0;
+    }
 
-.btn-primary{
-  background:linear-gradient(135deg,var(--blue),var(--neon));
-  color:#001;
-  box-shadow:0 0 30px var(--blue-glow);
-}
+    /* DISCOUNT */
+    .discount {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: red;
+      padding: 20px 40px;
+      border-radius: 15px;
+      font-size: 20px;
+      display: none;
+      animation: pop 0.5s ease;
+    }
 
-.btn-danger{
-  background:linear-gradient(135deg,#ff2a4d,#70001a);
-  color:#fff;
-  box-shadow:0 0 30px rgba(255,0,60,0.4);
-}
+    @keyframes pop {
+      from { transform: translateX(-50%) scale(0.5); }
+      to { transform: translateX(-50%) scale(1); }
+    }
 
-.btn-alt{
-  background:linear-gradient(135deg,var(--purple),var(--blue));
-  color:#fff;
-}
+    /* ABOUT */
+    .about {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+    }
 
-/* ROBOT */
-.robot{
-  width:180px;
-  height:180px;
-  margin:60px auto;
-  background:linear-gradient(180deg,#111,#050505);
-  border-radius:30px;
-  position:relative;
-  box-shadow:0 0 40px rgba(0,0,0,0.6);
-}
+    .about h2 {
+      color: gold;
+      font-size: 35px;
+    }
 
-.robot::before,.robot::after{
-  content:"";
-  position:absolute;
-  top:70px;
-  width:30px;
-  height:10px;
-  background:var(--neon);
-  box-shadow:0 0 20px var(--neon);
-  animation:blink 2s infinite;
-}
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+    }
 
-.robot::before{left:40px;}
-.robot::after{right:40px;}
+  </style></head><body><header>
+  <div class="marquee">
+    Forex Wealth Empire | Build Wealth | Trade Smart | Join GrootMoney.bot | Financial Freedom Starts Here
+  </div>
+</header><nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#offers">Offers</a>
+</nav><section class="hero" id="home">
+  <h1>Forex Wealth Empire</h1>
+  <p>Your gateway to financial freedom through forex trading.</p>
+  <div class="cta">
+    <button>Join Now</button>
+  </div>
+</section><section class="offers" id="offers">  <div class="card">
+    <h2>Lifetime Signals</h2>
+    <div class="price">R2500</div>
+    <p>Get powerful forex signals for life.</p>
+    <button>Buy Now</button>
+  </div>  <div class="card">
+    <h2>Mentorship</h2>
+    <div class="price">R7500</div>
+    <p>Learn forex from beginner to pro level.</p>
+    <button>Enroll</button>
+  </div>  <div class="card">
+    <h2>Automated Bot</h2>
+    <div class="price">R5000</div>
+    <p>Trade automatically with GrootMoney.bot.</p>
+    <button>Get Bot</button>
+  </div></section><div class="discount" id="discount">
+  🔥 50% OFF ALL OFFERS TODAY 🔥
+</div><section class="about" id="about">
+  <h2>About Us</h2>
+  <p>
+    Forex Wealth Empire (Pty) Ltd was founded in 2023 with one clear mission: to help ordinary people achieve financial freedom through forex trading.
+  </p>  <p>
+    Founded by Luvuyo Skosana, also known as Troy Nasdaq, the company has grown into a powerful brand focused on results, discipline, and smart trading strategies.
+  </p>  <p>
+    In 2026, we introduced GrootMoney.bot — an advanced automated trading system designed to simplify trading and generate consistent opportunities in the market.
+  </p>  <p>
+    At Forex Wealth Empire, we believe that anyone can succeed in forex with the right guidance, tools, and mindset. That’s why we provide:
+  </p>  <p>
+    ✔ Accurate and reliable lifetime trading signals<br>
+    ✔ Professional mentorship from beginner to advanced level<br>
+    ✔ Automated trading solutions for passive income
+  </p>  <p>
+    We are not just a forex company — we are a movement focused on building wealth, independence, and a strong trading community.
+  </p>  <p>
+    Join Forex Wealth Empire today and take control of your financial future.
+  </p>
+</section><a href="#" class="whatsapp">💬</a>
 
-@keyframes blink{
-  0%,100%{opacity:1;}
-  50%{opacity:0.3;}
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:60px 30px;
-}
-
-.card{
-  padding:25px;
-  border-radius:20px;
-  background:var(--card);
-  border:1px solid var(--border);
-  backdrop-filter:blur(10px);
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 30px var(--blue-glow);
-}
-
-/* LIVE TICKER */
-.ticker{
-  overflow:hidden;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  margin-top:40px;
-}
-
-.ticker-track{
-  display:flex;
-  gap:50px;
-  padding:15px;
-  animation:scroll 20s linear infinite;
-  font-weight:800;
-  color:var(--neon);
-}
-
-@keyframes scroll{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:40px;
-  color:var(--muted);
-}
-
-/* selection */
-::selection{
-  background:var(--neon);
-  color:#000;
-}
-</style>
-</head>
-
-<body>
-
-<header class="topbar">
-<div class="brand">GROOTMONEY AI</div>
-<a href="#" class="nav-cta">BUY NOW</a>
-</header>
-
-<section class="hero">
-<h1><span class="gradient">BROKER KILLER 5.1</span></h1>
-
-<p class="lead">
-AI-powered MT5 trading system designed for traders who want automation, precision, and dominance in the market.
-</p>
-
-<a href="#" class="btn btn-primary">Buy Now</a>
-<a href="#" class="btn btn-danger">WhatsApp</a>
-<a href="#" class="btn btn-alt">Join Discord</a>
-
-<div class="robot"></div>
-</section>
-
-<div class="ticker">
-<div class="ticker-track">
-<span>LIVE PROFITS</span>
-<span>AI EXECUTION</span>
-<span>SMART ENTRIES</span>
-<span>MT5 READY</span>
-<span>GROOTMONEY SYSTEM</span>
-<span>LIVE PROFITS</span>
-<span>AI EXECUTION</span>
-</div>
-</div>
-
-<section class="grid">
-<div class="card">
-<h3>AI Trading</h3>
-<p>Automated decision-making with precision entries.</p>
-</div>
-
-<div class="card">
-<h3>MT5 Integration</h3>
-<p>Fully compatible with MetaTrader 5.</p>
-</div>
-
-<div class="card">
-<h3>24/7 Execution</h3>
-<p>Trades while you sleep and monitor performance.</p>
-</div>
-
-<div class="card">
-<h3>Next Upgrade</h3>
-<p>Destroyer 6.1 launching soon.</p>
-</div>
-</section>
-
-<footer>
-© 2026 GrootMoney AI System
-</footer>
-
-</body>
+<script>
+  window.addEventListener("scroll", function() {
+    let discount = document.getElementById("discount");
+    if (window.scrollY > 250) {
+      discount.style.display = "block";
+    }
+  });
+</script></body>
 </html>
