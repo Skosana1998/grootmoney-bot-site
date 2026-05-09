@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -45,9 +47,7 @@ color:var(--text);
 overflow-x:hidden;
 }
 
-/* ======================
-BACKGROUND EFFECTS
-====================== */
+/* BACKGROUND GRID */
 
 body::before{
 content:"";
@@ -61,18 +61,12 @@ pointer-events:none;
 z-index:-1;
 }
 
-/* ======================
-CONTAINER
-====================== */
-
 .container{
 width:min(var(--max), calc(100% - 28px));
 margin:auto;
 }
 
-/* ======================
-HEADER
-====================== */
+/* HEADER */
 
 .topbar{
 position:sticky;
@@ -187,9 +181,61 @@ color:black;
 font-weight:800;
 }
 
-/* ======================
-HERO
-====================== */
+/* MOVING TICKER */
+
+.ticker-wrap{
+width:100%;
+overflow:hidden;
+border-bottom:1px solid rgba(255,255,255,0.06);
+background:
+linear-gradient(90deg,
+rgba(255,35,35,0.12),
+rgba(240,201,122,0.06),
+rgba(255,35,35,0.12));
+}
+
+.ticker{
+display:flex;
+gap:70px;
+white-space:nowrap;
+padding:12px 0;
+animation:tickerMove 28s linear infinite;
+font-size:12px;
+font-weight:800;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:#f0c97a;
+font-family:'Orbitron',sans-serif;
+}
+
+.ticker span{
+position:relative;
+padding-left:24px;
+}
+
+.ticker span::before{
+content:"";
+position:absolute;
+left:0;
+top:50%;
+transform:translateY(-50%);
+width:10px;
+height:10px;
+border-radius:50%;
+background:#ff2a2a;
+box-shadow:0 0 14px rgba(255,0,0,.8);
+}
+
+@keyframes tickerMove{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-50%);
+}
+}
+
+/* HERO */
 
 .hero{
 padding:90px 0 70px;
@@ -317,9 +363,7 @@ font-size:13px;
 color:#e5dac8;
 }
 
-/* ======================
-ROBOT
-====================== */
+/* ROBOT */
 
 .hero-card{
 position:relative;
@@ -329,9 +373,7 @@ background:
 radial-gradient(circle at top left, rgba(255,35,35,0.18), transparent 30%),
 radial-gradient(circle at bottom right, rgba(240,201,122,0.15), transparent 30%),
 rgba(255,255,255,0.03);
-
 border:1px solid rgba(255,255,255,0.07);
-
 display:flex;
 justify-content:center;
 align-items:center;
@@ -442,9 +484,7 @@ letter-spacing:.16em;
 color:#b7a993;
 }
 
-/* ======================
-SECTIONS
-====================== */
+/* SECTIONS */
 
 .section{
 padding:80px 0;
@@ -474,9 +514,9 @@ grid-template-columns:repeat(4,1fr);
 gap:14px;
 }
 
-.grid-2{
+.grid-3{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(3,1fr);
 gap:16px;
 }
 
@@ -495,42 +535,19 @@ transform:translateY(-6px);
 border-color:rgba(240,201,122,0.20);
 }
 
-.card::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-linear-gradient(135deg,
-rgba(255,35,35,0.08),
-transparent 40%,
-rgba(240,201,122,0.05));
-opacity:0;
-transition:.35s;
-}
-
-.card:hover::before{
-opacity:1;
-}
-
 .card h3{
 margin-bottom:10px;
 color:#fff0ce;
 font-size:16px;
-position:relative;
-z-index:2;
 }
 
 .card p{
 line-height:1.7;
 font-size:13px;
 color:#d1c5b4;
-position:relative;
-z-index:2;
 }
 
-/* ======================
-PRICING
-====================== */
+/* PRICING */
 
 .pricing-main{
 padding:22px;
@@ -538,20 +555,9 @@ border-radius:28px;
 background:
 linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
 rgba(255,255,255,0.03);
-
 border:1px solid rgba(255,255,255,0.07);
 position:relative;
 overflow:hidden;
-}
-
-.pricing-main::before{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-background:radial-gradient(circle, rgba(255,35,35,0.16), transparent 70%);
-top:-90px;
-right:-90px;
 }
 
 .pricing-main h3{
@@ -565,9 +571,7 @@ font-weight:900;
 color:#fff0ce;
 }
 
-/* ======================
-TELEGRAM
-====================== */
+/* TELEGRAM */
 
 .telegram-box{
 text-align:center;
@@ -576,13 +580,10 @@ border-radius:28px;
 background:
 linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
 rgba(255,255,255,0.03);
-
 border:1px solid rgba(255,255,255,0.07);
 }
 
-/* ======================
-FOOTER
-====================== */
+/* FOOTER */
 
 .footer{
 padding:40px 0;
@@ -590,15 +591,13 @@ color:#8f816e;
 font-size:14px;
 }
 
-/* ======================
-RESPONSIVE
-====================== */
+/* RESPONSIVE */
 
 @media(max-width:1080px){
 
 .hero-grid,
 .grid-4,
-.grid-2{
+.grid-3{
 grid-template-columns:1fr;
 }
 
@@ -617,6 +616,7 @@ min-height:480px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -639,9 +639,9 @@ min-height:480px;
 <nav>
 
 <a href="#features">Features</a>
-<a href="#offer">Pricing</a>
+<a href="#offer">Membership</a>
 <a href="#telegram">Telegram</a>
-<a href="#broker">Broker</a>
+<a href="about.html">About</a>
 
 <a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543"
 class="nav-cta"
@@ -654,6 +654,32 @@ Open Prop Firm
 </div>
 
 </header>
+
+<!-- TICKER -->
+
+<div class="ticker-wrap">
+
+<div class="ticker">
+
+<span>NO PRICE CHASING</span>
+<span>MORE WINS</span>
+<span>PATIENCE</span>
+<span>SNIPER ENTRIES</span>
+<span>DISCIPLINE</span>
+<span>PROTECT THE CAPITAL</span>
+<span>HIGH PROBABILITY SETUPS</span>
+
+<span>NO PRICE CHASING</span>
+<span>MORE WINS</span>
+<span>PATIENCE</span>
+<span>SNIPER ENTRIES</span>
+<span>DISCIPLINE</span>
+<span>PROTECT THE CAPITAL</span>
+<span>HIGH PROBABILITY SETUPS</span>
+
+</div>
+
+</div>
 
 <!-- HERO -->
 
@@ -676,7 +702,7 @@ FOREX WEALTH EMPIRE
 </h1>
 
 <p class="lead">
-Premium forex trading community focused on liquidity, market structure, institutional execution, MT5 tools, and professional market understanding.
+Premium forex trading community focused on liquidity, market structure, institutional execution, MT5 tools, discipline, patience, and professional market understanding.
 </p>
 
 <div class="hero-highlight">
@@ -686,7 +712,7 @@ FOREX WEALTH EMPIRE
 </div>
 
 <p class="hero-highlight-text">
-Trade with confidence using advanced market understanding, liquidity concepts, premium tools, and a serious worldwide trading community.
+Trade with confidence using advanced market understanding, sniper execution, premium tools, and a serious worldwide trading community.
 </p>
 
 </div>
@@ -694,9 +720,8 @@ Trade with confidence using advanced market understanding, liquidity concepts, p
 <div class="cta-row">
 
 <a class="btn btn-gold"
-href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543"
-target="_blank">
-Open Prop Firm
+href="about.html">
+About Us
 </a>
 
 <a class="btn btn-live"
@@ -706,7 +731,7 @@ WhatsApp
 </a>
 
 <a class="btn btn-dark"
-href="https://t.me/"
+href="https://t.me/forexwewlthempire"
 target="_blank">
 Telegram
 </a>
@@ -804,7 +829,7 @@ Professional execution, cleaner market understanding, disciplined risk managemen
 
 </section>
 
-<!-- PRICING -->
+<!-- MEMBERSHIP -->
 
 <section class="section" id="offer">
 
@@ -817,42 +842,95 @@ Membership Options
 </h2>
 
 <p>
-Choose your Forex Wealth Empire access level.
+Choose your Forex Wealth Empire access level and grow professionally.
 </p>
 
 </div>
 
-<div class="grid-2">
+<div class="grid-3">
+
+<!-- MENTORSHIP -->
 
 <div class="pricing-main">
 
-<div style="color:#f3c56d; font-size:11px; text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
-Premium Tools
+<div style="
+color:#f3c56d;
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.14em;
+font-weight:800;">
+Mentorship
 </div>
 
 <h3>
-MT5 Access
+1-On-1 Mentorship
 </h3>
 
 <p class="new">
-R2000
+R4500
 </p>
 
-<p style="line-height:1.8; color:#d8ccb9; margin-top:10px;">
-Advanced tools, trading support, market understanding, and access to the Forex Wealth Empire network.
+<p style="
+line-height:1.8;
+color:#d8ccb9;
+margin-top:10px;
+font-size:14px;">
+Professional mentorship focused on liquidity, sniper entries, discipline, psychology, and real market understanding.
 </p>
 
 <div class="cta-row">
 
 <a class="btn btn-gold"
-href="https://wa.me/27636136117"
-target="_blank">
-Buy Now
+href="about.html">
+Learn More
 </a>
 
 </div>
 
 </div>
+
+<!-- BOT -->
+
+<div class="pricing-main">
+
+<div style="
+color:#f3c56d;
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.14em;
+font-weight:800;">
+MT5 Trading Bot
+</div>
+
+<h3>
+PC Model Bot
+</h3>
+
+<p class="new">
+R2500
+</p>
+
+<p style="
+line-height:1.8;
+color:#d8ccb9;
+margin-top:10px;
+font-size:14px;">
+Advanced MT5 trading bot using the same concepts used inside Forex Wealth Empire for high probability setups only.
+</p>
+
+<div class="cta-row">
+
+<a class="btn btn-live"
+href="https://wa.me/27636136117"
+target="_blank">
+Get Bot
+</a>
+
+</div>
+
+</div>
+
+<!-- SIGNALS -->
 
 <div class="pricing-main">
 
@@ -866,29 +944,38 @@ background:rgba(255,35,35,0.14);
 font-size:11px;
 text-transform:uppercase;
 font-weight:800;">
-Unavailable
+Closed
 </div>
 
-<div style="color:#f3c56d; font-size:11px; text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
-Signals
+<div style="
+color:#f3c56d;
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.14em;
+font-weight:800;">
+VIP Signals
 </div>
 
 <h3>
-Trading Signals
+VIP Signals
 </h3>
 
 <p class="new" style="font-size:24px;">
-Not Available
+Currently Closed
 </p>
 
-<p style="line-height:1.8; color:#d8ccb9; margin-top:10px;">
-Signal services are currently closed while the system is upgraded.
+<p style="
+line-height:1.8;
+color:#d8ccb9;
+margin-top:10px;
+font-size:14px;">
+VIP signal services are currently unavailable while Forex Wealth Empire focuses on mentorship and education.
 </p>
 
 <div class="cta-row">
 
 <a class="btn btn-dark"
-href="https://t.me/"
+href="https://t.me/forexwewlthempire"
 target="_blank">
 Free Telegram
 </a>
@@ -911,18 +998,26 @@ Free Telegram
 
 <div class="telegram-box">
 
-<h2 style="font-family:'Orbitron',sans-serif; font-size:2.5rem; margin-bottom:16px;">
+<h2 style="
+font-family:'Orbitron',sans-serif;
+font-size:2.5rem;
+margin-bottom:16px;">
 Worldwide Telegram Community
 </h2>
 
-<p style="max-width:700px; margin:auto; line-height:1.9; color:#d8ccb9;">
+<p style="
+max-width:700px;
+margin:auto;
+line-height:1.9;
+color:#d8ccb9;">
 Connect with traders worldwide and grow with Forex Wealth Empire.
 </p>
 
-<div class="cta-row" style="justify-content:center; margin-top:26px;">
+<div class="cta-row"
+style="justify-content:center; margin-top:26px;">
 
 <a class="btn btn-live"
-href="https://t.me/"
+href="https://t.me/forexwewlthempire"
 target="_blank">
 Join Telegram
 </a>
@@ -935,9 +1030,9 @@ Join Telegram
 
 </section>
 
-<!-- BROKER -->
+<!-- PROP FIRM -->
 
-<section class="section" id="broker">
+<section class="section">
 
 <div class="container">
 
@@ -990,6 +1085,8 @@ Open Account
 </div>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer class="footer">
 
