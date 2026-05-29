@@ -1,37 +1,857 @@
-<!-- ========================= -->
-<!-- UPDATED HERO BUTTON -->
-<!-- ========================= -->
+<!DOCTYPE html>
+<html lang="en">
 
-<a class="btn btn-live"
-href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543"
-target="_blank">
-Get Funded
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forex Wealth Empire</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#050505;
+--card:rgba(255,255,255,0.04);
+--stroke:rgba(255,255,255,0.07);
+--text:#f6f3ea;
+--muted:#b9ae9a;
+--gold:#f0c97a;
+--red:#ff1f1f;
+--radius:22px;
+--max:1220px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left, rgba(255,0,0,0.13), transparent 20%),
+radial-gradient(circle at top right, rgba(240,201,122,0.10), transparent 20%),
+linear-gradient(180deg,#020202,#050505,#020202);
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* BACKGROUND GRID */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+background-size:60px 60px;
+pointer-events:none;
+z-index:-1;
+}
+
+.container{
+width:min(var(--max), calc(100% - 28px));
+margin:auto;
+}
+
+/* HEADER */
+
+.topbar{
+position:sticky;
+top:0;
+z-index:999;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,0.06);
+overflow:hidden;
+}
+
+.topbar::before{
+content:"";
+position:absolute;
+width:220px;
+height:220px;
+border:2px solid rgba(255,35,35,0.25);
+border-radius:50%;
+top:-140px;
+right:-40px;
+animation:spin 12s linear infinite;
+}
+
+.topbar::after{
+content:"";
+position:absolute;
+width:150px;
+height:150px;
+border:2px solid rgba(240,201,122,0.20);
+border-radius:50%;
+top:-90px;
+right:20px;
+animation:spinReverse 9s linear infinite;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+@keyframes spinReverse{
+from{transform:rotate(360deg);}
+to{transform:rotate(0deg);}
+}
+
+.topbar-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0;
+position:relative;
+z-index:2;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+text-decoration:none;
+color:white;
+}
+
+.brand-mark{
+width:52px;
+height:52px;
+border-radius:18px;
+display:grid;
+place-items:center;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+font-size:18px;
+background:linear-gradient(135deg,var(--red),var(--gold));
+box-shadow:
+0 0 25px rgba(255,0,0,0.35),
+0 0 35px rgba(240,201,122,0.15);
+}
+
+.brand-text strong{
+display:block;
+font-family:'Orbitron',sans-serif;
+font-size:14px;
+letter-spacing:.08em;
+}
+
+.brand-text span{
+font-size:11px;
+color:var(--muted);
+}
+
+nav{
+display:flex;
+gap:18px;
+align-items:center;
+}
+
+nav a{
+text-decoration:none;
+font-size:13px;
+color:var(--muted);
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
+}
+
+.nav-cta{
+padding:12px 18px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--gold),#fff0c5);
+color:black;
+font-weight:800;
+}
+
+/* MOVING TICKER */
+
+.ticker-wrap{
+width:100%;
+overflow:hidden;
+border-bottom:1px solid rgba(255,255,255,0.06);
+background:
+linear-gradient(90deg,
+rgba(255,35,35,0.12),
+rgba(240,201,122,0.06),
+rgba(255,35,35,0.12));
+}
+
+.ticker{
+display:flex;
+gap:70px;
+white-space:nowrap;
+padding:12px 0;
+animation:tickerMove 28s linear infinite;
+font-size:12px;
+font-weight:800;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:#f0c97a;
+font-family:'Orbitron',sans-serif;
+}
+
+.ticker span{
+position:relative;
+padding-left:24px;
+}
+
+.ticker span::before{
+content:"";
+position:absolute;
+left:0;
+top:50%;
+transform:translateY(-50%);
+width:10px;
+height:10px;
+border-radius:50%;
+background:#ff2a2a;
+box-shadow:0 0 14px rgba(255,0,0,.8);
+}
+
+@keyframes tickerMove{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-50%);
+}
+}
+
+/* HERO */
+
+.hero{
+padding:90px 0 70px;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 480px;
+gap:45px;
+align-items:center;
+}
+
+.eyebrow{
+display:inline-flex;
+padding:10px 16px;
+border-radius:999px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+margin-bottom:24px;
+font-size:11px;
+letter-spacing:.14em;
+text-transform:uppercase;
+color:#f3c56d;
+font-weight:800;
+}
+
+h1{
+font-family:'Orbitron',sans-serif;
+font-size:clamp(3rem,7vw,5.6rem);
+line-height:1;
+text-transform:uppercase;
+}
+
+.gradient-text{
+background:linear-gradient(180deg,#fff8ea,#f0c97a 70%,#9f6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.lead{
+font-size:17px;
+line-height:1.9;
+color:var(--muted);
+margin:26px 0;
+max-width:700px;
+}
+
+.hero-highlight{
+padding:18px;
+border-radius:22px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.06);
+margin-bottom:24px;
+}
+
+.hero-highlight-title{
+font-size:11px;
+text-transform:uppercase;
+letter-spacing:.14em;
+color:#f0c97a;
+margin-bottom:10px;
+font-weight:800;
+}
+
+.hero-highlight-text{
+line-height:1.8;
+color:#d6cab8;
+font-size:14px;
+}
+
+.cta-row{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-top:26px;
+}
+
+.btn{
+padding:15px 22px;
+border-radius:18px;
+text-decoration:none;
+font-weight:800;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+transition:.35s;
+font-size:14px;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+.btn-gold{
+background:linear-gradient(135deg,var(--gold),#fff0c5);
+color:black;
+box-shadow:0 0 25px rgba(240,201,122,.25);
+}
+
+.btn-live{
+background:linear-gradient(135deg,#ff1b1b,#7d0000);
+color:white;
+box-shadow:0 0 30px rgba(255,0,0,.22);
+}
+
+.btn-dark{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+}
+
+.hero-points{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-top:28px;
+}
+
+.point{
+padding:14px;
+border-radius:18px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.06);
+font-size:13px;
+color:#e5dac8;
+}
+
+/* ROBOT */
+
+.hero-card{
+position:relative;
+border-radius:34px;
+padding:30px;
+background:
+radial-gradient(circle at top left, rgba(255,35,35,0.18), transparent 30%),
+radial-gradient(circle at bottom right, rgba(240,201,122,0.15), transparent 30%),
+rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.07);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+overflow:hidden;
+min-height:560px;
+}
+
+.hero-card::before{
+content:"";
+position:absolute;
+width:340px;
+height:340px;
+border-radius:50%;
+border:1px solid rgba(255,255,255,0.06);
+animation:spin 16s linear infinite;
+}
+
+.hero-card::after{
+content:"";
+position:absolute;
+width:420px;
+height:420px;
+border-radius:50%;
+border:1px solid rgba(255,35,35,0.12);
+animation:spinReverse 22s linear infinite;
+}
+
+.robot{
+position:relative;
+z-index:2;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-16px);}
+100%{transform:translateY(0px);}
+}
+
+.robot-head{
+width:240px;
+height:240px;
+border-radius:42%;
+background:linear-gradient(180deg,#222,#080808);
+position:relative;
+box-shadow:
+0 0 60px rgba(255,0,0,.18),
+0 0 100px rgba(240,201,122,.08);
+}
+
+.robot-head::before,
+.robot-head::after{
+content:"";
+position:absolute;
+top:95px;
+width:46px;
+height:14px;
+border-radius:999px;
+background:#ff2a2a;
+box-shadow:0 0 18px rgba(255,0,0,.9);
+animation:blink 2s infinite;
+}
+
+@keyframes blink{
+0%,90%,100%{
+opacity:1;
+}
+95%{
+opacity:.2;
+}
+}
+
+.robot-head::before{
+left:56px;
+}
+
+.robot-head::after{
+right:56px;
+}
+
+.robot-mouth{
+position:absolute;
+bottom:70px;
+left:50%;
+transform:translateX(-50%);
+width:70px;
+height:10px;
+border-radius:999px;
+background:linear-gradient(90deg,var(--gold),transparent,var(--gold));
+opacity:.8;
+}
+
+.robot-text{
+text-align:center;
+margin-top:26px;
+}
+
+.robot-text h3{
+font-family:'Orbitron',sans-serif;
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.robot-text p{
+font-size:13px;
+letter-spacing:.16em;
+color:#b7a993;
+}
+
+/* SECTIONS */
+
+.section{
+padding:80px 0;
+}
+
+.section-head{
+margin-bottom:30px;
+}
+
+.section-head h2{
+font-family:'Orbitron',sans-serif;
+font-size:clamp(2rem,5vw,3rem);
+margin-bottom:12px;
+text-transform:uppercase;
+}
+
+.section-head p{
+max-width:700px;
+line-height:1.8;
+color:var(--muted);
+font-size:15px;
+}
+
+.grid-4{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+}
+
+.grid-3{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.card{
+padding:18px;
+border-radius:20px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.06);
+transition:.35s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:rgba(240,201,122,0.20);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#fff0ce;
+font-size:16px;
+}
+
+.card p{
+line-height:1.7;
+font-size:13px;
+color:#d1c5b4;
+}
+
+/* PRICING */
+
+.pricing-main{
+padding:22px;
+border-radius:28px;
+background:
+linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
+rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.07);
+position:relative;
+overflow:hidden;
+}
+
+.pricing-main h3{
+font-size:2rem;
+margin:12px 0;
+}
+
+.new{
+font-size:34px;
+font-weight:900;
+color:#fff0ce;
+}
+
+/* TELEGRAM */
+
+.telegram-box{
+text-align:center;
+padding:40px;
+border-radius:28px;
+background:
+linear-gradient(135deg, rgba(255,35,35,0.08), rgba(240,201,122,0.08)),
+rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.07);
+}
+
+/* FOOTER */
+
+.footer{
+padding:40px 0;
+color:#8f816e;
+font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1080px){
+
+.hero-grid,
+.grid-4,
+.grid-3{
+grid-template-columns:1fr;
+}
+
+nav{
+display:none;
+}
+
+.hero{
+padding-top:60px;
+}
+
+.hero-card{
+min-height:480px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="container topbar-inner">
+
+<a href="#" class="brand">
+
+<div class="brand-mark">FW</div>
+
+<div class="brand-text">
+<strong>FOREX WEALTH EMPIRE</strong>
+<span>MT5 • Liquidity • Market Structure</span>
+</div>
+
 </a>
 
+<nav>
 
+<a href="#features">Features</a>
+<a href="#offer">Membership</a>
+<a href="#telegram">Telegram</a>
+<a href="about.html">About</a>
 
-<!-- ========================= -->
-<!-- UPDATED MENTORSHIP CARD -->
-<!-- ========================= -->
+<a href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543"
+class="nav-cta"
+target="_blank">
+Open Prop Firm
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- TICKER -->
+
+<div class="ticker-wrap">
+
+<div class="ticker">
+
+<span>NO PRICE CHASING</span>
+<span>MORE WINS</span>
+<span>PATIENCE</span>
+<span>SNIPER ENTRIES</span>
+<span>DISCIPLINE</span>
+<span>PROTECT THE CAPITAL</span>
+<span>HIGH PROBABILITY SETUPS</span>
+
+<span>NO PRICE CHASING</span>
+<span>MORE WINS</span>
+<span>PATIENCE</span>
+<span>SNIPER ENTRIES</span>
+<span>DISCIPLINE</span>
+<span>PROTECT THE CAPITAL</span>
+<span>HIGH PROBABILITY SETUPS</span>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+<div>
+
+<div class="eyebrow">
+Premium Trading Community
+</div>
+
+<h1>
+
+<span class="gradient-text">
+FOREX WEALTH EMPIRE
+</span>
+
+</h1>
+
+<p class="lead">
+Premium forex trading community focused on liquidity, market structure, institutional execution, MT5 tools, discipline, patience, and professional market understanding.
+</p>
+
+<div class="hero-highlight">
+
+<div class="hero-highlight-title">
+FOREX WEALTH EMPIRE
+</div>
+
+<p class="hero-highlight-text">
+Trade with confidence using advanced market understanding, sniper execution, premium tools, and a serious worldwide trading community.
+</p>
+
+</div>
+
+<div class="cta-row">
+
+<a class="btn btn-gold"
+href="about.html">
+About Us
+</a>
+
+<a class="btn btn-live"
+href="https://wa.me/27636136117"
+target="_blank">
+WhatsApp
+</a>
+
+<a class="btn btn-dark"
+href="https://t.me/forexwewlthempire"
+target="_blank">
+Telegram
+</a>
+
+</div>
+
+<div class="hero-points">
+
+<div class="point">
+Institutional Market Understanding
+</div>
+
+<div class="point">
+Forex Trading Community
+</div>
+
+<div class="point">
+Liquidity & Structure
+</div>
+
+<div class="point">
+MT5 Trading Tools
+</div>
+
+</div>
+
+</div>
+
+<!-- ROBOT -->
+
+<div class="hero-card">
+
+<div class="robot">
+
+<div class="robot-head">
+<div class="robot-mouth"></div>
+</div>
+
+<div class="robot-text">
+<h3>FOREX WEALTH EMPIRE</h3>
+<p>WORLDWIDE TRADING NETWORK</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="section" id="features">
+
+<div class="container">
+
+<div class="section-head">
+
+<h2>
+Why Traders Join
+</h2>
+
+<p>
+Professional execution, cleaner market understanding, disciplined risk management, and advanced trading support.
+</p>
+
+</div>
+
+<div class="grid-4">
+
+<div class="card">
+<h3>Liquidity</h3>
+<p>Understand where the market targets stops and reversals.</p>
+</div>
+
+<div class="card">
+<h3>Market Structure</h3>
+<p>Learn bullish and bearish shifts with precision.</p>
+</div>
+
+<div class="card">
+<h3>Execution</h3>
+<p>Improve entries with confirmation and cleaner timing.</p>
+</div>
+
+<div class="card">
+<h3>Risk Control</h3>
+<p>Protect capital using disciplined trade management.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MEMBERSHIP -->
+
+<section class="section" id="offer">
+
+<div class="container">
+
+<div class="section-head">
+
+<h2>
+Membership Options
+</h2>
+
+<p>
+Choose your Forex Wealth Empire access level and grow professionally.
+</p>
+
+</div>
+
+<div class="grid-3">
+
+<!-- MENTORSHIP -->
 
 <div class="pricing-main">
-
-<div style="
-position:absolute;
-top:18px;
-right:18px;
-padding:8px 14px;
-border-radius:999px;
-background:linear-gradient(135deg, rgba(240,201,122,0.18), rgba(255,255,255,0.05));
-border:1px solid rgba(240,201,122,0.25);
-font-size:10px;
-text-transform:uppercase;
-font-weight:900;
-letter-spacing:.12em;
-color:#fff0ce;
-backdrop-filter:blur(10px);">
-Recommended • Most Purchased
-</div>
 
 <div style="
 color:#f3c56d;
@@ -55,45 +875,23 @@ line-height:1.8;
 color:#d8ccb9;
 margin-top:10px;
 font-size:14px;">
-Professional mentorship focused on liquidity, sniper entries, trading psychology, market structure, discipline, and real institutional execution.
+Professional mentorship focused on liquidity, sniper entries, discipline, psychology, and real market understanding.
 </p>
 
 <div class="cta-row">
 
 <a class="btn btn-gold"
-href="https://whop.com/checkout/plan_Lvw5qnlR0YscS"
-target="_blank">
-Purchase Mentorship
+href="about.html">
+Learn More
 </a>
 
 </div>
 
 </div>
 
-
-
-<!-- ========================= -->
-<!-- UPDATED BOT CARD -->
-<!-- ========================= -->
+<!-- BOT -->
 
 <div class="pricing-main">
-
-<div style="
-position:absolute;
-top:18px;
-right:18px;
-padding:8px 14px;
-border-radius:999px;
-background:linear-gradient(135deg, rgba(240,201,122,0.18), rgba(255,255,255,0.05));
-border:1px solid rgba(240,201,122,0.25);
-font-size:10px;
-text-transform:uppercase;
-font-weight:900;
-letter-spacing:.12em;
-color:#fff0ce;
-backdrop-filter:blur(10px);">
-Recommended
-</div>
 
 <div style="
 color:#f3c56d;
@@ -117,7 +915,7 @@ line-height:1.8;
 color:#d8ccb9;
 margin-top:10px;
 font-size:14px;">
-Advanced MT5 trading bot designed for disciplined execution, cleaner confirmations, and high probability market setups.
+Advanced MT5 trading bot using the same concepts used inside Forex Wealth Empire for high probability setups only.
 </p>
 
 <div class="cta-row">
@@ -132,161 +930,180 @@ Get Bot
 
 </div>
 
+<!-- SIGNALS -->
 
-
-<!-- ========================= -->
-<!-- UPDATED SIGNALS BADGE -->
-<!-- ========================= -->
+<div class="pricing-main">
 
 <div style="
 position:absolute;
 top:18px;
 right:18px;
-padding:8px 14px;
+padding:8px 12px;
 border-radius:999px;
-background:linear-gradient(135deg, rgba(240,201,122,0.18), rgba(255,255,255,0.05));
-border:1px solid rgba(240,201,122,0.25);
-font-size:10px;
+background:rgba(255,35,35,0.14);
+font-size:11px;
 text-transform:uppercase;
-font-weight:900;
-letter-spacing:.12em;
-color:#fff0ce;
-backdrop-filter:blur(10px);">
-Most Purchased
-</div>
-
-
-
-<!-- ========================= -->
-<!-- FASTER HEADER -->
-<!-- ========================= -->
-
-.topbar::before{
-animation:spin 4s linear infinite;
-}
-
-.topbar::after{
-animation:spinReverse 3s linear infinite;
-}
-
-
-
-/* ========================= */
-/* PREMIUM SIGNAL POPUP */
-/* ========================= */
-
-<div id="signalPopup" style="
-position:fixed;
-bottom:30px;
-right:30px;
-width:340px;
-padding:24px;
-border-radius:28px;
-background:
-linear-gradient(135deg,
-rgba(10,10,10,0.98),
-rgba(30,0,0,0.95));
-border:1px solid rgba(240,201,122,0.22);
-box-shadow:
-0 0 40px rgba(255,0,0,0.28),
-0 0 60px rgba(240,201,122,0.10);
-z-index:99999;
-display:none;
-overflow:hidden;
-backdrop-filter:blur(18px);
-animation:popupFade .4s ease;
-">
-
-<div style="
-position:absolute;
-top:-80px;
-right:-80px;
-width:180px;
-height:180px;
-border-radius:50%;
-background:rgba(255,0,0,0.12);
-filter:blur(40px);">
+font-weight:800;">
+Closed
 </div>
 
 <div style="
-position:relative;
-z-index:2;">
-
-<div style="
-display:inline-flex;
-padding:7px 14px;
-border-radius:999px;
-background:rgba(240,201,122,0.10);
-border:1px solid rgba(240,201,122,0.18);
-font-size:10px;
-font-weight:900;
+color:#f3c56d;
+font-size:11px;
+text-transform:uppercase;
 letter-spacing:.14em;
-text-transform:uppercase;
-color:#f0c97a;
-margin-bottom:16px;">
-Premium Signals
+font-weight:800;">
+VIP Signals
 </div>
 
-<h3 style="
-font-family:'Orbitron',sans-serif;
-font-size:24px;
-line-height:1.2;
-margin-bottom:12px;
-color:#fff0ce;">
-R1500 Signals Available
+<h3>
+VIP Signals
 </h3>
+
+<p class="new" style="font-size:24px;">
+Currently Closed
+</p>
 
 <p style="
 line-height:1.8;
-font-size:14px;
 color:#d8ccb9;
-margin-bottom:22px;">
-Accurate market execution with a claimed 95% win-rate strategy approach focused on liquidity and sniper confirmations.
+margin-top:10px;
+font-size:14px;">
+VIP signal services are currently unavailable while Forex Wealth Empire focuses on mentorship and education.
 </p>
 
-<a href="https://t.me/forexwewlthempire"
-target="_blank"
-style="
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:14px 22px;
-border-radius:16px;
-background:linear-gradient(135deg,#f0c97a,#fff0c5);
-color:black;
-font-weight:900;
-text-decoration:none;
-box-shadow:0 0 25px rgba(240,201,122,0.22);">
-Buy Now
+<div class="cta-row">
+
+<a class="btn btn-dark"
+href="https://t.me/forexwewlthempire"
+target="_blank">
+Free Telegram
 </a>
 
 </div>
 
 </div>
 
+</div>
 
+</div>
 
-<style>
+</section>
 
-@keyframes popupFade{
-from{
-opacity:0;
-transform:translateY(30px) scale(.95);
-}
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-}
+<!-- TELEGRAM -->
 
-</style>
+<section class="section" id="telegram">
 
+<div class="container">
 
+<div class="telegram-box">
 
-<script>
+<h2 style="
+font-family:'Orbitron',sans-serif;
+font-size:2.5rem;
+margin-bottom:16px;">
+Worldwide Telegram Community
+</h2>
 
-setTimeout(() => {
-document.getElementById("signalPopup").style.display = "block";
-}, 3000);
+<p style="
+max-width:700px;
+margin:auto;
+line-height:1.9;
+color:#d8ccb9;">
+Connect with traders worldwide and grow with Forex Wealth Empire.
+</p>
 
-</script>
+<div class="cta-row"
+style="justify-content:center; margin-top:26px;">
+
+<a class="btn btn-live"
+href="https://t.me/forexwewlthempire"
+target="_blank">
+Join Telegram
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROP FIRM -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-head">
+
+<h2>
+Recommended Prop Firm
+</h2>
+
+<p>
+Trade professionally with our recommended prop firm.
+</p>
+
+</div>
+
+<div class="grid-4">
+
+<div class="card">
+<h3>Fast Setup</h3>
+<p>Simple and fast registration process.</p>
+</div>
+
+<div class="card">
+<h3>Funding</h3>
+<p>Scale professionally with funding opportunities.</p>
+</div>
+
+<div class="card">
+<h3>Professional</h3>
+<p>Built for disciplined forex traders.</p>
+</div>
+
+<div class="card">
+<h3>Clean Experience</h3>
+<p>Trader focused environment and support.</p>
+</div>
+
+</div>
+
+<div class="cta-row" style="margin-top:24px;">
+
+<a class="btn btn-gold"
+href="https://comitcapital.hosted-form.com/h/Ghf3pppDK?sp_rid=68bad5ca39cc1853e8012543"
+target="_blank">
+Open Account
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="container"
+style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;">
+
+<div>
+© 2026 Forex Wealth Empire
+</div>
+
+<div>
+Worldwide Forex Trading Community
+</div>
+
+</div>
+
+</footer>
+
+</body>
+  </html>
