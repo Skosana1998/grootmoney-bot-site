@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,45 +8,64 @@
 
 <title>Forex Wealth Empire</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
 --bg:#050505;
 --card:rgba(255,255,255,0.04);
---stroke:rgba(255,255,255,0.08);
+--stroke:rgba(255,255,255,0.07);
+--text:#f6f3ea;
+--muted:#b9ae9a;
 --gold:#f0c97a;
---text:#ffffff;
---muted:#b8b8b8;
---red:#ff2a2a;
+--red:#ff1f1f;
+--radius:22px;
+--max:1220px;
 }
 
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
 body{
-margin:0;
-font-family:Inter,sans-serif;
-background:radial-gradient(circle at top,#111,#050505);
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top left, rgba(255,0,0,0.13), transparent 20%),
+radial-gradient(circle at top right, rgba(240,201,122,0.10), transparent 20%),
+linear-gradient(180deg,#020202,#050505,#020202);
 color:var(--text);
 overflow-x:hidden;
 }
 
-/* HEADER */
-header{
-position:sticky;
-top:0;
-z-index:999;
-background:rgba(0,0,0,0.75);
-backdrop-filter:blur(15px);
-border-bottom:1px solid var(--stroke);
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+background-size:60px 60px;
+pointer-events:none;
+z-index:-1;
 }
 
 .container{
-width:92%;
-max-width:1200px;
+width:min(var(--max), calc(100% - 28px));
 margin:auto;
 }
 
+/* HEADER */
 .topbar{
+position:sticky;
+top:0;
+z-index:999;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.topbar-inner{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -53,38 +73,43 @@ padding:16px 0;
 }
 
 .brand{
+display:flex;
+gap:14px;
+align-items:center;
+text-decoration:none;
+color:white;
 font-family:Orbitron;
 font-weight:800;
-letter-spacing:2px;
-color:white;
+}
+
+.brand-mark{
+width:50px;height:50px;border-radius:14px;
+background:linear-gradient(135deg,#ff1f1f,#f0c97a);
+display:grid;place-items:center;
+font-weight:900;
 }
 
 nav a{
-color:var(--muted);
+color:#b9ae9a;
 text-decoration:none;
 margin-left:18px;
 font-size:13px;
-transition:.3s;
 }
-
-nav a:hover{
-color:white;
-}
+nav a:hover{color:white;}
 
 /* HERO */
 .hero{
-text-align:center;
 padding:90px 0 50px;
+text-align:center;
 }
 
 .hero h1{
 font-family:Orbitron;
-font-size:54px;
-margin-bottom:10px;
+font-size:52px;
 }
 
 .hero p{
-color:var(--muted);
+color:#b9ae9a;
 max-width:750px;
 margin:auto;
 line-height:1.7;
@@ -92,34 +117,28 @@ line-height:1.7;
 
 .btn{
 display:inline-block;
-margin-top:20px;
-padding:12px 22px;
-background:var(--gold);
-color:black;
+padding:12px 20px;
+margin-top:18px;
+border-radius:12px;
+background:#f0c97a;
+color:#000;
 font-weight:800;
-border-radius:10px;
 text-decoration:none;
-transition:.3s;
 }
 
-.btn:hover{
-transform:translateY(-3px);
-}
-
-/* TRUST STATS */
-.stats{
+/* SERVICES */
+.grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:15px;
-margin-top:50px;
+margin-top:40px;
 }
 
 .card{
 background:var(--card);
 padding:20px;
-border-radius:14px;
 border:1px solid var(--stroke);
-text-align:center;
+border-radius:14px;
 }
 
 /* TICKER */
@@ -129,9 +148,8 @@ overflow:hidden;
 border-top:1px solid var(--stroke);
 border-bottom:1px solid var(--stroke);
 padding:10px;
-color:var(--gold);
+color:#f0c97a;
 animation:move 18s linear infinite;
-font-size:13px;
 }
 
 @keyframes move{
@@ -139,60 +157,28 @@ font-size:13px;
 100%{transform:translateX(-50%);}
 }
 
-/* SERVICES */
-.services{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-margin-top:50px;
-}
-
-.service{
-background:var(--card);
-padding:20px;
-border-radius:14px;
-border:1px solid var(--stroke);
-transition:.3s;
-}
-
-.service:hover{
-transform:translateY(-5px);
-border-color:var(--gold);
-}
-
 /* REVIEWS */
 .reviews{
 margin-top:60px;
+padding:25px;
 background:var(--card);
-padding:30px;
-border-radius:16px;
+border:1px solid var(--stroke);
+border-radius:14px;
 text-align:center;
-border:1px solid var(--stroke);
 }
+.review{display:none;}
+.review.active{display:block;}
 
-.review{
-display:none;
-}
-
-.review.active{
-display:block;
-}
-
-/* PAYMENTS */
-.payments{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-
-.payments div{
-padding:12px 18px;
-background:var(--card);
-border:1px solid var(--stroke);
-border-radius:10px;
-color:var(--muted);
+/* PAYMENT STRIP */
+.pay-strip{
+margin-top:60px;
+padding:10px;
+white-space:nowrap;
+overflow:hidden;
+border-top:1px solid var(--stroke);
+border-bottom:1px solid var(--stroke);
+color:#f0c97a;
+animation:move 18s linear infinite;
 }
 
 /* POPUP */
@@ -201,31 +187,22 @@ position:fixed;
 bottom:20px;
 left:20px;
 background:#111;
-padding:14px 18px;
-border-left:3px solid var(--gold);
+padding:14px;
+border-left:3px solid #f0c97a;
+border-radius:10px;
 font-size:13px;
 display:none;
 z-index:9999;
-max-width:280px;
 }
 
 /* DISCLAIMER */
 .disclaimer{
 margin-top:60px;
-font-size:12px;
+text-align:center;
 color:#888;
-text-align:center;
+font-size:12px;
 line-height:1.6;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:40px;
-color:var(--muted);
-font-size:13px;
-border-top:1px solid var(--stroke);
-margin-top:40px;
+padding:20px;
 }
 
 </style>
@@ -234,134 +211,114 @@ margin-top:40px;
 
 <body>
 
-<header>
-<div class="container topbar">
-<div class="brand">FOREX WEALTH EMPIRE</div>
+<header class="topbar">
+<div class="container topbar-inner">
+
+<a class="brand">
+<div class="brand-mark">FW</div>
+FOREX WEALTH EMPIRE
+</a>
+
 <nav>
 <a href="#services">Services</a>
 <a href="#reviews">Reviews</a>
-<a href="#payments">Payments</a>
+<a href="#contact">Contact</a>
 </nav>
+
 </div>
 </header>
 
 <section class="hero">
-<div class="container">
 
 <h1>PROP FIRM STYLE TRADING EMPIRE</h1>
 
 <p>
-Professional Forex Signals, Mentorship & Trading Bot System built from 7+ years of real market experience.
+Signals • Mentorship • Trading Bot based on 7+ years real market experience
 </p>
 
-<a class="btn" href="#">Join VIP Signals</a>
+<a class="btn" href="#">Join VIP</a>
 
-<div class="stats">
-<div class="card">4309 Premium Channel Members</div>
-<div class="card">7+ Years Experience</div>
-<div class="card">Worldwide Trading Community</div>
-</div>
-
-</div>
 </section>
 
 <div class="ticker">
-VIP SIGNALS • MENTORSHIP • TRADING BOT • RISK MANAGEMENT • DISCIPLINE • STRUCTURE • 4309 PREMIUM MEMBERS •
+VIP SIGNALS • MENTORSHIP • TRADING BOT • STRUCTURE • DISCIPLINE •
 </div>
 
-<section id="services" class="services container">
+<section id="services" class="grid container">
 
-<div class="service">
+<div class="card">
 <h3>VIP Signals</h3>
-<p>High probability trading signals based on liquidity & structure.</p>
+<p>High probability trading setups.</p>
 </div>
 
-<div class="service">
+<div class="card">
 <h3>Mentorship</h3>
-<p>1-on-1 guidance to build trading discipline and consistency.</p>
+<p>1-on-1 coaching for consistency.</p>
 </div>
 
-<div class="service">
+<div class="card">
 <h3>Trading Bot</h3>
-<p>Automated MT5 system based on proven market concepts.</p>
+<p>Automated strategy execution system.</p>
 </div>
 
 </section>
 
-<section id="reviews" class="container reviews">
+<section id="reviews" class="reviews container">
 
-<h2>Client Reviews</h2>
+<h3>Client Reviews</h3>
 
-<div class="review active">"Best mentorship experience I’ve had." — Kagiso</div>
-<div class="review">"The bot keeps me disciplined and consistent." — Wesley</div>
-<div class="review">"Signals are clean and professional." — Mbali</div>
+<div class="review active">Kagiso: “Best mentorship ever”</div>
+<div class="review">Mbali: “Clean signals and structure”</div>
+<div class="review">Wesley: “Bot keeps me disciplined”</div>
 
 </section>
 
-<section id="payments" class="container">
-
-<h2 style="text-align:center;margin-top:60px;">Payment Methods</h2>
-
-<div class="payments">
-<div>Bank Transfer</div>
-<div>Card Payment</div>
-<div>Skrill</div>
-<div>Binance Pay</div>
+<div class="pay-strip">
+BANK TRANSFER • CARD PAYMENT • SKRILL • BINANCE PAY •
 </div>
-
-</section>
 
 <div class="popup" id="popup"></div>
 
-<div class="disclaimer container">
-
-Trading Forex, CFDs and crypto involves risk. This platform provides educational content, mentorship, signals and trading tools only. No guaranteed profits are promised.
-
+<div class="disclaimer">
+Trading involves risk. No guaranteed profits. Educational and signal service only.
 </div>
-
-<footer>
-© 2026 Forex Wealth Empire
-</footer>
 
 <script>
 
-/* REVIEWS SLIDER */
-let reviews = document.querySelectorAll(".review");
-let i = 0;
+/* REVIEWS */
+let r=document.querySelectorAll(".review");
+let i=0;
 
 setInterval(()=>{
-reviews[i].classList.remove("active");
-i = (i+1)%reviews.length;
-reviews[i].classList.add("active");
+r[i].classList.remove("active");
+i=(i+1)%r.length;
+r[i].classList.add("active");
 },8000);
 
-/* SOCIAL PROOF POPUP */
-let messages = [
+/* POPUPS */
+let messages=[
 "Mbali joined Premium Group 1 day ago",
 "Kagiso purchased Trading Bot 5 hours ago",
-"Maureen made an enquiry",
-"Wesley purchased Mentorship 2 days ago",
-"Boikgantsho requested access",
-"Pitso purchased Signals 15 minutes ago"
+"Wesley purchased Mentorship",
+"Pitso bought VIP Signals"
 ];
 
-let popup = document.getElementById("popup");
-let x = 0;
+let p=document.getElementById("popup");
+let x=0;
 
 setTimeout(()=>{
 
-let loop = setInterval(()=>{
+let loop=setInterval(()=>{
 
-if(x >= messages.length){
+if(x>=messages.length){
 clearInterval(loop);
-popup.style.display="none";
 return;
 }
 
-popup.style.display="block";
-popup.innerText = messages[x];
+p.style.display="block";
+p.innerText=messages[x];
 
-setTimeout(()=>popup.style.display="none",5000);
+setTimeout(()=>p.style.display="none",5000);
 
 x++;
 
