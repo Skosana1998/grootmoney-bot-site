@@ -1,72 +1,91 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forex Wealth Empire</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet"><style>
+
+<title>Forex Wealth Empire</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
 
 :root{
 --bg:#050505;
 --card:rgba(255,255,255,0.04);
+--stroke:rgba(255,255,255,0.08);
 --gold:#f0c97a;
 --text:#ffffff;
 --muted:#b8b8b8;
+--red:#ff2a2a;
 }
 
 body{
 margin:0;
 font-family:Inter,sans-serif;
-background:var(--bg);
+background:radial-gradient(circle at top,#111,#050505);
 color:var(--text);
-}
-
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
+overflow-x:hidden;
 }
 
 /* HEADER */
 header{
 position:sticky;
 top:0;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(10px);
-padding:15px 0;
-border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:999;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(15px);
+border-bottom:1px solid var(--stroke);
+}
+
+.container{
+width:92%;
+max-width:1200px;
+margin:auto;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0;
 }
 
 .brand{
 font-family:Orbitron;
-font-weight:700;
+font-weight:800;
 letter-spacing:2px;
+color:white;
 }
 
-.nav{
-float:right;
-display:flex;
-gap:20px;
-}
-
-.nav a{
+nav a{
 color:var(--muted);
 text-decoration:none;
-font-size:14px;
+margin-left:18px;
+font-size:13px;
+transition:.3s;
+}
+
+nav a:hover{
+color:white;
 }
 
 /* HERO */
 .hero{
 text-align:center;
-padding:90px 0;
+padding:90px 0 50px;
 }
 
 .hero h1{
 font-family:Orbitron;
-font-size:52px;
+font-size:54px;
+margin-bottom:10px;
 }
 
-.sub{
+.hero p{
 color:var(--muted);
-max-width:700px;
+max-width:750px;
 margin:auto;
 line-height:1.7;
 }
@@ -76,13 +95,18 @@ display:inline-block;
 margin-top:20px;
 padding:12px 22px;
 background:var(--gold);
-color:#000;
-text-decoration:none;
-font-weight:700;
+color:black;
+font-weight:800;
 border-radius:10px;
+text-decoration:none;
+transition:.3s;
 }
 
-/* STATS */
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* TRUST STATS */
 .stats{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -94,18 +118,20 @@ margin-top:50px;
 background:var(--card);
 padding:20px;
 border-radius:14px;
-border:1px solid rgba(255,255,255,0.05);
+border:1px solid var(--stroke);
+text-align:center;
 }
 
 /* TICKER */
 .ticker{
 white-space:nowrap;
 overflow:hidden;
-padding:12px;
-border-top:1px solid #222;
-border-bottom:1px solid #222;
+border-top:1px solid var(--stroke);
+border-bottom:1px solid var(--stroke);
+padding:10px;
 color:var(--gold);
 animation:move 18s linear infinite;
+font-size:13px;
 }
 
 @keyframes move{
@@ -113,38 +139,60 @@ animation:move 18s linear infinite;
 100%{transform:translateX(-50%);}
 }
 
-/* REVIEWS */
-.reviewBox{
-margin-top:40px;
-text-align:center;
+/* SERVICES */
+.services{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:50px;
+}
+
+.service{
 background:var(--card);
-padding:25px;
+padding:20px;
 border-radius:14px;
+border:1px solid var(--stroke);
+transition:.3s;
+}
+
+.service:hover{
+transform:translateY(-5px);
+border-color:var(--gold);
+}
+
+/* REVIEWS */
+.reviews{
+margin-top:60px;
+background:var(--card);
+padding:30px;
+border-radius:16px;
+text-align:center;
+border:1px solid var(--stroke);
 }
 
 .review{
 display:none;
-color:#ddd;
 }
 
 .review.active{
 display:block;
 }
 
-/* PAYMENT */
-.pay{
+/* PAYMENTS */
+.payments{
 display:flex;
 justify-content:center;
-gap:15px;
+gap:12px;
 flex-wrap:wrap;
-margin-top:20px;
+margin-top:40px;
 }
 
-.pay div{
+.payments div{
 padding:12px 18px;
 background:var(--card);
+border:1px solid var(--stroke);
 border-radius:10px;
-border:1px solid rgba(255,255,255,0.05);
+color:var(--muted);
 }
 
 /* POPUP */
@@ -153,11 +201,21 @@ position:fixed;
 bottom:20px;
 left:20px;
 background:#111;
-padding:14px;
+padding:14px 18px;
 border-left:3px solid var(--gold);
-display:none;
 font-size:13px;
-max-width:260px;
+display:none;
+z-index:9999;
+max-width:280px;
+}
+
+/* DISCLAIMER */
+.disclaimer{
+margin-top:60px;
+font-size:12px;
+color:#888;
+text-align:center;
+line-height:1.6;
 }
 
 /* FOOTER */
@@ -166,63 +224,118 @@ text-align:center;
 padding:40px;
 color:var(--muted);
 font-size:13px;
+border-top:1px solid var(--stroke);
+margin-top:40px;
 }
 
-</style></head><body><header>
-<div class="container">
-<span class="brand">FOREX WEALTH EMPIRE</span>
-<div class="nav">
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="container topbar">
+<div class="brand">FOREX WEALTH EMPIRE</div>
+<nav>
+<a href="#services">Services</a>
 <a href="#reviews">Reviews</a>
 <a href="#payments">Payments</a>
-<a href="#contact">Contact</a>
+</nav>
 </div>
-</div>
-</header><section class="hero">
-<div class="container"><h1>FOREX WEALTH EMPIRE</h1><p class="sub">
-Professional Forex Signals, Mentorship and Trading Automation built from 7+ years of real market experience.
-</p><a class="btn" href="#">Join VIP Signals</a>
+</header>
+
+<section class="hero">
+<div class="container">
+
+<h1>PROP FIRM STYLE TRADING EMPIRE</h1>
+
+<p>
+Professional Forex Signals, Mentorship & Trading Bot System built from 7+ years of real market experience.
+</p>
+
+<a class="btn" href="#">Join VIP Signals</a>
 
 <div class="stats">
 <div class="card">4309 Premium Channel Members</div>
 <div class="card">7+ Years Experience</div>
-<div class="card">Worldwide Community</div>
-</div></div>
-</section><div class="ticker">
-VIP SIGNALS • MENTORSHIP • TRADING BOT • 4309 PREMIUM CHANNEL MEMBERS • DISCIPLINE • MARKET STRUCTURE • RISK MANAGEMENT •
-</div><section id="reviews">
-<div class="container"><div class="reviewBox">
-<h2>Client Reviews</h2><div class="review active">"Best mentorship I’ve experienced." — Kagiso</div>
-<div class="review">"Trading bot keeps me disciplined." — Wesley</div>
-<div class="review">"Signals are clean and professional." — Mbali</div></div></div>
-</section><section id="payments">
-<div class="container"><h2 style="text-align:center;margin-top:60px;">Payment Methods</h2><div class="pay">
+<div class="card">Worldwide Trading Community</div>
+</div>
+
+</div>
+</section>
+
+<div class="ticker">
+VIP SIGNALS • MENTORSHIP • TRADING BOT • RISK MANAGEMENT • DISCIPLINE • STRUCTURE • 4309 PREMIUM MEMBERS •
+</div>
+
+<section id="services" class="services container">
+
+<div class="service">
+<h3>VIP Signals</h3>
+<p>High probability trading signals based on liquidity & structure.</p>
+</div>
+
+<div class="service">
+<h3>Mentorship</h3>
+<p>1-on-1 guidance to build trading discipline and consistency.</p>
+</div>
+
+<div class="service">
+<h3>Trading Bot</h3>
+<p>Automated MT5 system based on proven market concepts.</p>
+</div>
+
+</section>
+
+<section id="reviews" class="container reviews">
+
+<h2>Client Reviews</h2>
+
+<div class="review active">"Best mentorship experience I’ve had." — Kagiso</div>
+<div class="review">"The bot keeps me disciplined and consistent." — Wesley</div>
+<div class="review">"Signals are clean and professional." — Mbali</div>
+
+</section>
+
+<section id="payments" class="container">
+
+<h2 style="text-align:center;margin-top:60px;">Payment Methods</h2>
+
+<div class="payments">
 <div>Bank Transfer</div>
 <div>Card Payment</div>
 <div>Skrill</div>
 <div>Binance Pay</div>
-</div></div>
-</section><section id="contact">
-<div class="container"><h2 style="text-align:center;margin-top:60px;">Contact</h2><p style="text-align:center;color:#bbb;">
-Phone: 065 710 0218<br>
-Email: naswealthempire@gmail.com<br>
-Instagram: Forex Wealth Empire
-</p></div>
-</section><div class="popup" id="popup"></div><footer>
-Trading involves risk. Past performance does not guarantee future results.
-</footer><script>
+</div>
 
-/* REVIEWS (8 seconds) */
+</section>
+
+<div class="popup" id="popup"></div>
+
+<div class="disclaimer container">
+
+Trading Forex, CFDs and crypto involves risk. This platform provides educational content, mentorship, signals and trading tools only. No guaranteed profits are promised.
+
+</div>
+
+<footer>
+© 2026 Forex Wealth Empire
+</footer>
+
+<script>
+
+/* REVIEWS SLIDER */
 let reviews = document.querySelectorAll(".review");
 let i = 0;
 
-setInterval(() => {
+setInterval(()=>{
 reviews[i].classList.remove("active");
-i = (i + 1) % reviews.length;
+i = (i+1)%reviews.length;
 reviews[i].classList.add("active");
-}, 8000);
+},8000);
 
-/* POPUP (15 seconds cycle, stops after all) */
-
+/* SOCIAL PROOF POPUP */
 let messages = [
 "Mbali joined Premium Group 1 day ago",
 "Kagiso purchased Trading Bot 5 hours ago",
@@ -235,20 +348,20 @@ let messages = [
 let popup = document.getElementById("popup");
 let x = 0;
 
-setTimeout(() => {
+setTimeout(()=>{
 
-let loop = setInterval(() => {
+let loop = setInterval(()=>{
 
 if(x >= messages.length){
 clearInterval(loop);
-popup.style.display = "none";
+popup.style.display="none";
 return;
 }
 
-popup.style.display = "block";
+popup.style.display="block";
 popup.innerText = messages[x];
 
-setTimeout(() => popup.style.display = "none", 5000);
+setTimeout(()=>popup.style.display="none",5000);
 
 x++;
 
@@ -256,5 +369,7 @@ x++;
 
 },15000);
 
-</script></body>
+</script>
+
+</body>
 </html>
